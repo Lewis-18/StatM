@@ -2,15 +2,27 @@
 
 # StatM
 
+中文 · [English](README.en.md)
+
 **让数据，抵达洞见。**
 
 StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化应用。它将数据管理、统计计算、科研绘图和分析记录整合在同一个工作空间，帮助用户完成从原始数据到研究结果的分析过程。
 
+> **English summary:** StatM is an offline Windows desktop application for statistical analysis and scientific visualization: CSV/Excel import, exploratory data analysis, hypothesis testing, OLS regression, PCA, and PNG/SVG export. [Read the English overview](README.en.md).
+
 **版本：1.0.0** · **平台：Windows x64** · **维护者：Jackson Lewis**
 
-[下载安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.0/StatM-Setup-1.0.0-x64.exe) · [版本发布](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
+[下载安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.0/StatM-Setup-1.0.0-x64.exe) · [版本发布](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [功能实例](EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
 
 ![StatM 深色工作台](assets/home-dark.png)
+
+## 适用场景
+
+- **统计学习与课程实践**：通过内置示例理解描述统计、假设检验、回归与 PCA。
+- **科研数据探索**：检查数据分布、变量相关性和模型诊断，整理分析结果。
+- **科研绘图与结果交流**：导出 PNG/SVG 图表、统计表及分析脚本。
+
+查看 [实际图表与操作示例](EXAMPLES.md)，或直接下载 Windows 安装包体验。
 
 ## 主要功能
 
@@ -49,5 +61,7 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 ## 反馈与建议
 
 欢迎通过 [Issues](https://github.com/Lewis-18/StatM/issues) 提交使用问题和功能建议。请提供版本、操作步骤与脱敏截图，以便定位问题。
+
+如果 StatM 对你有帮助，欢迎点击仓库右上角的 **Star**，帮助更多学习者与科研用户发现它。
 
 © 2026 Jackson Lewis. StatM.

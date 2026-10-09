@@ -1,0 +1,36 @@
+name: 使用问题 / Bug report
+description: 报告 StatM 的安装、分析或绘图问题 / Report a reproducible problem.
+title: "[Bug] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: StatM 版本 / Version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows 版本 / Windows version
+      placeholder: "Windows 11 x64"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤 / Steps to reproduce
+      description: 请描述操作顺序、所选变量与参数；尽可能用内置示例复现。
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 预期与实际结果 / Expected and actual results
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 补充信息 / Additional information
+      description: 可附脱敏截图或最小示例；请勿上传个人信息、敏感数据或凭据。

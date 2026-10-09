@@ -1,0 +1,18 @@
+name: 功能建议 / Feature request
+description: 提出统计分析、科研绘图或使用体验建议 / Suggest an improvement.
+title: "[Feature] "
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: 使用场景 / Use case
+      description: 描述你要完成的任务以及目前遇到的困难。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议功能 / Proposed improvement
+      description: 说明希望如何操作，以及期望得到什么结果。
+    validations:
+      required: true
