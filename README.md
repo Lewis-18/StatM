@@ -10,11 +10,19 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 
 > **English summary:** StatM is an offline Windows desktop application for statistical analysis and scientific visualization: CSV/Excel import, exploratory data analysis, hypothesis testing, OLS regression, PCA, and PNG/SVG export. [Read the English overview](README.en.md).
 
-**版本：1.0.0** · **平台：Windows x64** · **维护者：Jackson Lewis**
+**版本：1.0.5** · **平台：Windows x64** · **维护者：Jackson Lewis**
 
-[下载安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.0/StatM-Setup-1.0.0-x64.exe) · [版本发布](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [功能实例](EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
+[下载安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.5/StatM-Setup-1.0.5-x64.exe) · [版本发布](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [功能实例](EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
 
 ![StatM 深色工作台](assets/home-dark.png)
+
+## 1.0.5 更新
+
+- 正式版封面与统一版本标识，直接进入工作台。
+- 优化启动与历史恢复，计算组件后台预备，图表模块按需加载。
+- 设置中提供中文 / English 切换，记住应用语言偏好。
+- 改进复制反馈、加载占位、键盘焦点和设置开关。
+- 科研图表实例统一采用白色背景，便于阅读和交流。
 
 ## 适用场景
 
@@ -40,9 +48,9 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 
 ## 本地运行，连续工作
 
-核心计算与项目数据保留在用户电脑上。安装包内置运行环境，无需另行安装 Python 或 Node.js，断网时也可使用数据导入、统计分析与图表导出。版本检查通过 GitHub 获取发布信息。
+核心计算与项目数据保留在用户电脑上。安装包内置运行环境，无需另行安装 Python 或 Node.js，断网时也可使用数据导入、统计分析与图表导出。版本检查通过官方静态版本信息与 GitHub 发布页获取更新，缓存与冷却机制减少重复请求。
 
-工作台支持深色与浅色主题、可调整宽度的分析面板、变量搜索和快捷导航。首页提供数据导入、常用统计任务、最近项目与继续分析入口；参数草稿与分析历史可在重新启动后恢复。
+工作台支持 **中文 / English 即时切换**、深色与浅色主题、可调整宽度的分析面板、变量搜索和快捷导航。首页提供数据导入、常用统计任务、最近项目与继续分析入口；参数草稿与分析历史可在重新启动后恢复。
 
 ![StatM 浅色工作台](assets/home-light.png)
 
@@ -50,7 +58,7 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 
 ## 下载与安装
 
-1. 下载 [StatM 1.0.0 Windows x64 安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.0/StatM-Setup-1.0.0-x64.exe)。
+1. 下载 [StatM 1.0.5 Windows x64 安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.5/StatM-Setup-1.0.5-x64.exe)。
 2. 运行安装程序并选择安装目录。
 3. 启动 StatM，创建项目后导入数据或打开内置示例。
 
@@ -65,3 +73,4 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 如果 StatM 对你有帮助，欢迎点击仓库右上角的 **Star**，帮助更多学习者与科研用户发现它。
 
 © 2026 Jackson Lewis. StatM.
+
