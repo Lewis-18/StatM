@@ -1,0 +1,23 @@
+{
+  "tag_name": "v1.0.5",
+  "name": "StatM 1.0.5",
+  "html_url": "https://github.com/Lewis-18/StatM/releases/tag/v1.0.5",
+  "published_at": "2026-10-10T10:42:09Z",
+  "draft": false,
+  "prerelease": false,
+  "body": "StatM 1.0.5 改进日常启动、界面语言与科研绘图体验。\r\n\r\n- 修正封面版本标记，统一正式版本号，直接进入工作台。\r\n- 优化工作空间启动与历史恢复，计算与图表模块按需准备。\r\n- 设置中支持中文 / English 即时切换，记住语言偏好，保留数据与分析参数。\r\n- 完善复制成功与失败提示、加载占位、设置开关和键盘焦点。\r\n- 更新检查增加官方静态版本信息、缓存与限流冷却。\r\n- 仓库图表实例采用白色背景。\r\n\r\n下载 **StatM-Setup-1.0.5-x64.exe**，关闭正在运行的应用后安装到原目录。安装包包含运行环境，核心分析与图表导出可离线使用。\r\n\r\n安装包未进行数字签名；SHA256SUMS.txt 可用于完整性校验。\r\n\r\n[使用指南](https://github.com/Lewis-18/StatM/blob/main/USER-GUIDE.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)\r\n\r\n© 2026 Jackson Lewis. StatM.",
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 93,
+      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.0.5/SHA256SUMS.txt",
+      "digest": "sha256:eb80e7977b6d077554d71594b5aebb904f01475098e29ced5ca21b5bb19db465"
+    },
+    {
+      "name": "StatM-Setup-1.0.5-x64.exe",
+      "size": 216501090,
+      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.0.5/StatM-Setup-1.0.5-x64.exe",
+      "digest": "sha256:f617e74065ee3f270d6daf4f0aeb727bcbb7740fcdad654084159e34578db4df"
+    }
+  ]
+}
