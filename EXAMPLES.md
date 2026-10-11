@@ -2,9 +2,9 @@
 
 [下载安装包 / Download](https://github.com/Lewis-18/StatM/releases/latest) · [中文介绍](README.md) · [English overview](README.en.md)
 
-以下图表来自 StatM 1.0.5 对内置 Advertising（200 条观测）与 Iris（150 条观测）数据的实际运行，采用白色绘图背景。它们展示操作与导出能力，不构成特定研究问题的结论。
+以下图表来自 StatM 1.0.8 对内置 Advertising（200 条观测）与 Iris（150 条观测）数据的实际运行，采用白色绘图背景。它们展示操作与导出能力，不构成特定研究问题的结论。
 
-These figures were produced by StatM 1.0.5 using the bundled Advertising (200 observations) and Iris (150 observations) datasets, with white plotting backgrounds. They demonstrate analysis and export workflows, rather than establish a research conclusion.
+These figures were produced by StatM 1.0.8 using the bundled Advertising (200 observations) and Iris (150 observations) datasets, with white plotting backgrounds. They demonstrate analysis and export workflows, rather than establish a research conclusion.
 
 ## 线性回归诊断 / Linear regression diagnostics
 

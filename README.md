@@ -10,19 +10,19 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 
 > **English summary:** StatM is an offline Windows desktop application for statistical analysis and scientific visualization: CSV/Excel import, exploratory data analysis, hypothesis testing, OLS regression, PCA, and PNG/SVG export. [Read the English overview](README.en.md).
 
-**版本：1.0.5** · **平台：Windows x64** · **维护者：Jackson Lewis**
+**版本：1.0.8** · **平台：Windows x64** · **维护者：Jackson Lewis**
 
-[下载安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.5/StatM-Setup-1.0.5-x64.exe) · [版本发布](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [功能实例](EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
+[下载安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.8/StatM-Setup-1.0.8-x64.exe) · [版本发布](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [功能实例](EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
 
 ![StatM 深色工作台](assets/home-dark.png)
 
-## 1.0.5 更新
+## 1.0.8 更新
 
-- 正式版封面与统一版本标识，直接进入工作台。
-- 优化启动与历史恢复，计算组件后台预备，图表模块按需加载。
-- 设置中提供中文 / English 切换，记住应用语言偏好。
-- 改进复制反馈、加载占位、键盘焦点和设置开关。
-- 科研图表实例统一采用白色背景，便于阅读和交流。
+- 弹窗式变量选择：搜索、多选、完整字段名、缺失数量及坐标轴排序，设置栏宽度不变。
+- 新增 TXT 导入，支持 UTF-8 / GB18030 和常见分隔格式。
+- 桌面上传上限提高至 200MB，最多 100 万行、500 列。
+- v4 启动动画完整播放，速度提高至 1.2 倍。
+- 修复草稿回调及变量参数约束，公开实际使用的部分界面组件。
 
 ## 适用场景
 
@@ -36,7 +36,7 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 
 | 功能 | 内容 |
 | --- | --- |
-| 数据管理 | 导入 CSV、XLSX、XLS；数据预览、搜索、排序、字段筛选与类型检查；缺失值处理及去重，生成新的清洗数据版本。 |
+| 数据管理 | 导入 CSV、TXT、XLSX、XLS；数据预览、搜索、排序、字段筛选与类型检查；缺失值处理及去重，生成新的清洗数据版本。 |
 | 描述统计 | 样本量、均值、标准差、分位数、偏度、峰度等指标；直方图、箱线图、密度图、ECDF 与正态 Q–Q 图。 |
 | 相关分析 | Pearson、Spearman、Kendall 相关系数与显著性结果；相关热图和散点矩阵。 |
 | 假设检验 | 单样本、独立样本及配对 t 检验；Wilcoxon、Mann–Whitney U、卡方、单因素 ANOVA 与 Kruskal–Wallis。 |
@@ -58,7 +58,7 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 
 ## 下载与安装
 
-1. 下载 [StatM 1.0.5 Windows x64 安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.5/StatM-Setup-1.0.5-x64.exe)。
+1. 下载 [StatM 1.0.8 Windows x64 安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.8/StatM-Setup-1.0.8-x64.exe)。
 2. 运行安装程序并选择安装目录。
 3. 启动 StatM，创建项目后导入数据或打开内置示例。
 
@@ -74,3 +74,9 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 
 © 2026 Jackson Lewis. StatM.
 
+
+## 部分开源
+
+StatM 采用部分开源方式。实际使用的变量选择弹窗和图表背景偏好辅助代码在 [open-source](open-source/) 中以 MIT 许可开放，支持学习、修改与贡献。完整统计引擎与应用继续保留，仅凭公开组件无法构建完整 StatM。范围与许可见 [开源范围](OPEN-SOURCE-SCOPE.md)。
+
+![变量选择弹窗](assets/variable-selection.png)

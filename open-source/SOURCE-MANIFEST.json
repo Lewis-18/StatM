@@ -1,0 +1,8 @@
+{
+  "version": "1.0.8",
+  "files": {
+    "src/variable-picker.tsx": "4d3285760a516ae5cddc12581c7f962e61cf9c2fb416c67d1670e90836d80062",
+    "src/variable-picker.css": "8e4ce609b1019cd1e724dd0e1225b0e714f5e6f9d058581017fc1a291e63c78f",
+    "src/chart-background.ts": "bdca49b749cce0682553ca0eaebae047014789efb9944b6b70a667996a1df9a7"
+  }
+}

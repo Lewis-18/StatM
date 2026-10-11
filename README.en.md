@@ -8,25 +8,25 @@
 
 StatM is a Windows desktop application for statistical analysis and scientific visualization. Import CSV or Excel data, explore distributions, test hypotheses, fit linear models, run principal component analysis, and export figures from one local workspace.
 
-**Version: 1.0.5** · **Platform: Windows x64** · **Maintainer: Jackson Lewis**
+**Version: 1.0.8** · **Platform: Windows x64** · **Maintainer: Jackson Lewis**
 
-[Download the installer](https://github.com/Lewis-18/StatM/releases/download/v1.0.5/StatM-Setup-1.0.5-x64.exe) · [Latest release](https://github.com/Lewis-18/StatM/releases/latest) · [Examples](EXAMPLES.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
+[Download the installer](https://github.com/Lewis-18/StatM/releases/download/v1.0.8/StatM-Setup-1.0.8-x64.exe) · [Latest release](https://github.com/Lewis-18/StatM/releases/latest) · [Examples](EXAMPLES.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
 
 ![StatM desktop workspace](assets/home-dark.png)
 
-## New in 1.0.5
+## New in 1.0.8
 
-- Stable release cover and consistent version labels.
-- Faster workspace startup, background computation preparation and on-demand chart modules, and compact history loading.
-- Instant Chinese / English switching with a remembered preference.
-- Clear copy feedback, loading placeholders and keyboard-accessible settings.
-- White-background scientific chart examples.
+- Searchable variable-selection dialog with full names, missing counts and axis ordering; the settings panel keeps its width.
+- TXT import using UTF-8 / GB18030 and common delimiters.
+- Desktop uploads up to 200 MB, one million rows and 500 columns.
+- Full v4 startup film at 1.2x playback speed.
+- Callback and parameter fixes, plus MIT-licensed selected UI components.
 
 ## Capabilities
 
 | Task | Tools |
 | --- | --- |
-| Data preparation | CSV, XLSX and XLS import; searchable previews, field inspection, missing-value handling and duplicate removal. |
+| Data preparation | CSV, TXT, XLSX and XLS import; searchable previews, field inspection, missing-value handling and duplicate removal. |
 | Exploratory data analysis | Summary statistics, histograms, box plots, density plots, ECDF and normal Q–Q plots. |
 | Correlation | Pearson, Spearman and Kendall coefficients, significance results, heatmaps and scatterplot matrices. |
 | Hypothesis testing | One-sample, independent and paired t-tests; Wilcoxon, Mann–Whitney U, chi-square, one-way ANOVA and Kruskal–Wallis tests. |
@@ -38,7 +38,7 @@ StatM is a Windows desktop application for statistical analysis and scientific v
 
 ## Getting started
 
-1. Download **StatM-Setup-1.0.5-x64.exe** from the [release page](https://github.com/Lewis-18/StatM/releases/tag/v1.0.5).
+1. Download **StatM-Setup-1.0.8-x64.exe** from the [release page](https://github.com/Lewis-18/StatM/releases/tag/v1.0.8).
 2. Close any running copy of StatM, run the installer and select an installation directory.
 3. Launch the app and try a built-in dataset, or import a CSV/Excel file into a project.
 4. Select an analysis, choose variables, run it, and export the results.
@@ -47,7 +47,7 @@ The installer includes the runtime and analysis engine. Core data import, statis
 
 Switch between Chinese and English in Settings → Language. The preference is remembered across desktop launches. Dark/light themes, adjustable panels and saved history are available.
 
-The release includes a SHA-256 checksum file. The current installer is unsigned, so Windows may display an unknown-publisher prompt. Existing test-version users should install 1.0.5 manually; the existing local workspace is retained.
+The release includes a SHA-256 checksum file. The current installer is unsigned, so Windows may display an unknown-publisher prompt. Existing test-version users should install 1.0.8 manually; the existing local workspace is retained.
 
 ## Examples and support
 
@@ -58,3 +58,7 @@ If StatM is useful to you, please star this repository to help other learners an
 © 2026 Jackson Lewis. StatM.
 
 
+
+## Partial open source
+
+The variable picker and chart-background helpers used in the app are available under the MIT license in [open-source](open-source/). The full engine and application remain private; these components cannot build the complete StatM product. See [scope and licensing](OPEN-SOURCE-SCOPE.md).
