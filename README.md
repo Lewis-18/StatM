@@ -6,9 +6,9 @@
 
 **让数据，抵达洞见。**
 
-StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化应用。它将数据管理、统计计算、科研绘图和分析记录整合在同一个工作空间，帮助用户完成从原始数据到研究结果的分析过程。
+StatM 是我开发的一款 Windows 桌面统计分析与科学可视化应用。你可以在同一个工作空间中整理数据、进行统计分析、制作科研图表，并保存分析记录。
 
-> **English summary:** StatM is an offline Windows desktop application for statistical analysis and scientific visualization: CSV/Excel import, exploratory data analysis, hypothesis testing, OLS regression, PCA, and PNG/SVG export. [Read the English overview](README.en.md).
+> **English summary:** StatM is an offline Windows desktop application for statistical analysis and scientific visualization: CSV/TXT/Excel import, exploratory data analysis, hypothesis testing, OLS regression, PCA, and PNG/SVG export. [Read the English overview](README.en.md).
 
 **版本：1.0.8** · **平台：Windows x64** · **维护者：Jackson Lewis**
 
@@ -22,7 +22,8 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 - 新增 TXT 导入，支持 UTF-8 / GB18030 和常见分隔格式。
 - 桌面上传上限提高至 200MB，最多 100 万行、500 列。
 - 完善了开机动画。
-- 修复草稿回调及变量参数约束，公开实际使用的部分界面组件。
+- 修复部分分析设置报错，改进变量选择与参数提示。
+- 开放部分界面组件，欢迎学习、修改与贡献。
 
 ## 适用场景
 
@@ -48,7 +49,7 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 
 ## 本地运行，连续工作
 
-核心计算与项目数据保留在用户电脑上。安装包内置运行环境，无需另行安装 Python 或 Node.js，断网时也可使用数据导入、统计分析与图表导出。版本检查通过官方静态版本信息与 GitHub 发布页获取更新，缓存与冷却机制减少重复请求。
+你的项目数据与统计计算保留在本机。安装包内置运行环境，无需另行安装 Python 或 Node.js，断网时也可导入数据、进行统计分析并导出图表。需要更新时，可在设置中检查版本并前往发行页下载。
 
 工作台支持 **中文 / English 即时切换**、深色与浅色主题、可调整宽度的分析面板、变量搜索和快捷导航。首页提供数据导入、常用统计任务、最近项目与继续分析入口；参数草稿与分析历史可在重新启动后恢复。
 
@@ -72,11 +73,10 @@ StatM 是面向学习与科研的 Windows 桌面统计分析与科学可视化�
 
 如果 StatM 对你有帮助，欢迎点击仓库右上角的 **Star**，帮助更多学习者与科研用户发现它。
 
-© 2026 Jackson Lewis. StatM.
-
-
 ## 部分开源
 
-StatM 采用部分开源方式。实际使用的变量选择弹窗和图表背景偏好辅助代码在 [open-source](open-source/) 中以 MIT 许可开放，支持学习、修改与贡献。完整统计引擎与应用继续保留，仅凭公开组件无法构建完整 StatM。范围与许可见 [开源范围](OPEN-SOURCE-SCOPE.md)。
+我将 StatM 的变量选择弹窗和图表背景辅助组件以 MIT 许可开放，欢迎学习、修改或提交改进。组件代码见 [open-source](open-source/)，使用范围见 [组件与许可说明](OPEN-SOURCE-SCOPE.md)。如需使用完整 StatM，请下载上方的 Windows 安装包。
 
 ![变量选择弹窗](assets/variable-selection.png)
+
+© 2026 Jackson Lewis. StatM.

@@ -6,7 +6,7 @@
 
 [中文](README.md) · English
 
-StatM is a Windows desktop application for statistical analysis and scientific visualization. Import CSV or Excel data, explore distributions, test hypotheses, fit linear models, run principal component analysis, and export figures from one local workspace.
+I built StatM as a Windows desktop application for statistical analysis and scientific visualization. You can import CSV, TXT or Excel data, explore distributions, test hypotheses, fit linear models, run principal component analysis, and export figures from one local workspace.
 
 **Version: 1.0.8** · **Platform: Windows x64** · **Maintainer: Jackson Lewis**
 
@@ -20,7 +20,8 @@ StatM is a Windows desktop application for statistical analysis and scientific v
 - TXT import using UTF-8 / GB18030 and common delimiters.
 - Desktop uploads up to 200 MB, one million rows and 500 columns.
 - Improved startup animation.
-- Callback and parameter fixes, plus MIT-licensed selected UI components.
+- Fixes for errors in analysis settings and clearer variable-selection guidance.
+- Selected UI components available under the MIT license.
 
 ## Capabilities
 
@@ -40,14 +41,14 @@ StatM is a Windows desktop application for statistical analysis and scientific v
 
 1. Download **StatM-Setup-1.0.8-x64.exe** from the [release page](https://github.com/Lewis-18/StatM/releases/tag/v1.0.8).
 2. Close any running copy of StatM, run the installer and select an installation directory.
-3. Launch the app and try a built-in dataset, or import a CSV/Excel file into a project.
+3. Launch the app and try a built-in dataset, or import a CSV/TXT/Excel file into a project.
 4. Select an analysis, choose variables, run it, and export the results.
 
 The installer includes the runtime and analysis engine. Core data import, statistics and chart export work offline; no separate Python or Node.js installation is required. Project data and calculations remain on your computer. Update checks retrieve release information from GitHub.
 
 Switch between Chinese and English in Settings → Language. The preference is remembered across desktop launches. Dark/light themes, adjustable panels and saved history are available.
 
-The release includes a SHA-256 checksum file. The current installer is unsigned, so Windows may display an unknown-publisher prompt. Existing test-version users should install 1.0.8 manually; the existing local workspace is retained.
+The release includes a SHA-256 checksum file. The current installer is unsigned, so Windows may display an unknown-publisher prompt. To update, close StatM and install the new version in the same directory. Your existing local workspace is retained.
 
 ## Examples and support
 
@@ -55,10 +56,8 @@ See [worked examples and exported figures](EXAMPLES.md), the [Chinese user guide
 
 If StatM is useful to you, please star this repository to help other learners and researchers discover it.
 
-© 2026 Jackson Lewis. StatM.
-
-
-
 ## Partial open source
 
-The variable picker and chart-background helpers used in the app are available under the MIT license in [open-source](open-source/). The full engine and application remain private; these components cannot build the complete StatM product. See [scope and licensing](OPEN-SOURCE-SCOPE.md).
+I have made the variable picker and chart-background helpers available under the MIT license in [open-source](open-source/). You are welcome to learn from them, adapt them, or contribute improvements. See [components and licensing](OPEN-SOURCE-SCOPE.md). To use the full StatM application, download the Windows installer above.
+
+© 2026 Jackson Lewis. StatM.

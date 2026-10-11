@@ -3,7 +3,7 @@
   "version": "1.0.8",
   "private": true,
   "license": "MIT",
-  "description": "Selected UI components used in StatM, not the complete desktop application",
+  "description": "Reusable variable-selection and chart-background components from StatM",
   "peerDependencies": {"react": "^19.0.0", "react-dom": "^19.0.0"},
   "dependencies": {"@radix-ui/react-dialog": "^1.1.0", "lucide-react": "^0.468.0"}
 }

@@ -1,6 +1,6 @@
 # StatM 开放组件
 
-这里是完整版实际使用的独立界面组件，采用 [MIT 许可](LICENSE)。完整应用、统计引擎、品牌和媒体资产不包含在此许可内。公开范围见 [OPEN-SOURCE-SCOPE.md](../OPEN-SOURCE-SCOPE.md)。
+我将 StatM 的变量选择和图表背景辅助组件开放在这里，供你在自己的项目中使用或改进。代码采用 [MIT 许可](LICENSE)，适用范围见 [组件与许可说明](../OPEN-SOURCE-SCOPE.md)。
 
 ## 内容
 
@@ -20,4 +20,4 @@ npm install @radix-ui/react-dialog lucide-react
 
 CSS 使用 `--panel`、`--input`、`--text`、`--muted`、`--accent`、`--accent-ink`、`--border`、`--hover` 主题变量；未提供时有深色默认值。`--accent-ink` 是主按钮文字色，需与主题强调色配对。
 
-贡献前请验证搜索、取消、选择上限、排序、键盘操作和 1366×768 / 窄屏布局。欢迎通过 Pull Request 提交组件改进；不要上传完整应用源码、用户数据、私人配置或品牌媒体。
+欢迎通过 Pull Request 提交组件改进。提交前请检查搜索、取消、选择上限、排序、键盘操作，以及桌面和窄屏布局。具体步骤见 [贡献指南](../CONTRIBUTING.md)。
