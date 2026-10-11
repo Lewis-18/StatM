@@ -12,7 +12,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - name: Verify and publish the tested installer
         env:
@@ -20,6 +20,7 @@ jobs:
         shell: python
         run: |
           import hashlib, json, os, re, time, urllib.request, urllib.error
+          from concurrent.futures import ThreadPoolExecutor
           from pathlib import Path
           from urllib.parse import urlparse, quote
           repo = os.environ['GITHUB_REPOSITORY']
@@ -40,12 +41,29 @@ jobs:
           target = Path(name)
           for attempt in range(4):
               try:
-                  with urllib.request.urlopen(manifest['source_url'], timeout=120) as response, target.open('wb') as output:
-                      count = 0
-                      while chunk := response.read(1024 * 1024):
-                          count += len(chunk)
-                          assert count <= manifest['size']
-                          output.write(chunk)
+                  chunk_size = 8 * 1024 * 1024
+                  parts = list(range(0, manifest['size'], chunk_size))
+                  def download_part(start):
+                      end = min(start + chunk_size, manifest['size']) - 1
+                      request = urllib.request.Request(manifest['source_url'], headers={'Range': f'bytes={start}-{end}'})
+                      part = Path(f'part-{start}')
+                      with urllib.request.urlopen(request, timeout=120) as response, part.open('wb') as output:
+                          assert response.status == 206
+                          assert response.headers['Content-Range'] == f'bytes {start}-{end}/{manifest["size"]}'
+                          count = 0
+                          while chunk := response.read(1024 * 1024):
+                              count += len(chunk)
+                              assert count <= end - start + 1
+                              output.write(chunk)
+                      assert count == end - start + 1
+                      print(f'Verified transfer chunk {start}-{end}', flush=True)
+                      return part
+                  with ThreadPoolExecutor(max_workers=6) as pool:
+                      downloaded = list(pool.map(download_part, parts))
+                  with target.open('wb') as output:
+                      for part in downloaded:
+                          with part.open('rb') as stream:
+                              while chunk := stream.read(1024 * 1024): output.write(chunk)
                   assert target.stat().st_size == manifest['size']
                   with target.open('rb') as stream:
                       actual = hashlib.file_digest(stream, 'sha256').hexdigest()
