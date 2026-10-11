@@ -1,23 +1,51 @@
-# StatM 开放组件
+# 组件与工具使用指南
 
-我将 StatM 的变量选择和图表背景辅助组件开放在这里，供你在自己的项目中使用或改进。代码采用 [MIT 许可](LICENSE)，适用范围见 [组件与许可说明](../OPEN-SOURCE-SCOPE.md)。
+这里提供变量选择、图表配置、文件读取和统计计算工具。你可以按需要使用相应目录。
 
-## 内容
+## React 与图表
 
-- `src/variable-picker.tsx` 与同目录 CSS：可搜索的变量多选弹窗、长名称、缺失数量、数量约束、选择顺序、取消与确认；Radix 提供焦点锁定、Esc 与关闭后的焦点恢复。
-- `src/chart-background.ts`：每张图独立保存背景偏好，在多个组件间订阅主题和偏好变化。只负责背景选择，不包含完整图表渲染器。
-- `examples/variable-picker.tsx`：带明确演示字段的最小 React 用例。
-
-## 在 React / Next.js 中使用
-
-在已有 React 19 项目安装 `@radix-ui/react-dialog` 和 `lucide-react`，复制 `src/` 与 `examples/`。项目需要支持 TypeScript 和 CSS 导入；Next.js App Router 可以直接使用。组件无 StatM API、数据库或统计引擎依赖。
+在支持 TypeScript 和 CSS 导入的 React 19 项目中安装依赖：
 
 ```shell
-npm install @radix-ui/react-dialog lucide-react
+npm install react react-dom @radix-ui/react-dialog lucide-react echarts
 ```
 
-把示例组件导入自己的客户端页面即可运行。变量字段需要 `name`、`type`、`missing` 三项；`value` 保持选择顺序，`onChange` 只在确认时调用。`max` 限制选择数量，`roles` 可为 `['X', 'Y', 'Z']` 或 `['X', 'Y', '面积']`；`translate` 只翻译界面文案，不修改用户变量名。
+复制 `src/` 和所需示例。`examples/variable-picker.tsx` 演示变量搜索、多选、排序与确认；`examples/chart.tsx` 演示 ECharts 图表和响应式尺寸。运行 `npm install` 与 `npm run check` 可以检查本目录的 TypeScript。
 
-CSS 使用 `--panel`、`--input`、`--text`、`--muted`、`--accent`、`--accent-ink`、`--border`、`--hover` 主题变量；未提供时有深色默认值。`--accent-ink` 是主按钮文字色，需与主题强调色配对。
+变量字段包含 `name`、`type`、`missing`。`onChange` 在确认后调用，取消或 Esc 保留原选择；`value` 保持选择顺序，`max` 限制数量，`roles` 可标记坐标轴。CSS 主题变量包括 `--panel`、`--input`、`--text`、`--muted`、`--accent`、`--accent-ink`、`--border`、`--hover`。
 
-欢迎通过 Pull Request 提交组件改进。提交前请检查搜索、取消、选择上限、排序、键盘操作，以及桌面和窄屏布局。具体步骤见 [贡献指南](../CONTRIBUTING.md)。
+`makeChartOption` 根据 `ChartSpec` 生成直方图、箱线图、ECDF、Q–Q、相关热图和探索图配置。`chart-preferences.ts` 提供配色、点形和单栏/双栏导出预设；`figure-export.ts` 提供物理尺寸、SVG 尺寸及 PNG 分辨率设置；`chart-interaction.ts` 保留普通滚轮的页面滚动。图表标题按传入文字显示，翻译可在调用前完成。
+
+## Python 文件读取与计算
+
+在本目录中执行：
+
+```shell
+python -m pip install ./python
+python examples/analysis_example.py
+```
+
+```python
+from statm_tools.data_io import read_table, profile
+from statm_tools import descriptive
+from statm_tools.params import AnalysisParams
+
+frame = read_table('data.txt')
+fields = profile(frame)
+result = descriptive.run(frame, AnalysisParams(columns=['value']))
+```
+
+`read_table` 支持 CSV、TXT、XLSX、XLS，默认上限为 200 MiB、100 万行、500 列，可通过参数调整；Excel 读取第一个工作表。TXT 第一行为表头，支持逗号、制表符、分号、竖线或空白分隔，以及 UTF-8 / GB18030 编码。读取仅返回 DataFrame，不保存文件或数据到其他位置。
+
+`descriptive` 计算样本均值、标准差、分位数等指标并生成分布图数据；`correlation` 支持 Pearson、Spearman、Kendall；`hypothesis` 支持单样本、Welch 独立样本和配对 t 检验、Wilcoxon、Mann–Whitney U、卡方、ANOVA 与 Kruskal–Wallis。结果包含表格、图表数据、警告与方法说明。`clean` 将数值结果转换为可序列化结构。
+
+默认删除本次计算所需变量中的缺失行；相关分析逐对删除，样本量可能不同。标准差与方差使用 ddof=1，峰度为超额峰度，p 值未经多重比较校正。效应量与置信区间的具体定义见结果中的 `notes`。输入无效时，统计函数抛出带 `detail` 的 `fastapi.HTTPException`，文件读取函数抛出 `ValueError` 或解析异常。
+
+`plugins.py` 提供独立脚本的计算接口与注册器，`examples/analysis_example.py` 演示注册和调用；该接口用于你自己的 Python 程序。统计假设、研究设计和结果解释仍需结合具体数据判断。
+
+运行验证：
+
+```shell
+python -m pip install './python[test]'
+python -m pytest python/tests
+```

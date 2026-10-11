@@ -3,7 +3,22 @@
   "version": "1.0.8",
   "private": true,
   "license": "MIT",
-  "description": "Reusable variable-selection and chart-background components from StatM",
-  "peerDependencies": {"react": "^19.0.0", "react-dom": "^19.0.0"},
-  "dependencies": {"@radix-ui/react-dialog": "^1.1.0", "lucide-react": "^0.468.0"}
+  "description": "Variable selection, scientific chart configuration and figure export tools",
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.0",
+    "lucide-react": "^0.468.0",
+    "echarts": "^6.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  },
+  "scripts": {
+    "check": "tsc --noEmit"
+  }
 }

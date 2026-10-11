@@ -1,8 +1,36 @@
 {
   "version": "1.0.8",
   "files": {
-    "src/variable-picker.tsx": "4d3285760a516ae5cddc12581c7f962e61cf9c2fb416c67d1670e90836d80062",
+    "LICENSE": "01f27fb162647f317b8631c7f1d6959504f17fd9497d204f39646212f537f537",
+    "package.json": "e18061695ed87d68ef41dc3f04887a0c0d3b8b9ff86175cfb1e13aebb39f1703",
+    "README.md": "7bbe643d299d33c1e16699a8a0efd15ae48e46874f2783599f96c9aa1bbaec13",
+    "tsconfig.json": "f01877d1a033f0a3da4ad7f20f8e0af75fcdb290f265642e277e0033ba6a040d",
+    "examples/analysis_example.py": "c54150504f8cae5187407d147d15ae87899bbbedf00a38430b60488d075c88ea",
+    "examples/chart.tsx": "747e8e4fbd069e6af58a3fb88942b7a97e67f926f830aa39fb3186691e082d71",
+    "examples/variable-picker.tsx": "e989a36a61c6728d1cf11b61ca3221acc80e378a9927d7736e79d4d444f55637",
+    "python/LICENSE": "01f27fb162647f317b8631c7f1d6959504f17fd9497d204f39646212f537f537",
+    "python/pyproject.toml": "85df2ab00466edf877f9acb2d00c02c726ca9b3cf070559284aa89bd0d752097",
+    "src/bubble-options.ts": "a9fd822241d91a887b0ef9ce32c208cc1aad85440aefd33d56775b2f1498386c",
+    "src/chart-background.ts": "bdca49b749cce0682553ca0eaebae047014789efb9944b6b70a667996a1df9a7",
+    "src/chart-interaction.ts": "f08f3d02402b41608c2976a220feff17bf98059f2bef075d42f905c26f0ab26e",
+    "src/chart-options.ts": "d9b1ea27fd5c745a389abcb46914323fc2ecc80762202a4977c43d99f260d379",
+    "src/chart-preferences.ts": "4b95f5952b1bf3d0da2993b8d323e43b60587ad0812dac71d4b6ef6af32c1c0a",
+    "src/exploration-options.ts": "5764ad38b831860374bcf972ee163d8e2e391adbe5d915e1a0cc6e45d96b24c3",
+    "src/figure-export.ts": "9d745fdf24cd519c7ef6463992a8d9c4a70dd96ce2f2f45d262f31cc1700405f",
+    "src/types.ts": "0d1c283d3ffc6183ce00218ae8e809672d7bf6c64f4360e1208528646d10eaf9",
     "src/variable-picker.css": "8e4ce609b1019cd1e724dd0e1225b0e714f5e6f9d058581017fc1a291e63c78f",
-    "src/chart-background.ts": "bdca49b749cce0682553ca0eaebae047014789efb9944b6b70a667996a1df9a7"
+    "src/variable-picker.tsx": "4d3285760a516ae5cddc12581c7f962e61cf9c2fb416c67d1670e90836d80062",
+    "python/statm_tools/common.py": "a18b149fc7a267553fcecf9827c4e13eef470662277d006f8b7c1ca0bdbd82eb",
+    "python/statm_tools/correlation.py": "532113905ea5c4842599cf21810452ec0b9fffac12be6bab872a16256ab96d7f",
+    "python/statm_tools/data_io.py": "fbf9b12cf291effff67288bf40fa9338b8ae790df1578e85aad6c3194192eb2e",
+    "python/statm_tools/descriptive.py": "f7cccacb0369a3e2aeda6d0c668a0d3a5df3081220ae2304612bd04a52712833",
+    "python/statm_tools/hypothesis.py": "5f5134cae1edd634410cd1199a56c4b27b79264e857cc414f289168ecf17f740",
+    "python/statm_tools/lazy.py": "727702cc54ccc016e562b9f8c7cdd7b94091337c2aca1c6958729934654ebfd4",
+    "python/statm_tools/params.py": "b495c3626f6237d0c0fa65936c5c76d8090dd86de796a2022b535cc2575851f9",
+    "python/statm_tools/plugins.py": "b487cf60ec2616997c3b5f2a6ebac7030e7d946f1090e7440804c230b52e75be",
+    "python/statm_tools/__init__.py": "cf460e3aa02a1f542a7791413f3c4c854ca994a3d4cd610f3007f56726153bc6",
+    "python/tests/conftest.py": "023c528db2231a46991f2441b999257091183b6318c7bf25b729f97230b9d3c1",
+    "python/tests/test_data_io.py": "475892c640a07d57e4578573bcefa53cc5b95d2b7974c42eca81f40703ea82a1",
+    "python/tests/test_statistics.py": "52f9087aad8f50d6a5a5e82a580d832269efacf4de24db09f4464410fc43b94a"
   }
 }

@@ -23,7 +23,6 @@ StatM 是我开发的一款 Windows 桌面统计分析与科学可视化应用�
 - 桌面上传上限提高至 200MB，最多 100 万行、500 列。
 - 完善了开机动画。
 - 修复部分分析设置报错，改进变量选择与参数提示。
-- 开放部分界面组件，欢迎学习、修改与贡献。
 
 ## 适用场景
 
@@ -72,11 +71,5 @@ StatM 是我开发的一款 Windows 桌面统计分析与科学可视化应用�
 欢迎通过 [Issues](https://github.com/Lewis-18/StatM/issues) 提交使用问题和功能建议。请提供版本、操作步骤与脱敏截图，以便定位问题。
 
 如果 StatM 对你有帮助，欢迎点击仓库右上角的 **Star**，帮助更多学习者与科研用户发现它。
-
-## 部分开源
-
-StatM 的变量选择弹窗和图表背景辅助组件以 MIT 许可开放，欢迎学习、修改或提交改进。组件代码见 [open-source](open-source/)，使用范围见 [组件与许可说明](OPEN-SOURCE-SCOPE.md)。如需使用完整 StatM，请下载上方的 Windows 安装包。
-
-![变量选择弹窗](assets/variable-selection.png)
 
 © 2026 Jackson Lewis. StatM.

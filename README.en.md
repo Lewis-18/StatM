@@ -21,7 +21,6 @@ I built StatM as a Windows desktop application for statistical analysis and scie
 - Desktop uploads up to 200 MB, one million rows and 500 columns.
 - Improved startup animation.
 - Fixes for errors in analysis settings and clearer variable-selection guidance.
-- Selected UI components available under the MIT license.
 
 ## Capabilities
 
@@ -55,9 +54,5 @@ The release includes a SHA-256 checksum file. The current installer is unsigned,
 See [worked examples and exported figures](EXAMPLES.md), the [Chinese user guide](USER-GUIDE.md) and [release history](CHANGELOG.md). For support, include the app version, reproduction steps and anonymized screenshots in an [issue](https://github.com/Lewis-18/StatM/issues).
 
 If StatM is useful to you, please star this repository to help other learners and researchers discover it.
-
-## Partial open source
-
-I have made the variable picker and chart-background helpers available under the MIT license in [open-source](open-source/). You are welcome to learn from them, adapt them, or contribute improvements. See [components and licensing](OPEN-SOURCE-SCOPE.md). To use the full StatM application, download the Windows installer above.
 
 © 2026 Jackson Lewis. StatM.
