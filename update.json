@@ -1,23 +1,23 @@
 {
-  "tag_name": "v1.0.5",
-  "name": "StatM 1.0.5",
-  "html_url": "https://github.com/Lewis-18/StatM/releases/tag/v1.0.5",
-  "published_at": "2026-10-10T10:42:09Z",
+  "tag_name": "v1.0.8",
+  "name": "StatM 1.0.8",
+  "html_url": "https://github.com/Lewis-18/StatM/releases/tag/v1.0.8",
+  "published_at": "2026-10-11T08:18:49Z",
   "draft": false,
   "prerelease": false,
-  "body": "StatM 1.0.5 改进日常启动、界面语言与科研绘图体验。\r\n\r\n- 修正封面版本标记，统一正式版本号，直接进入工作台。\r\n- 优化工作空间启动与历史恢复，计算与图表模块按需准备。\r\n- 设置中支持中文 / English 即时切换，记住语言偏好，保留数据与分析参数。\r\n- 完善复制成功与失败提示、加载占位、设置开关和键盘焦点。\r\n- 更新检查增加官方静态版本信息、缓存与限流冷却。\r\n- 仓库图表实例采用白色背景。\r\n\r\n下载 **StatM-Setup-1.0.5-x64.exe**，关闭正在运行的应用后安装到原目录。安装包包含运行环境，核心分析与图表导出可离线使用。\r\n\r\n安装包未进行数字签名；SHA256SUMS.txt 可用于完整性校验。\r\n\r\n[使用指南](https://github.com/Lewis-18/StatM/blob/main/USER-GUIDE.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)\r\n\r\n© 2026 Jackson Lewis. StatM.",
+  "body": "# StatM 1.0.8\n\nStatM 1.0.8 改进变量选择、大文件导入与启动动画，并开放部分界面组件。\n\n- 分析与绘图设置采用弹窗式变量选择，设置栏宽度不变。支持搜索、完整字段名、缺失数量、多选、清空、选择搜索结果与调整坐标轴顺序；确认后应用，取消或 Esc 保留原选择。\n- 桌面版上传上限从 25MB 提升至 200MB，最多 100 万行、500 列；XLSX 解压后上限 500MB。公开体验模式为 20MB、2 万行、100 列。Excel 仍读取首个工作表，分析最多 30 个变量（公开体验最多 8 个）。\n- 新增 TXT 导入，首行为表头，支持逗号、制表符、分号、竖线或空白分隔；支持 UTF-8 / GB18030。\n- 启动动画以 1.2 倍速度播放，保留完整动画。\n- 修复可选草稿回调未传入导致的报错；变量数、回归自变量与因变量冲突在界面提前约束；上传提示与后端限制保持一致。\n- GitHub 开放变量选择组件及图表背景偏好辅助代码，开放目录采用 MIT 许可；完整应用、统计引擎、启动媒体及品牌资产不包含在开放源码许可中。\n\n下载 **StatM-Setup-1.0.8-x64.exe**，关闭正在运行的应用后安装到原目录。已有项目、数据与分析记录沿用。安装包包含运行环境，核心功能可离线使用。\n\n安装包未进行数字签名。SHA256SUMS.txt 用于完整性校验。仅以正式发布页的资产为线上发布依据。\n\n[公开仓库](https://github.com/Lewis-18/StatM) · [发行页面](https://github.com/Lewis-18/StatM/releases/tag/v1.0.8)\n",
   "assets": [
     {
       "name": "SHA256SUMS.txt",
-      "size": 93,
-      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.0.5/SHA256SUMS.txt",
-      "digest": "sha256:eb80e7977b6d077554d71594b5aebb904f01475098e29ced5ca21b5bb19db465"
+      "size": 92,
+      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.0.8/SHA256SUMS.txt",
+      "digest": "sha256:052d8530b113f4f850f246ff05305bda9816289df811e7fded324d66b974bbfa"
     },
     {
-      "name": "StatM-Setup-1.0.5-x64.exe",
-      "size": 216501090,
-      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.0.5/StatM-Setup-1.0.5-x64.exe",
-      "digest": "sha256:f617e74065ee3f270d6daf4f0aeb727bcbb7740fcdad654084159e34578db4df"
+      "name": "StatM-Setup-1.0.8-x64.exe",
+      "size": 216508636,
+      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.0.8/StatM-Setup-1.0.8-x64.exe",
+      "digest": "sha256:4f36751e00c65345dc01f0a2a98be07c4259c315cf00a09f225e0d37e5ef59b6"
     }
   ]
 }
