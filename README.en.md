@@ -19,7 +19,7 @@ StatM is a Windows desktop application for statistical analysis and scientific v
 - Searchable variable-selection dialog with full names, missing counts and axis ordering; the settings panel keeps its width.
 - TXT import using UTF-8 / GB18030 and common delimiters.
 - Desktop uploads up to 200 MB, one million rows and 500 columns.
-- Full v4 startup film at 1.2x playback speed.
+- Improved startup animation.
 - Callback and parameter fixes, plus MIT-licensed selected UI components.
 
 ## Capabilities
