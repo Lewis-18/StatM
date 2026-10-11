@@ -75,7 +75,7 @@ StatM 是我开发的一款 Windows 桌面统计分析与科学可视化应用�
 
 ## 部分开源
 
-我将 StatM 的变量选择弹窗和图表背景辅助组件以 MIT 许可开放，欢迎学习、修改或提交改进。组件代码见 [open-source](open-source/)，使用范围见 [组件与许可说明](OPEN-SOURCE-SCOPE.md)。如需使用完整 StatM，请下载上方的 Windows 安装包。
+StatM 的变量选择弹窗和图表背景辅助组件以 MIT 许可开放，欢迎学习、修改或提交改进。组件代码见 [open-source](open-source/)，使用范围见 [组件与许可说明](OPEN-SOURCE-SCOPE.md)。如需使用完整 StatM，请下载上方的 Windows 安装包。
 
 ![变量选择弹窗](assets/variable-selection.png)
 
