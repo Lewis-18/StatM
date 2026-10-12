@@ -19,8 +19,8 @@ I built StatM as a Windows desktop application for statistical analysis and scie
 - Faster data previews when paging, repeating filters and sorting.
 - Compare compatible analysis-history records, filter differences and export CSV.
 - Link scatter selections to their corresponding data records; save and restore selections.
-- Export 2D and 3D figures as PDF alongside the existing PNG / SVG formats.
-- Preserve the complete opening at its existing speed; leave the metallic M waiting motion as soon as the workbench is ready.
+- Export 2D figures as PNG/SVG/PDF and the current 3D view as PNG/PDF.
+- Optimize the startup animation.
 
 ## Capabilities
 
