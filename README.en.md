@@ -8,19 +8,19 @@
 
 I built StatM as a Windows desktop application for statistical analysis and scientific visualization. You can import CSV, TXT or Excel data, explore distributions, test hypotheses, fit linear models, run principal component analysis, and export figures from one local workspace.
 
-**Version: 1.0.8** · **Platform: Windows x64** · **Maintainer: Jackson Lewis**
+**Version: 1.1.0** · **Platform: Windows x64** · **Maintainer: Jackson Lewis**
 
-[Download the installer](https://github.com/Lewis-18/StatM/releases/download/v1.0.8/StatM-Setup-1.0.8-x64.exe) · [Latest release](https://github.com/Lewis-18/StatM/releases/latest) · [Examples](EXAMPLES.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
+[Download the installer](https://github.com/Lewis-18/StatM/releases/download/v1.1.0/StatM-Setup-1.1.0-x64.exe) · [Latest release](https://github.com/Lewis-18/StatM/releases/latest) · [Examples](EXAMPLES.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
 
 ![StatM desktop workspace](assets/home-dark.png)
 
-## New in 1.0.8
+## New in 1.1.0
 
-- Searchable variable-selection dialog with full names, missing counts and axis ordering; the settings panel keeps its width.
-- TXT import using UTF-8 / GB18030 and common delimiters.
-- Desktop uploads up to 200 MB, one million rows and 500 columns.
-- Improved startup animation.
-- Fixes for errors in analysis settings and clearer variable-selection guidance.
+- Faster data previews when paging, repeating filters and sorting.
+- Compare compatible analysis-history records, filter differences and export CSV.
+- Link scatter selections to their corresponding data records; save and restore selections.
+- Export 2D and 3D figures as PDF alongside the existing PNG / SVG formats.
+- Preserve the complete opening at its existing speed; leave the metallic M waiting motion as soon as the workbench is ready.
 
 ## Capabilities
 
@@ -33,12 +33,12 @@ I built StatM as a Windows desktop application for statistical analysis and scie
 | Linear regression | OLS estimates, confidence intervals, fit metrics, residual diagnostics, Cook's distance and VIF. |
 | Principal component analysis | Centering and scaling, explained variance, scree plots, sample scores and loadings. |
 | Scientific visualization | Interactive 3D scatter plots, bubble plots, parallel coordinates, scatterplot matrices and grouped plots. |
-| Reproducible workflows | Local projects, saved parameters, analysis history, reruns and generated Python/R analysis scripts. |
-| Export | Tables as CSV, results as JSON, 2D figures as PNG/SVG and the current 3D view as PNG. |
+| Reproducible workflows | Local projects, saved parameters, analysis history, compatible-result comparison, reruns and generated Python/R analysis scripts. |
+| Export | Tables as CSV, results as JSON, 2D figures as PNG/SVG/PDF and the current 3D view as PNG/PDF. |
 
 ## Getting started
 
-1. Download **StatM-Setup-1.0.8-x64.exe** from the [release page](https://github.com/Lewis-18/StatM/releases/tag/v1.0.8).
+1. Download **StatM-Setup-1.1.0-x64.exe** from the [release page](https://github.com/Lewis-18/StatM/releases/tag/v1.1.0).
 2. Close any running copy of StatM, run the installer and select an installation directory.
 3. Launch the app and try a built-in dataset, or import a CSV/TXT/Excel file into a project.
 4. Select an analysis, choose variables, run it, and export the results.

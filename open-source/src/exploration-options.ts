@@ -6,7 +6,7 @@ import {bubbleOption} from './bubble-options';
 
 const font='Inter, Microsoft YaHei, Noto Sans SC, sans-serif';
 export function explorationInfo(spec:ChartSpec){
- const names:Record<string,[string,string]>={scatter3d:['三维散点','拖动旋转 · 滚轮缩放 · PNG 导出当前视角'],bubble:['气泡图',`面积 ∝ ${spec.zLabel} · 零面积记录隐藏`],parallel:['平行坐标','各轴使用原始单位 · 沿轴拖动筛选'],grouped_box:['箱线与观测点','Q1–Q3 · 1.5 IQR 须线 · 每组最多 160 个排序观测点'],violin:['小提琴组合','Gaussian KDE / Scott · 等最大宽度 · 箱线与真实观测点'],category_bar:['分类频数','完整记录计数 · 各组并列比较']};
+ const names:Record<string,[string,string]>={scatter3d:['三维散点','拖动旋转 · 滚轮缩放 · PNG / PDF 导出当前视角'],bubble:['气泡图',`面积 ∝ ${spec.zLabel} · 零面积记录隐藏`],parallel:['平行坐标','各轴使用原始单位 · 沿轴拖动筛选'],grouped_box:['箱线与观测点','Q1–Q3 · 1.5 IQR 须线 · 每组最多 160 个排序观测点'],violin:['小提琴组合','Gaussian KDE / Scott · 等最大宽度 · 箱线与真实观测点'],category_bar:['分类频数','完整记录计数 · 各组并列比较']};
  const isProjection=spec.title.endsWith(' · 二维投影');
  if(!names[spec.kind]&&!spec.data.groups)return null;
  const [label,caption]=names[spec.kind]||[spec.title==='PC1 × PC2 · Scores'?'PCA 得分':isProjection?'二维投影':'散点图','每个点代表同一条完整记录；分组以颜色与点形区分'];
@@ -31,7 +31,7 @@ export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'ligh
  if(spec.kind==='scatter3d'||spec.kind==='scatter'){
   const points=d.points||[];
   const series=groups.map((g,i)=>({type:spec.kind==='scatter3d'?'scatter3D':'scatter',name:g,
-   data:points.flatMap((v,j)=>d.groups?.[j]===g||!d.groups?[{value:v,name:d.labels?.[j]||String(j+1)}]:[]),
+   data:points.flatMap((v,j)=>d.groups?.[j]===g||!d.groups?[{value:v,name:d.labels?.[j]||String(j+1),rowId:d.row_ids?.[j]}]:[]),
    symbol:spec.kind==='scatter3d'?'circle':groupSymbols[i%groupSymbols.length],
    symbolSize:spec.kind==='scatter3d'?6:8,
    itemStyle:{color:colorAt(i),opacity:.85,borderColor:background,borderWidth:spec.kind==='scatter3d'?0:1},emphasis:{itemStyle:{opacity:1}},

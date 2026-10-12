@@ -19,7 +19,7 @@ export function sizeVectorFigure(svg:SVGSVGElement,name:FigurePresetName,canvasH
 export function figureCanvasWidth(name:FigurePresetName){return name==='column'?420:840}
 export function figureHeading(title:string,caption:string,width:number){
  
- const wrap=(value:string,capacity:number)=>{const lines:string[]=[];let line='',used=0;for(const char of value){const size=char.charCodeAt(0)>255?2:1;if(used+size>capacity){lines.push(line);line='';used=0}line+=char;used+=size}if(line)lines.push(line);return lines.join('\n')};
+ const wrap=(value:string,capacity:number)=>{const lines:string[]=[];let line='',used=0;const tokens=value.match(/[A-Za-z0-9]+(?:[.,][0-9]+)*|./gu)||[];for(const token of tokens){const size=[...token].reduce((sum,char)=>sum+(char.charCodeAt(0)>255?2:1),0);if(used&&used+size>capacity){lines.push(line.trimEnd());line='';used=0}if(size>capacity){for(const char of token){if(used>=capacity){lines.push(line);line='';used=0}line+=char;used++}}else if(line||token.trim()){line+=token;used+=size}}if(line)lines.push(line.trimEnd());return lines.join('\n')};
  const text=wrap(title,Math.floor((width-48)/9)),subtext=wrap(caption,Math.floor((width-48)/7));
  return {text,subtext,plotTop:24+text.split('\n').length*22+subtext.split('\n').length*17+24};
 }

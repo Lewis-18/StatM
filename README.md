@@ -8,27 +8,27 @@
 
 StatM 是我开发的一款 Windows 桌面统计分析与科学可视化应用。你可以在同一个工作空间中整理数据、进行统计分析、制作科研图表，并保存分析记录。
 
-> **English summary:** StatM is an offline Windows desktop application for statistical analysis and scientific visualization: CSV/TXT/Excel import, exploratory data analysis, hypothesis testing, OLS regression, PCA, and PNG/SVG export. [Read the English overview](README.en.md).
+> **English summary:** StatM is an offline Windows desktop application for statistical analysis and scientific visualization: CSV/TXT/Excel import, exploratory data analysis, hypothesis testing, OLS regression, PCA, and PNG/SVG/PDF export. [Read the English overview](README.en.md).
 
-**版本：1.0.8** · **平台：Windows x64** · **维护者：Jackson Lewis**
+**版本：1.1.0** · **平台：Windows x64** · **维护者：Jackson Lewis**
 
-[下载安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.8/StatM-Setup-1.0.8-x64.exe) · [版本发布](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [功能实例](EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
+[下载安装包](https://github.com/Lewis-18/StatM/releases/download/v1.1.0/StatM-Setup-1.1.0-x64.exe) · [版本发布](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [功能实例](EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
 
 ![StatM 深色工作台](assets/home-dark.png)
 
-## 1.0.8 更新
+## 1.1.0 更新
 
-- 弹窗式变量选择：搜索、多选、完整字段名、缺失数量及坐标轴排序，设置栏宽度不变。
-- 新增 TXT 导入，支持 UTF-8 / GB18030 和常见分隔格式。
-- 桌面上传上限提高至 200MB，最多 100 万行、500 列。
-- 完善了开机动画。
-- 修复部分分析设置报错，改进变量选择与参数提示。
+- 优化数据预览，减少翻页、重复筛选与排序的等待。
+- 新增历史结果对照，支持参数及统计结果差异筛选、CSV 导出。
+- 新增散点框选与对应记录表联动，选择可保存和恢复。
+- 二维及三维图新增 PDF 导出，保留现有 PNG / SVG 格式。
+- 保留开机动画原速度和完整开场；大 M 金属等待动效可随工作台就绪立即结束。
 
 ## 适用场景
 
 - **统计学习与课程实践**：通过内置示例理解描述统计、假设检验、回归与 PCA。
 - **科研数据探索**：检查数据分布、变量相关性和模型诊断，整理分析结果。
-- **科研绘图与结果交流**：导出 PNG/SVG 图表、统计表及分析脚本。
+- **科研绘图与结果交流**：导出 PNG/SVG/PDF 图表、统计表及分析脚本。
 
 查看 [实际图表与操作示例](EXAMPLES.md)，或直接下载 Windows 安装包体验。
 
@@ -43,8 +43,8 @@ StatM 是我开发的一款 Windows 桌面统计分析与科学可视化应用�
 | 线性回归 | OLS 系数、置信区间与拟合指标；残差、Q–Q、Cook 距离等诊断图，提供 VIF 与模型假设检查。 |
 | 主成分分析 | 中心化与标准化、解释方差、碎石图、样本得分图及载荷图。 |
 | 科学可视化 | 三维散点、气泡、平行坐标、散点矩阵、分组箱线与类别频数图；独立图表背景和科研导出预设。 |
-| 项目与历史 | 本地保存项目、数据集、参数草稿、分析结果和图表；支持恢复参数、复制记录和重新分析。 |
-| 结果导出 | 统计表 CSV、结果 JSON、二维图表 PNG/SVG、三维当前视角 PNG，以及 Python/R 分析脚本。 |
+| 项目与历史 | 本地保存项目、数据集、参数草稿、分析结果和图表；支持恢复参数、复制记录、重新分析和兼容记录对照。 |
+| 结果导出 | 统计表 CSV、结果 JSON、二维图表 PNG/SVG/PDF、三维当前视角 PNG/PDF，以及 Python/R 分析脚本。 |
 
 ## 本地运行，连续工作
 
@@ -58,7 +58,7 @@ StatM 是我开发的一款 Windows 桌面统计分析与科学可视化应用�
 
 ## 下载与安装
 
-1. 下载 [StatM 1.0.8 Windows x64 安装包](https://github.com/Lewis-18/StatM/releases/download/v1.0.8/StatM-Setup-1.0.8-x64.exe)。
+1. 下载 [StatM 1.1.0 Windows x64 安装包](https://github.com/Lewis-18/StatM/releases/download/v1.1.0/StatM-Setup-1.1.0-x64.exe)。
 2. 运行安装程序并选择安装目录。
 3. 启动 StatM，创建项目后导入数据或打开内置示例。
 

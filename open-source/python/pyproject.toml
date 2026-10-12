@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "statm-tools"
-version = "1.0.8"
+version = "1.1.0"
 description = "Tabular data readers and statistical tools"
 requires-python = ">=3.11"
 license = "MIT"
