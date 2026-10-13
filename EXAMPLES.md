@@ -2,9 +2,9 @@
 
 [下载安装包 / Download](https://github.com/Lewis-18/StatM/releases/latest) · [中文介绍](README.md) · [English overview](README.en.md)
 
-这里用内置 Advertising（200 条观测）与 Iris（150 条观测）数据展示 StatM 1.1.0 的分析和绘图操作。你可以按下面的步骤在应用中重现这些示例，并导出白色背景的图表。
+采用内置 Advertising（200 条观测）与 Iris（150 条观测）数据展示 StatM 1.2.0 的分析和绘图操作。按照以下步骤可复现示例，并导出白色背景图表。
 
-Use the bundled Advertising (200 observations) and Iris (150 observations) datasets to try these analysis and plotting workflows in StatM 1.1.0. Follow the steps below to reproduce the examples and export figures with white backgrounds.
+Use the bundled Advertising (200 observations) and Iris (150 observations) datasets to try these analysis and plotting workflows in StatM 1.2.0. Follow the steps below to reproduce the examples and export figures with white backgrounds.
 
 ## 线性回归诊断 / Linear regression diagnostics
 
@@ -59,3 +59,12 @@ Import CSV/TXT/Excel → inspect fields and missing values → select statistics
 
 如果这些功能对你有帮助，欢迎为 [StatM](https://github.com/Lewis-18/StatM) 点 Star。问题与建议请通过 [Issues](https://github.com/Lewis-18/StatM/issues) 提交。
 
+
+
+## 科研表格与分析复现
+
+在 Advertising 数据集中选择 TV、radio、newspaper，运行相关分析；在“统计表”中切换至“科研表格”，查看下三角相关矩阵与变量对统计表，并导出 Word、LaTeX 或 PDF。
+
+在 Iris 数据集中选择四个数值变量并运行 PCA，可导出特征值与贡献率、载荷矩阵及相关矩阵。贡献率以百分数列示，表格说明保留标准化方式和载荷定义。
+
+点击“导出可复现分析包”，按包内 README 安装依赖并运行 reproduce.py。reproduction-check.json 记录重算一致性检查结果。分享分析包前应确认完整数据的共享权限。

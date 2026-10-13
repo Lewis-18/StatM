@@ -1,6 +1,6 @@
 {
   "name": "@statm/open-components",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "license": "MIT",
   "description": "Variable selection, scientific chart configuration and figure export tools",
@@ -9,7 +9,7 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
-    "@radix-ui/react-dialog": "^1.1.0",
+    "@radix-ui/react-dialog": "^1.2.0",
     "lucide-react": "^0.468.0",
     "echarts": "^6.0.0"
   },

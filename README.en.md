@@ -6,21 +6,21 @@
 
 [中文](README.md) · English
 
-I built StatM as a Windows desktop application for statistical analysis and scientific visualization. You can import CSV, TXT or Excel data, explore distributions, test hypotheses, fit linear models, run principal component analysis, and export figures from one local workspace.
+StatM is a Windows desktop application for statistical analysis and scientific visualization, integrating data management, quality checks, statistical computation, research figures and tables, and reproducible analysis records in a local workspace.
 
-**Version: 1.1.0** · **Platform: Windows x64** · **Maintainer: Jackson Lewis**
+**Version: 1.2.0** · **Platform: Windows x64** · **Maintainer: Jackson Lewis**
 
-[Download the installer](https://github.com/Lewis-18/StatM/releases/download/v1.1.0/StatM-Setup-1.1.0-x64.exe) · [Latest release](https://github.com/Lewis-18/StatM/releases/latest) · [Examples](EXAMPLES.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
+[Download the installer](https://github.com/Lewis-18/StatM/releases/download/v1.2.0/StatM-Setup-1.2.0-x64.exe) · [Latest release](https://github.com/Lewis-18/StatM/releases/latest) · [Examples](EXAMPLES.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
 
 ![StatM desktop workspace](assets/home-dark.png)
 
-## New in 1.1.0
+## Version 1.2.0 capabilities
 
-- Faster data previews when paging, repeating filters and sorting.
-- Compare compatible analysis-history records, filter differences and export CSV.
-- Link scatter selections to their corresponding data records; save and restore selections.
-- Export 2D figures as PNG/SVG/PDF and the current 3D view as PNG/PDF.
-- Optimize the startup animation.
+- **Data quality checks**: full-dataset missingness, duplicate records and IQR outliers; configurable type, required-value, uniqueness, range and category rules; record-level inspection and report export.
+- **Research tables**: descriptive statistics, correlation, hypothesis tests, linear regression and PCA; consistent precision and three-line layouts; editable Word, LaTeX, HTML and desktop PDF exports.
+- **Cleaning records**: parent versions, affected fields, actual imputation values and affected counts, with access to version lineage and historical datasets.
+- **Analysis version information**: identifies the dataset behind each result and restores parameters for analysis of subsequent cleaned versions.
+- **Reproducible analysis bundles**: data, parameters, results, numerical source snapshots, dependency versions and figure settings, with integrity checks and a Python rerun verification script.
 
 ## Capabilities
 
@@ -34,11 +34,11 @@ I built StatM as a Windows desktop application for statistical analysis and scie
 | Principal component analysis | Centering and scaling, explained variance, scree plots, sample scores and loadings. |
 | Scientific visualization | Interactive 3D scatter plots, bubble plots, parallel coordinates, scatterplot matrices and grouped plots. |
 | Reproducible workflows | Local projects, saved parameters, analysis history, compatible-result comparison, reruns and generated Python/R analysis scripts. |
-| Export | Tables as CSV, results as JSON, 2D figures as PNG/SVG/PDF and the current 3D view as PNG/PDF. |
+| Export | Tables as CSV and editable Word/LaTeX/HTML/PDF, reproducible analysis bundles, results as JSON, 2D figures as PNG/SVG/PDF and the current 3D view as PNG/PDF. |
 
 ## Getting started
 
-1. Download **StatM-Setup-1.1.0-x64.exe** from the [release page](https://github.com/Lewis-18/StatM/releases/tag/v1.1.0).
+1. Download **StatM-Setup-1.2.0-x64.exe** from the [release page](https://github.com/Lewis-18/StatM/releases/tag/v1.2.0).
 2. Close any running copy of StatM, run the installer and select an installation directory.
 3. Launch the app and try a built-in dataset, or import a CSV/TXT/Excel file into a project.
 4. Select an analysis, choose variables, run it, and export the results.
@@ -53,6 +53,6 @@ The release includes a SHA-256 checksum file. The current installer is unsigned,
 
 See [worked examples and exported figures](EXAMPLES.md), the [Chinese user guide](USER-GUIDE.md) and [release history](CHANGELOG.md). For support, include the app version, reproduction steps and anonymized screenshots in an [issue](https://github.com/Lewis-18/StatM/issues).
 
-If StatM is useful to you, please star this repository to help other learners and researchers discover it.
+Star the repository to follow future releases.
 
 © 2026 Jackson Lewis. StatM.
