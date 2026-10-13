@@ -6,7 +6,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: desktop-release
+  group: desktop-release-120-final
   cancel-in-progress: false
 jobs:
   publish:
@@ -57,7 +57,7 @@ jobs:
                       assert count == end - start + 1
                       print(f'Verified transfer chunk {start}-{end}', flush=True)
                       return part
-                  with ThreadPoolExecutor(max_workers=6) as pool:
+                  with ThreadPoolExecutor(max_workers=8) as pool:
                       downloaded = list(pool.map(download_part, parts))
                   with target.open('wb') as output:
                       for part in downloaded:
@@ -79,7 +79,7 @@ jobs:
               headers['Content-Type'] = 'application/json' if binary is None else 'application/octet-stream'
               request = urllib.request.Request(url, data=data, headers=headers, method=method)
               with urllib.request.urlopen(request, timeout=300) as response:
-                  return json.load(response)
+                  return None if response.status == 204 else json.load(response)
           tag = 'v' + version
           try:
               release = api('releases/tags/' + tag)
