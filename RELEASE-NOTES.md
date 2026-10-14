@@ -11,6 +11,8 @@
 - **清洗与版本记录**：查看父数据、操作与实际填补值；恢复参数后在后续版本上保存独立分析。
 - **可复现分析包**：保存数据、参数、结果、数值源码快照、依赖版本和图表配置，提供 Python 重算与校验清单。
 
+*界面截图为含语言显示修正的本地 1.2.0 预览；已发布安装包未更新。*
+
 ![数据质量检查与问题定位](https://raw.githubusercontent.com/Lewis-18/StatM/main/assets/v1.2.0/data-quality.png)
 
 ![Advertising 科研相关表格的实际 PDF 导出](https://raw.githubusercontent.com/Lewis-18/StatM/main/assets/v1.2.0/correlation-export.png)

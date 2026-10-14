@@ -12,7 +12,9 @@ StatM is a Windows desktop application for statistical learning and research. Im
 
 [Download](https://github.com/Lewis-18/StatM/releases/latest) · [User guide](USER-GUIDE.en.md) · [Worked examples](EXAMPLES.en.md) · [Release history](CHANGELOG.en.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
 
-![StatM 1.2.0 English workspace with local projects and saved analyses](assets/v1.2.0/home-en.png)
+![English analysis workspace with a light interface and white diagnostic plots](assets/v1.2.0/analysis-workspace-en.png)
+
+*Screenshot: local 1.2.0 preview with language-display corrections. [Screenshot and installer details](EXAMPLES.en.md).*
 
 ## From data to results
 

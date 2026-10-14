@@ -11,11 +11,13 @@ Inspect data quality, export research tables, and retain reproducible analyses i
 - **Cleaning and versions**: inspect parents, operations and actual fill values; restore parameters to create independent analyses on subsequent versions.
 - **Reproducible bundles**: retain data, parameters, results, numerical source snapshots, dependencies and figure settings, with Python reruns and integrity checks.
 
+*Interface screenshot: local 1.2.0 preview with language-display corrections; the existing installer is unchanged.*
+
 ![English data-quality checks](https://raw.githubusercontent.com/Lewis-18/StatM/main/assets/v1.2.0/data-quality-en.png)
 
 ![Actual English Iris PCA PDF export](https://raw.githubusercontent.com/Lewis-18/StatM/main/assets/v1.2.0/pca-export-en.png)
 
-![Actual Advertising rerun check and bundle structure](https://raw.githubusercontent.com/Lewis-18/StatM/main/assets/v1.2.0/reproduction-check.svg)
+![Actual Advertising rerun check and bundle structure](https://raw.githubusercontent.com/Lewis-18/StatM/main/assets/v1.2.0/reproduction-check-en.svg)
 
 ## Download and use
 

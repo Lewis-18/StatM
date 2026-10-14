@@ -18,7 +18,7 @@ The installer includes the runtime; normal app use requires no separate Python o
 
 ## Language and theme
 
-In **Settings → Language**, choose Chinese or English. The preference is saved; switching does not change filenames, project names, variables, data or analysis parameters. Some data-quality field labels remain in Chinese in 1.2.0. The workbench also supports dark and light themes.
+In **Settings → Language**, choose Chinese or English. The preference is saved; switching does not change filenames, project names, variables, data or analysis parameters. The current 1.2.0 installer retains some Chinese quality-check labels and chart hints. The documentation screenshots use a local preview with those language-display corrections. The workbench also supports dark and light themes.
 
 ## Import data
 

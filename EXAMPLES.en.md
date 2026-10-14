@@ -6,6 +6,8 @@
 
 These workflows and screenshots use **StatM 1.2.0**. Advertising has 200 observations and Iris has 150; open either from the app homepage. The data-quality tutorial deliberately modifies a copy of Iris. Its issues are not claims about the original data.
 
+*Interface screenshots show a local 1.2.0 documentation preview with English-label corrections. The current 1.2.0 installer may still display some Chinese labels. Main examples use the light app theme and white plot backgrounds.*
+
 ## Data quality and cleaning versions
 
 1. Download [iris-quality-demo.csv](samples/iris-quality-demo.csv), create a project and import it.
@@ -18,7 +20,7 @@ These workflows and screenshots use **StatM 1.2.0**. Advertising has 200 observa
 
 *The teaching dataset has 151 rows. Original record 1 has an empty sepal_length, record 5 has species unknown, record 26 has petal_length 20, and original record 150 is appended. The report has one missing cell, two duplicate rows and one category violation. The bundled source copy already has one duplicate row; the tutorial appends one more. Consult the actual report for IQR counts; issue types may overlap.*
 
-![Independent cleaned dataset and its recorded parent](assets/v1.2.0/cleaning-lineage.png)
+![Independent cleaned dataset and its recorded parent](assets/v1.2.0/cleaning-lineage-en.png)
 
 Checks do not automatically remove or impute data. Interpret IQR flags in context. Returning to an earlier version does not delete its descendants.
 
@@ -52,7 +54,7 @@ Display precision does not alter raw results. Small p-values use thresholds rath
 3. Review estimates, confidence intervals, fit statistics and VIF. Open Charts to inspect residuals, normal Q–Q, Cook's distance and residual sequence.
 4. Choose a white background and a 90 / 180 mm preset, then export.
 
-![Four actual Advertising OLS diagnostic plots](assets/v1.2.0/regression-diagnostics.png)
+![Four actual Advertising OLS diagnostic plots](assets/v1.2.0/regression-diagnostics-en.png)
 
 Curvature and large residuals deserve further investigation; fit statistics alone do not establish that model assumptions hold. Cook's distance identifies observations to investigate rather than automatically delete.
 
@@ -62,11 +64,11 @@ Curvature and large residuals deserve further investigation; fit statistics alon
 
 Open Iris, choose a 3D scatter plot in **Plotting**, and select sepal_length, sepal_width and petal_length in that order for X, Y and Z. Group by species.
 
-![Current variable picker with search, multiple selection and axis order](assets/v1.2.0/variable-selection.png)
+![Current variable picker with search, multiple selection and axis order](assets/v1.2.0/variable-selection-en.png)
 
 Run the plot, rotate, zoom or enlarge it. The current 3D view supports PNG/PDF image exports; companion 2D projections support PNG/SVG/PDF.
 
-![Iris 3D plot with current PNG and PDF controls](assets/v1.2.0/exploration-3d.png)
+![Iris 3D plot with current PNG and PDF controls](assets/v1.2.0/exploration-3d-en.png)
 
 Use 2D projections alongside the 3D view when comparing small differences.
 
@@ -76,7 +78,7 @@ Use 2D projections alongside the 3D view when comparing small differences.
 2. Drag a rectangle using the selection tool, or select checkboxes in the record table.
 3. Inspect selected points and original record numbers. Show selected records only, or clear the selection.
 
-![Selected Iris points and their corresponding records](assets/v1.2.0/linked-scatter.png)
+![Selected Iris points and their corresponding records](assets/v1.2.0/linked-scatter-en.png)
 
 A plot displays at most 2,000 fixed-sample records. Rectangular selection applies only to displayed points. Missing-value exclusion and sampling can leave gaps in original row numbers. Selections can be restored but do not change the saved result or automatically analyze a subset. Rerun older plots when record-identity fields are missing.
 
@@ -84,7 +86,7 @@ A plot displays at most 2,000 fixed-sample records. Rectangular selection applie
 
 On the same Advertising dataset version, predict sales with TV/radio, then add newspaper in a second run. From History, add the two-predictor model first as the baseline and then the three-predictor model. Inspect parameters, coefficients and fit metrics, or export comparison CSV.
 
-![Parameters and statistics for two compatible OLS records](assets/v1.2.0/history-comparison.png)
+![Parameters and statistics for two compatible OLS records](assets/v1.2.0/history-comparison-en.png)
 
 [Download the actual comparison CSV](samples/advertising-comparison.csv)
 
@@ -96,7 +98,7 @@ Comparison requires the same dataset version and analysis method; hypothesis tes
 2. Extract the ZIP. Follow README.txt and environment.json to prepare Python and install requirements.txt.
 3. Run reproduce.py and inspect reproduction-check.json.
 
-![Actual Advertising rerun result and the bundle's main files](assets/v1.2.0/reproduction-check.svg)
+![Actual Advertising rerun result and the bundle's main files](assets/v1.2.0/reproduction-check-en.svg)
 
 [Inspect this example's rerun result](samples/advertising-reproduction-check.json)
 

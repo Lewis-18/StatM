@@ -12,10 +12,16 @@ StatM 是面向统计学习与科研的 Windows 桌面应用。在一个本地�
 
 [下载安装包](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [图文示例](EXAMPLES.md) · [更新记录](CHANGELOG.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/v1.2.0/home-light.png">
-  <img src="assets/v1.2.0/home-dark.png" alt="StatM 1.2.0 工作台：项目、最近分析和内置示例" width="100%">
-</picture>
+![StatM 1.2.0 浅色分析工作台与白底回归诊断图](assets/v1.2.0/analysis-workspace.png)
+
+<details>
+<summary>查看深色主题</summary>
+
+![StatM 深色主题](assets/v1.2.0/home-dark.png)
+
+</details>
+
+*截图为含语言显示修正的本地 1.2.0 预览。[截图与安装包说明](EXAMPLES.md)。*
 
 ## 从数据到结果
 
