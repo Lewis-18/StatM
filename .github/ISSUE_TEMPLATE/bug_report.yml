@@ -20,7 +20,7 @@ body:
     id: steps
     attributes:
       label: 复现步骤 / Steps to reproduce
-      description: 请描述操作顺序、所选变量与参数；尽可能用内置示例复现。
+      description: 请描述操作顺序、所选变量与参数；尽可能用内置示例复现。 / Include the steps, variables and parameters; use a built-in example where possible.
     validations:
       required: true
   - type: textarea
@@ -33,4 +33,4 @@ body:
     id: screenshots
     attributes:
       label: 补充信息 / Additional information
-      description: 可附脱敏截图或最小示例；请勿上传个人信息、敏感数据或凭据。
+      description: 可附脱敏截图或最小示例；请勿上传个人信息、敏感数据或凭据。 / Attach anonymized screenshots or a minimal example; omit personal information, sensitive data and credentials.

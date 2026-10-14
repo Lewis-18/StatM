@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "differences": [],
+  "difference_count": 0,
+  "relative_tolerance": 1e-08,
+  "absolute_tolerance": 1e-10,
+  "recorded_source_available": true
+}

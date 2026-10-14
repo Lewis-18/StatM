@@ -1,0 +1,129 @@
+{
+  "checked_at": "2026-10-14T08:15:31.905212+00:00",
+  "rows": 151,
+  "scope": "full",
+  "columns": [
+    {
+      "name": "sepal_length",
+      "dtype": "float64",
+      "missing": 1,
+      "missing_ratio": 0.006622516556291391,
+      "unique": 35,
+      "outliers": 0
+    },
+    {
+      "name": "sepal_width",
+      "dtype": "float64",
+      "missing": 0,
+      "missing_ratio": 0,
+      "unique": 23,
+      "outliers": 4
+    },
+    {
+      "name": "petal_length",
+      "dtype": "float64",
+      "missing": 0,
+      "missing_ratio": 0,
+      "unique": 44,
+      "outliers": 1
+    },
+    {
+      "name": "petal_width",
+      "dtype": "float64",
+      "missing": 0,
+      "missing_ratio": 0,
+      "unique": 22,
+      "outliers": 0
+    },
+    {
+      "name": "species",
+      "dtype": "str",
+      "missing": 0,
+      "missing_ratio": 0,
+      "unique": 4,
+      "outliers": 0
+    }
+  ],
+  "issues": [
+    {
+      "code": "duplicate_rows",
+      "column": null,
+      "severity": "review",
+      "count": 2,
+      "row_ids": [
+        142,
+        150
+      ],
+      "truncated": false,
+      "detail": "除首次出现之外的完全重复行。重复不一定意味着错误。"
+    },
+    {
+      "code": "missing",
+      "column": "sepal_length",
+      "severity": "review",
+      "count": 1,
+      "row_ids": [
+        0
+      ],
+      "truncated": false,
+      "detail": ""
+    },
+    {
+      "code": "iqr_outlier",
+      "column": "sepal_width",
+      "severity": "review",
+      "count": 4,
+      "row_ids": [
+        15,
+        32,
+        33,
+        60
+      ],
+      "truncated": false,
+      "detail": "超出 Q1−1.5×IQR 或 Q3+1.5×IQR，仅供检查，不自动删除。"
+    },
+    {
+      "code": "iqr_outlier",
+      "column": "petal_length",
+      "severity": "review",
+      "count": 1,
+      "row_ids": [
+        25
+      ],
+      "truncated": false,
+      "detail": "超出 Q1−1.5×IQR 或 Q3+1.5×IQR，仅供检查，不自动删除。"
+    },
+    {
+      "code": "rule_category",
+      "column": "species",
+      "severity": "constraint",
+      "count": 1,
+      "row_ids": [
+        4
+      ],
+      "truncated": false,
+      "detail": "违反用户指定规则；缺失值仅由“非空”规则检查。"
+    }
+  ],
+  "duplicate_rows": 2,
+  "missing_cells": 1,
+  "issue_count": 9,
+  "example_rows": 9,
+  "rules": [
+    {
+      "column": "species",
+      "check": "category",
+      "minimum": null,
+      "maximum": null,
+      "allowed": [
+        "setosa",
+        "versicolor",
+        "virginica"
+      ]
+    }
+  ],
+  "example_limit": 100,
+  "dataset_id": "bc2295b7-79fa-4a22-ba31-7c94693f9e62",
+  "content_sha256": "d7f70a6569cf87a49fb591ace42d77872179ad6d07ed20a43dda9d46075226f6",
+  "import_notes": []
+}

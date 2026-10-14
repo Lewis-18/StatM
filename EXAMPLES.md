@@ -1,70 +1,114 @@
-# StatM 功能实例 / Worked examples
+# StatM 图文示例
 
-[下载安装包 / Download](https://github.com/Lewis-18/StatM/releases/latest) · [中文介绍](README.md) · [English overview](README.en.md)
+中文 · [English](EXAMPLES.en.md)
 
-采用内置 Advertising（200 条观测）与 Iris（150 条观测）数据展示 StatM 1.2.0 的分析和绘图操作。按照以下步骤可复现示例，并导出白色背景图表。
+[下载 StatM](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [首页](README.md) · [示例文件](samples/README.md)
 
-Use the bundled Advertising (200 observations) and Iris (150 observations) datasets to try these analysis and plotting workflows in StatM 1.2.0. Follow the steps below to reproduce the examples and export figures with white backgrounds.
+以下步骤和截图来自 **StatM 1.2.0**。Advertising 有 200 条观测，Iris 有 150 条观测，可在应用首页直接加载。质量检查使用另行制作的教学异常数据，不代表原始 Iris 存在这些问题。
 
-## 线性回归诊断 / Linear regression diagnostics
+## 数据质量与清洗版本
 
-1. 在首页打开 Advertising 示例，进入“分析 → 线性回归”。
-2. 选择 TV、radio、newspaper 为自变量，sales 为因变量，运行分析。
-3. 查看系数表、置信区间、拟合指标、残差与正态 Q–Q 图。
-4. 在图表工具栏导出 PNG、SVG 或 PDF；参数与结果可在历史中恢复。
+1. 下载 [iris-quality-demo.csv](samples/iris-quality-demo.csv)，创建项目并导入。
+2. 打开「数据 → 质量检查」，展开规则，为 species 设置允许类别 setosa、versicolor、virginica，点击「运行检查」。
+3. 查看完整数据的缺失、重复和 IQR 异常值提示，点击 species 类别违规卡片，定位第 5 条记录的 unknown。
+4. 导出检查报告。进入「清洗」，仅选择 sepal_length 并用中位数填补，保存为独立版本。
+5. 展开「数据版本与清洗记录」，查看父版本、填补值和影响数量；「查看此版本」可以返回原数据。
 
-Open Advertising, select TV/radio/newspaper as predictors and sales as the response, then run OLS. Review coefficients and diagnostics before interpreting the model. Use the residual and Q–Q plots to check model assumptions when interpreting the results.
+![StatM 1.2.0 质量检查与问题记录定位](assets/v1.2.0/data-quality.png)
 
-![StatM 回归诊断图组 / Regression diagnostics](assets/regression-diagnostics.png)
+*教学数据共 151 行：清空原第 1 行的 sepal_length，将第 5 行 species 改为 unknown，将第 26 行 petal_length 改为 20，并追加原第 150 行。实际报告为 1 个缺失单元格、2 条完全重复行和 1 个类别违规。内置原副本已有 1 条完全重复行，教学修改另追加 1 条；IQR 提示数量以实际报告为准。问题类型可以重叠。*
 
-## 三维数据探索 / Interactive 3D exploration
+![清洗生成新版本并保留父数据与操作记录](assets/v1.2.0/cleaning-lineage.png)
 
-在“绘图”中选择三维散点图，以 sepal_length、sepal_width、petal_length 为三个坐标变量，按 species 分组。拖动旋转、滚轮缩放，比较变量关系；可切换图表背景并导出当前视角 PNG 或 PDF。
+质量检查不会自动删除或填补。IQR 标记需要结合领域知识判断；返回旧版本不删除后续版本。
 
-Use sepal_length, sepal_width and petal_length as the three axes, grouped by species. Rotate and zoom to inspect the observations, switch the chart background, and export the current view as PNG or PDF. Two-dimensional companion figures support PNG, SVG and PDF export.
+## 科研统计表格
 
-![StatM 三维散点图 / StatM interactive 3D scatter plot](assets/exploration-3d.png)
+**Advertising 相关表格**
 
-## 历史结果对照 / Compare analysis results
+1. 打开 Advertising，选择「分析 → 相关分析」。
+2. 勾选 TV、radio、newspaper，保持 Pearson 方法，运行。
+3. 在「统计表」选择「科研表格」，设置小数位数，查看下三角相关矩阵和变量对统计表。
+4. 导出 Word、LaTeX、HTML 或 PDF。
 
-1. 使用同一 Advertising 数据版本完成两次线性回归，例如先以 TV、radio 为自变量，再加入 newspaper；两次均以 sales 为因变量。
-2. 进入历史页，先对基准记录点击“加入对照”，再加入第二条记录。
-3. 并排查看参数、系数和拟合指标，可只看差异并导出对照 CSV。
+![Advertising 的相关矩阵与变量对科研表格](assets/v1.2.0/correlation-tables.png)
 
-对照要求同一数据版本、同一分析方法；假设检验还须为同一检验类型。差值用于描述结果变化，不构成显著性检验。
+[Word](samples/advertising-correlation.docx) · [LaTeX](samples/advertising-correlation.tex) · [HTML](samples/advertising-correlation.html) · [PDF](samples/advertising-correlation.pdf)
 
-Fit two OLS models on the same Advertising dataset version, first using TV/radio and then adding newspaper, with sales as the response in both models. Add the baseline record and the second record to the comparison from History. Review parameters and statistics side by side, filter differences, and export CSV. Comparison requires the same dataset version and analysis method; hypothesis tests also require the same test type. Differences are descriptive and do not constitute a significance test.
+**Iris PCA 表格**
 
-## 散点框选与记录联动 / Link scatter selections to records
+打开 Iris，选择四个数值字段 sepal_length、sepal_width、petal_length、petal_width，运行 PCA。默认标准化下，查看特征值、方差贡献率、累计贡献率、载荷和相关矩阵；保留表下注明的标准化方式与载荷定义。
 
-1. 用 Iris 新建三维散点图，并在“图表”页打开对应的二维投影。
-2. 点击“框选记录”，在二维散点图中拖动矩形，查看对应记录表中的选择；也可直接勾选记录。
-3. 可只看选中记录，或清除选择继续浏览；选择会保存并可恢复。
+![Iris PCA 特征值、贡献率及载荷表格的实际 PDF 导出预览](assets/v1.2.0/pca-export.png)
 
-图中最多显示 2000 条均匀抽样记录，框选仅选择显示的点。原记录号在缺失值排除和抽样后可能不连续；选择不改变原有分析结果，也不会自动重新分析子集。旧图缺少记录身份字段时，可按原参数重跑启用联动。
+[Word](samples/iris-pca.docx) · [LaTeX](samples/iris-pca.tex) · [HTML](samples/iris-pca.html) · [PDF](samples/iris-pca.pdf)
 
-Create a new Iris 3D scatter plot and open its 2D projection on the Charts page. Use the rectangular selection tool or select rows in the linked record table. Show selected records only or clear the selection to continue exploring; selections can be saved and restored. A plot displays at most 2,000 uniformly sampled records. Selection applies to displayed points and does not change saved analysis results or automatically analyze the subset. Rerun older plots to enable linking when record identity fields are missing.
+显示精度不改变原始结果；小 p 值以阈值显示，不写成 0。相关分析未自动进行多重比较校正，相关关系不构成因果证据。
 
-## 科研图表导出 / Export publication figures
+## 回归诊断
 
-在图表底部选择 90 / 180 mm 科研单栏或双栏预设、白色或黑色背景及配色，再导出。二维图表支持 PNG/SVG/PDF；三维图表支持当前视角 PNG/PDF。桌面二维 PDF 保留矢量路径和文字，三维 PDF 使用当前视角的高分辨率位图；网页模式 PDF 为 300 DPI 位图。
+1. 打开 Advertising，选择「分析 → 线性回归」。
+2. 以 TV、radio、newspaper 为自变量，sales 为因变量，运行。
+3. 查看系数、置信区间、拟合统计与 VIF，再打开图表检查残差、正态 Q–Q、Cook 距离与残差序列。
+4. 将图表背景设为白色，选择 90 / 180 mm 预设，导出。
 
-Choose a 90 / 180 mm single-column or double-column preset, chart background and palette before exporting. Export 2D figures as PNG/SVG/PDF and the current 3D view as PNG/PDF. Desktop 2D PDFs retain vector paths and text; 3D PDFs contain a high-resolution image of the current view. Web-mode PDFs use a 300 DPI image.
+![Advertising 回归模型的四张实际诊断图](assets/v1.2.0/regression-diagnostics.png)
 
-## 从数据到结果 / From data to results
+残差的弯曲趋势和较大残差值得继续检查，不能仅凭拟合指标认定模型假设已满足。Cook 距离用于识别需核查的影响点，不是自动删除记录的依据。
 
-导入 CSV/TXT/Excel → 检查字段与缺失值 → 选择描述统计、相关、检验、回归或 PCA → 查看结果与诊断 → 导出图表和分析脚本 → 保存项目与历史。
+[残差图 SVG](samples/regression-residuals.svg) · [残差图 PDF](samples/regression-residuals.pdf) · [回归表 Word](samples/advertising-regression.docx) · [回归表 PDF](samples/advertising-regression.pdf)
 
-Import CSV/TXT/Excel → inspect fields and missing values → select statistics, correlation, tests, regression or PCA → review results and diagnostics → export figures and analysis scripts → retain the project and history locally.
+## 三维探索与变量选择
 
-如果这些功能对你有帮助，欢迎为 [StatM](https://github.com/Lewis-18/StatM) 点 Star。问题与建议请通过 [Issues](https://github.com/Lewis-18/StatM/issues) 提交。
+打开 Iris，在「绘图」选择三维散点图，按顺序选择 sepal_length、sepal_width、petal_length 为 X、Y、Z，以 species 分组。
 
+![StatM 1.2.0 变量选择：搜索、多选和坐标顺序](assets/v1.2.0/variable-selection.png)
 
+运行后拖动旋转、滚轮缩放，或放大查看。当前三维视角支持 PNG/PDF 位图导出；配套二维投影支持 PNG/SVG/PDF。
 
-## 科研表格与分析复现
+![Iris 三维散点图与当前 PNG/PDF 导出按钮](assets/v1.2.0/exploration-3d.png)
 
-在 Advertising 数据集中选择 TV、radio、newspaper，运行相关分析；在“统计表”中切换至“科研表格”，查看下三角相关矩阵与变量对统计表，并导出 Word、LaTeX 或 PDF。
+三维图适合探索空间结构，比较细微差异时可结合二维投影。
 
-在 Iris 数据集中选择四个数值变量并运行 PCA，可导出特征值与贡献率、载荷矩阵及相关矩阵。贡献率以百分数列示，表格说明保留标准化方式和载荷定义。
+## 散点与记录联动
 
-点击“导出可复现分析包”，按包内 README 安装依赖并运行 reproduce.py。reproduction-check.json 记录重算一致性检查结果。分享分析包前应确认完整数据的共享权限。
+1. 在新建的 Iris 三维图结果中打开「图表」，找到联动探索的二维投影。
+2. 点击「框选记录」拖动矩形，或勾选对应记录表。
+3. 查看选中点与原记录号；可以仅看选中记录或清除选择。
+
+![Iris 二维投影与选中记录同屏展示](assets/v1.2.0/linked-scatter.png)
+
+图中最多显示 2,000 条固定抽样记录，框选只选择显示的点。缺失排除和抽样会使原记录号不连续。选择可保存、恢复，但不会改变原结果或自动分析子集。旧图缺少记录身份字段时，可按原参数重跑。
+
+## 历史结果对照
+
+在同一 Advertising 数据版本上先以 TV、radio 预测 sales，再加入 newspaper。进入「历史」，先将两变量模型加入对照，再加入三变量模型，查看参数、系数和拟合指标，或导出对照 CSV。
+
+![同一数据版本下两个回归模型的参数与结果对照](assets/v1.2.0/history-comparison.png)
+
+[下载实际对照 CSV](samples/advertising-comparison.csv)
+
+对照要求同一数据版本及分析方法；假设检验还须为同一检验类型。对照差值描述结果变化，不构成显著性检验。
+
+## 可复现分析包
+
+1. 在 Advertising 三变量回归的已保存结果旁点击「导出可复现分析包」。
+2. 解压 ZIP，按 README.txt 与 environment.json 准备 Python 环境，安装 requirements.txt。
+3. 运行 reproduce.py，查看 reproduction-check.json 的重算一致性结果。
+
+![Advertising 回归复现包的实际重算结果与主要文件](assets/v1.2.0/reproduction-check.svg)
+
+[查看本次重算结果](samples/advertising-reproduction-check.json)
+
+包中包含分析数据、参数、结果、图表数据与持久化设置、清洗来源、统计源码快照、依赖版本和校验清单。描述统计、假设检验、回归包还带科研表格。Python 重算比较统计与图表数值，容差见结果文件；R 为独立参考实现，不承诺像素级还原。上述检查结果来自实际运行的 Python 重算。
+
+使用应用不要求另装 Python；运行外部复现脚本需要 Python 和依赖。分享你自己的分析包前，确认完整数据的共享范围。
+
+## 导出建议
+
+二维图用 SVG/PDF 保留矢量内容，三维图导出当前视角位图。选择白底或黑底、色盲友好配色与 90 / 180 mm 栏宽；PNG 为 300 DPI。投稿时以目标期刊要求为准。
+
+反馈请通过 [Issues](https://github.com/Lewis-18/StatM/issues)，提供版本、步骤和脱敏截图。
+
+© 2026 Jackson Lewis. StatM.
+

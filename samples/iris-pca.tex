@@ -1,0 +1,69 @@
+% Compile with XeLaTeX; editable three-line tables.
+\documentclass[UTF8]{ctexart}
+\usepackage[a4paper,landscape,margin=15mm]{geometry}
+\usepackage{booktabs,longtable,needspace}
+\begin{document}
+\section*{StatM · 科研表格}
+数据集：Iris.csv | 数据版本：269359a5-19fe-465c-984f-c36e29873013 | 运行时间：2026-10-14T08:15:12.314943+00:00\par
+\Needspace{8\baselineskip}
+\subsection*{特征值与解释方差}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2867\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}}
+\toprule
+主成分 & 特征值 & 方差贡献率 (\%) & 累计贡献率 (\%) & 保留 \\
+\midrule
+\endfirsthead
+\toprule
+主成分 & 特征值 & 方差贡献率 (\%) & 累计贡献率 (\%) & 保留 \\
+\midrule
+\endhead
+PC1 & 2.918 & 72.962 & 72.962 & 是 \\
+PC2 & 0.914 & 22.851 & 95.813 & 是 \\
+PC3 & 0.147 & 3.669 & 99.482 & 是 \\
+PC4 & 0.021 & 0.518 & 100.000 & 是 \\
+\bottomrule
+\end{longtable}
+\Needspace{8\baselineskip}
+\subsection*{载荷矩阵}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2867\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}}
+\toprule
+变量 & PC1 & PC2 & PC3 & PC4 \\
+\midrule
+\endfirsthead
+\toprule
+变量 & PC1 & PC2 & PC3 & PC4 \\
+\midrule
+\endhead
+sepal\_length & 0.890 & 0.361 & 0.276 & -0.038 \\
+sepal\_width & -0.460 & 0.883 & -0.094 & 0.018 \\
+petal\_length & 0.992 & 0.023 & -0.054 & 0.115 \\
+petal\_width & 0.965 & 0.064 & -0.243 & -0.075 \\
+\bottomrule
+\end{longtable}
+\Needspace{8\baselineskip}
+\subsection*{相关矩阵}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2867\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}}
+\toprule
+变量 & sepal\_length & sepal\_width & petal\_length & petal\_width \\
+\midrule
+\endfirsthead
+\toprule
+变量 & sepal\_length & sepal\_width & petal\_length & petal\_width \\
+\midrule
+\endhead
+sepal\_length & 1.000 & -0.118 & 0.872 & 0.818 \\
+sepal\_width & -0.118 & 1.000 & -0.428 & -0.366 \\
+petal\_length & 0.872 & -0.428 & 1.000 & 0.963 \\
+petal\_width & 0.818 & -0.366 & 0.963 & 1.000 \\
+\bottomrule
+\end{longtable}
+\noindent 预处理：按样本标准差标准化；特征值对应样本相关矩阵。\par
+\noindent 方差贡献率与累计贡献率以百分数列示。载荷 = 特征向量 × sqrt(特征值)；主成分符号整体反转不改变 PCA 解。\par
+\noindent 完整案例分析：删除 0 行。\par
+\noindent 显示值按所选精度舍入，原始结果保留完整精度；— 表示不可用。不自动添加显著性星号。\par
+\end{document}

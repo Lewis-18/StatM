@@ -1,0 +1,48 @@
+% Compile with XeLaTeX; editable three-line tables.
+\documentclass[UTF8]{ctexart}
+\usepackage[a4paper,landscape,margin=15mm]{geometry}
+\usepackage{booktabs,longtable,needspace}
+\begin{document}
+\section*{StatM · 科研表格}
+数据集：Advertising.csv | 数据版本：a62404d8-39f6-42e0-aded-8c519eff1dc4 | 运行时间：2026-10-14T08:14:47.205977+00:00\par
+\Needspace{8\baselineskip}
+\subsection*{Pearson 相关系数矩阵}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.3440\linewidth}p{0.1720\linewidth}p{0.1720\linewidth}p{0.1720\linewidth}}
+\toprule
+变量 & TV & radio & newspaper \\
+\midrule
+\endfirsthead
+\toprule
+变量 & TV & radio & newspaper \\
+\midrule
+\endhead
+TV & 1.000 & — & — \\
+radio & 0.055 & 1.000 & — \\
+newspaper & 0.057 & 0.354 & 1.000 \\
+\bottomrule
+\end{longtable}
+\Needspace{8\baselineskip}
+\subsection*{Pearson 变量对统计}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2867\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}}
+\toprule
+变量 1 & 变量 2 & 相关系数 r & p 值 & 样本量 \\
+\midrule
+\endfirsthead
+\toprule
+变量 1 & 变量 2 & 相关系数 r & p 值 & 样本量 \\
+\midrule
+\endhead
+TV & radio & 0.055 & 0.441 & 200 \\
+TV & newspaper & 0.057 & 0.426 & 200 \\
+radio & newspaper & 0.354 & \textless{}0.001 & 200 \\
+\bottomrule
+\end{longtable}
+\noindent 矩阵展示下三角；— 表示省略的上三角或不可用值。变量对统计表每对变量仅列示一次。\par
+\noindent 相关方法：Pearson。逐对删除缺失值；不同变量对的样本量可能不同。\par
+\noindent p 值未经多重比较校正；相关关系不构成因果证据。\par
+\noindent 显示值按所选精度舍入，原始结果保留完整精度；— 表示不可用。不自动添加显著性星号。\par
+\end{document}

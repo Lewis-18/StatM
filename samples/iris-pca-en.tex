@@ -1,0 +1,69 @@
+% Compile with XeLaTeX; editable three-line tables.
+\documentclass[UTF8]{ctexart}
+\usepackage[a4paper,landscape,margin=15mm]{geometry}
+\usepackage{booktabs,longtable,needspace}
+\begin{document}
+\section*{StatM · Research tables}
+Dataset: Iris.csv | Version: 269359a5-19fe-465c-984f-c36e29873013 | Run: 2026-10-14T08:15:12.314943+00:00\par
+\Needspace{8\baselineskip}
+\subsection*{Eigenvalues and variance explained}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2867\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}}
+\toprule
+Component & Eigenvalue & Variance explained (\%) & Cumulative variance (\%) & Retained \\
+\midrule
+\endfirsthead
+\toprule
+Component & Eigenvalue & Variance explained (\%) & Cumulative variance (\%) & Retained \\
+\midrule
+\endhead
+PC1 & 2.918 & 72.962 & 72.962 & Yes \\
+PC2 & 0.914 & 22.851 & 95.813 & Yes \\
+PC3 & 0.147 & 3.669 & 99.482 & Yes \\
+PC4 & 0.021 & 0.518 & 100.000 & Yes \\
+\bottomrule
+\end{longtable}
+\Needspace{8\baselineskip}
+\subsection*{Loading matrix}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2867\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}}
+\toprule
+Variable & PC1 & PC2 & PC3 & PC4 \\
+\midrule
+\endfirsthead
+\toprule
+Variable & PC1 & PC2 & PC3 & PC4 \\
+\midrule
+\endhead
+sepal\_length & 0.890 & 0.361 & 0.276 & -0.038 \\
+sepal\_width & -0.460 & 0.883 & -0.094 & 0.018 \\
+petal\_length & 0.992 & 0.023 & -0.054 & 0.115 \\
+petal\_width & 0.965 & 0.064 & -0.243 & -0.075 \\
+\bottomrule
+\end{longtable}
+\Needspace{8\baselineskip}
+\subsection*{Correlation matrix}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2867\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}p{0.1433\linewidth}}
+\toprule
+Variable & sepal\_length & sepal\_width & petal\_length & petal\_width \\
+\midrule
+\endfirsthead
+\toprule
+Variable & sepal\_length & sepal\_width & petal\_length & petal\_width \\
+\midrule
+\endhead
+sepal\_length & 1.000 & -0.118 & 0.872 & 0.818 \\
+sepal\_width & -0.118 & 1.000 & -0.428 & -0.366 \\
+petal\_length & 0.872 & -0.428 & 1.000 & 0.963 \\
+petal\_width & 0.818 & -0.366 & 0.963 & 1.000 \\
+\bottomrule
+\end{longtable}
+\noindent Preprocessing: sample-standardized variables; eigenvalues correspond to the sample correlation matrix.\par
+\noindent Variance explained and cumulative variance are reported as percentages. Loadings = eigenvectors × sqrt(eigenvalues); signs may reverse without changing the PCA solution.\par
+\noindent Complete-case analysis: 0 rows excluded.\par
+\noindent Displayed values are rounded; raw results retain full precision. — means unavailable. No significance stars are added.\par
+\end{document}

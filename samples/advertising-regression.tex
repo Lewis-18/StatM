@@ -1,0 +1,82 @@
+% Compile with XeLaTeX; editable three-line tables.
+\documentclass[UTF8]{ctexart}
+\usepackage[a4paper,landscape,margin=15mm]{geometry}
+\usepackage{booktabs,longtable,needspace}
+\begin{document}
+\section*{StatM · 科研表格}
+数据集：Advertising.csv | 数据版本：a62404d8-39f6-42e0-aded-8c519eff1dc4 | 运行时间：2026-10-14T08:14:30.307062+00:00\par
+\Needspace{8\baselineskip}
+\subsection*{系数}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.2150\linewidth}p{0.1075\linewidth}p{0.1075\linewidth}p{0.1075\linewidth}p{0.1075\linewidth}p{0.1075\linewidth}p{0.1075\linewidth}}
+\toprule
+变量 & 系数 & 标准误 & t & p 值 & 区间下限 & 区间上限 \\
+\midrule
+\endfirsthead
+\toprule
+变量 & 系数 & 标准误 & t & p 值 & 区间下限 & 区间上限 \\
+\midrule
+\endhead
+const & 2.939 & 0.312 & 9.422 & \textless{}0.001 & 2.324 & 3.554 \\
+TV & 0.046 & 0.001 & 32.809 & \textless{}0.001 & 0.043 & 0.049 \\
+radio & 0.189 & 0.009 & 21.893 & \textless{}0.001 & 0.172 & 0.206 \\
+newspaper & -0.001 & 0.006 & -0.177 & 0.860 & -0.013 & 0.011 \\
+\bottomrule
+\end{longtable}
+\Needspace{8\baselineskip}
+\subsection*{拟合统计}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.1720\linewidth}p{0.0860\linewidth}p{0.0860\linewidth}p{0.0860\linewidth}p{0.0860\linewidth}p{0.0860\linewidth}p{0.0860\linewidth}p{0.0860\linewidth}p{0.0860\linewidth}}
+\toprule
+样本量 & R² & Adj R² & F & F p & AIC & BIC & 残差自由度 & 条件数 \\
+\midrule
+\endfirsthead
+\toprule
+样本量 & R² & Adj R² & F & F p & AIC & BIC & 残差自由度 & 条件数 \\
+\midrule
+\endhead
+200 & 0.897 & 0.896 & 570.271 & \textless{}0.001 & 780.362 & 793.556 & 196 & 454.375 \\
+\bottomrule
+\end{longtable}
+\Needspace{8\baselineskip}
+\subsection*{VIF}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.5733\linewidth}p{0.2867\linewidth}}
+\toprule
+变量 & VIF \\
+\midrule
+\endfirsthead
+\toprule
+变量 & VIF \\
+\midrule
+\endhead
+TV & 1.005 \\
+radio & 1.145 \\
+newspaper & 1.145 \\
+\bottomrule
+\end{longtable}
+\Needspace{8\baselineskip}
+\subsection*{诊断检验}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{longtable}{p{0.4300\linewidth}p{0.2150\linewidth}p{0.2150\linewidth}}
+\toprule
+检验方法 & 统计量 & p 值 \\
+\midrule
+\endfirsthead
+\toprule
+检验方法 & 统计量 & p 值 \\
+\midrule
+\endhead
+Breusch–Pagan (LM) & 5.133 & 0.162 \\
+Shapiro–Wilk (最多前 5000 残差) & 0.918 & \textless{}0.001 \\
+\bottomrule
+\end{longtable}
+\noindent OLS 包含截距。默认 95\% CI；置信水平由 alpha 决定。诊断提示不能替代残差图和领域判断。\par
+\noindent 完整案例分析：删除 0 行。\par
+\noindent 本次设定置信水平：95\%。区间对应的参数与计算方法见分析说明。\par
+\noindent 显示值按所选精度舍入，原始结果保留完整精度；— 表示不可用。不自动添加显著性星号。\par
+\end{document}

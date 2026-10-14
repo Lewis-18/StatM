@@ -6,13 +6,13 @@ body:
     id: need
     attributes:
       label: 使用场景 / Use case
-      description: 描述任务目标与当前遇到的困难。
+      description: 描述任务目标与当前遇到的困难。 / Explain your goal and the current difficulty.
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
       label: 建议功能 / Proposed improvement
-      description: 说明预期操作流程与输出结果。
+      description: 说明预期操作流程与输出结果。 / Describe the expected workflow and output.
     validations:
       required: true

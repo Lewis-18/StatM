@@ -1,21 +1,29 @@
 # StatM 1.2.0
 
-StatM 1.2.0 扩展数据质量评估、科研统计表格与分析复现能力，完善数据清洗记录和结果版本信息。
+中文 · [English](RELEASE-NOTES.en.md)
 
-- **数据质量检查**：汇总完整数据集的缺失值、重复记录和 IQR 异常值，支持数值类型、非空、唯一性、范围及类别规则，提供问题记录定位与检查报告导出。
-- **科研统计表格**：覆盖描述统计、相关分析、假设检验、线性回归和主成分分析，支持统一精度、三线表，以及可编辑 Word、LaTeX、HTML 和桌面 PDF 导出。
-- **清洗操作记录**：保存父数据版本、操作字段、实际填补值及影响数量，支持查看版本来源与历史数据。
-- **分析数据版本提示**：展示结果对应的数据版本，支持恢复参数并基于后续清洗版本重新分析。
-- **可复现分析包**：打包分析数据、参数、结果、统计源码、依赖版本和图表配置，提供校验清单与 Python 重算验证入口。
+在本地工作空间中检查数据质量、导出科研统计表格，并保留可复现的分析记录。
 
-相关分析提供 Pearson、Spearman 和 Kendall 下三角相关矩阵及变量对统计表，列示系数、p 值与逐对样本量，并注明缺失处理方式及多重比较校正状态。PCA 表格提供特征值、方差贡献率、累计贡献率、保留状态、载荷及相关或协方差矩阵，明确标准化方式和载荷定义。宽矩阵按列分段列示，保持变量顺序。
+## 本版内容
 
-科研表格支持 2–6 位小数；原始结果保留完整精度，小 p 值以阈值表示。数据质量问题仅用于检查与定位，不自动删除或填补。历史结果仍适用于其原始数据版本，后续版本的分析保存为独立记录。
+- **数据质量检查**：完整数据的缺失、重复与 IQR 提示，可配置字段规则并定位问题记录。
+- **科研统计表格**：覆盖描述统计、相关、检验、回归和 PCA，支持 2–6 位小数及可编辑 Word、LaTeX、HTML 和桌面 PDF。
+- **清洗与版本记录**：查看父数据、操作与实际填补值；恢复参数后在后续版本上保存独立分析。
+- **可复现分析包**：保存数据、参数、结果、数值源码快照、依赖版本和图表配置，提供 Python 重算与校验清单。
 
-可复现分析包包含完整分析数据。运行 Python 复现脚本需安装包内列明的依赖；R 脚本作为独立参考实现。重算验证比较统计结果及图表数值，不承诺逐像素一致。
+![数据质量检查与问题定位](https://raw.githubusercontent.com/Lewis-18/StatM/main/assets/v1.2.0/data-quality.png)
 
-下载 **StatM-Setup-1.2.0-x64.exe**，关闭正在运行的应用后安装到原目录。安装包内置运行环境，核心功能可离线使用；现有项目、数据与分析记录保留。安装包未进行数字签名，发布页提供 **SHA256SUMS.txt** 校验文件。
+![Advertising 科研相关表格的实际 PDF 导出](https://raw.githubusercontent.com/Lewis-18/StatM/main/assets/v1.2.0/correlation-export.png)
 
-[使用指南](https://github.com/Lewis-18/StatM/blob/main/USER-GUIDE.md) · [功能实例](https://github.com/Lewis-18/StatM/blob/main/EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
+![实际回归重算结果与分析包结构](https://raw.githubusercontent.com/Lewis-18/StatM/main/assets/v1.2.0/reproduction-check.svg)
+
+## 下载与使用
+
+下载 [StatM-Setup-1.2.0-x64.exe](https://github.com/Lewis-18/StatM/releases/download/v1.2.0/StatM-Setup-1.2.0-x64.exe)，关闭应用后安装到原目录。安装包内置运行环境，核心功能可离线使用；已有项目、数据和分析记录沿用。
+
+正常使用无需安装 Python/Node.js；在应用外运行复现脚本需要包内列明的 Python 与依赖。质量提示不自动修改数据；复现比较统计和图表数值，不承诺逐像素一致。安装包未签名，发布页提供 SHA256SUMS.txt。
+
+[使用指南](USER-GUIDE.md) · [图文示例与下载样例](EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
 
 © 2026 Jackson Lewis. StatM.
+

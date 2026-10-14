@@ -6,70 +6,57 @@
 
 **让数据，抵达洞见。**
 
-StatM 是面向统计分析与科学可视化的 Windows 桌面应用，集成数据管理、质量检查、统计计算、科研图表与表格导出，以及可复现分析记录。
+StatM 是面向统计学习与科研的 Windows 桌面应用。在一个本地工作空间中导入和检查数据、完成统计分析、制作科研图表与表格，并保存可复查的分析记录。
 
-> **English summary:** StatM is an offline Windows desktop application for statistical analysis and scientific visualization: CSV/TXT/Excel import, exploratory data analysis, hypothesis testing, OLS regression, PCA, and PNG/SVG/PDF export. [Read the English overview](README.en.md).
+**版本：1.2.0** · **Windows x64** · **维护者：Jackson Lewis**
 
-**版本：1.2.0** · **平台：Windows x64** · **维护者：Jackson Lewis**
+[下载安装包](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [图文示例](EXAMPLES.md) · [更新记录](CHANGELOG.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
 
-[下载安装包](https://github.com/Lewis-18/StatM/releases/download/v1.2.0/StatM-Setup-1.2.0-x64.exe) · [版本发布](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [功能实例](EXAMPLES.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/v1.2.0/home-light.png">
+  <img src="assets/v1.2.0/home-dark.png" alt="StatM 1.2.0 工作台：项目、最近分析和内置示例" width="100%">
+</picture>
 
-![StatM 深色工作台](assets/home-dark.png)
+## 从数据到结果
 
-## 1.2.0 功能
+- **整理数据**：导入 CSV、TXT、Excel，检查字段、缺失值、重复记录和异常值；清洗生成独立版本，保留来源与操作记录。
+- **完成分析**：描述统计、相关分析、假设检验、OLS 回归与 PCA；查看样本量、诊断图、计算说明和警告。
+- **呈现成果**：制作二维与三维图，导出 PNG/SVG/PDF；科研表格可导出为可编辑 Word、LaTeX、HTML 和 PDF。
+- **回看与复现**：保存参数及历史，对照兼容结果，基于后续数据版本重跑，并导出可复现分析包。
 
-- **数据质量检查**：汇总完整数据集的缺失值、重复记录和 IQR 异常值，支持数值类型、非空、唯一性、范围及类别规则，提供问题记录定位与检查报告导出。
-- **科研统计表格**：覆盖描述统计、相关分析、假设检验、线性回归和主成分分析，支持统一精度、三线表，以及可编辑 Word、LaTeX、HTML 和桌面 PDF 导出。
-- **清洗操作记录**：保存父数据版本、操作字段、实际填补值及影响数量，支持查看版本来源与历史数据。
-- **分析数据版本提示**：展示结果对应的数据版本，支持恢复参数并基于后续清洗版本重新分析。
-- **可复现分析包**：打包分析数据、参数、结果、统计源码、依赖版本和图表配置，提供校验清单与 Python 重算验证入口。
+![StatM 1.2.0 Advertising 科研相关表格的实际 PDF 导出预览](assets/v1.2.0/correlation-export.png)
 
-## 适用场景
+*使用内置 Advertising 数据导出的相关矩阵与变量对统计表。[下载样例](samples/advertising-correlation.pdf) · [查看完整示例](EXAMPLES.md#科研统计表格)*
 
-- **统计学习与课程实践**：通过内置示例理解描述统计、假设检验、回归与 PCA。
-- **科研数据探索**：检查数据分布、变量相关性和模型诊断，整理分析结果。
-- **科研绘图与结果交流**：导出 PNG/SVG/PDF 图表、统计表及分析脚本。
+## 三步开始
 
-查看 [实际图表与操作示例](EXAMPLES.md)，以及 Windows 安装包。
+1. 从 [最新发布页](https://github.com/Lewis-18/StatM/releases/latest) 下载 Windows x64 安装包，关闭已运行的 StatM 后安装。
+2. 创建项目并导入数据，或在首页点击 Iris、Advertising 等内置示例。
+3. 选择分析方法与变量，运行后检查结果并导出。完整步骤见 [使用指南](USER-GUIDE.md)。
 
-## 主要功能
+安装包内置运行环境，常规数据管理、统计分析与图表导出可离线使用，无需另行安装 Python 或 Node.js。**在应用外运行复现包中的脚本，需要按包内说明准备 Python 与依赖。**
 
-| 功能 | 内容 |
+在「设置 → 语言」中切换中文或 English，应用会记住偏好。界面也支持深浅主题和可调整的分析面板。
+
+## 支持的分析与绘图
+
+| 工作 | 内容 |
 | --- | --- |
-| 数据管理 | 导入 CSV、TXT、XLSX、XLS；数据预览、搜索、排序、字段筛选与类型检查；缺失值处理及去重，生成新的清洗数据版本。 |
-| 描述统计 | 样本量、均值、标准差、分位数、偏度、峰度等指标；直方图、箱线图、密度图、ECDF 与正态 Q–Q 图。 |
-| 相关分析 | Pearson、Spearman、Kendall 相关系数与显著性结果；相关热图、散点矩阵、科研相关矩阵及变量对统计表。 |
-| 假设检验 | 单样本、独立样本及配对 t 检验；Wilcoxon、Mann–Whitney U、卡方、单因素 ANOVA 与 Kruskal–Wallis。 |
-| 线性回归 | OLS 系数、置信区间与拟合指标；残差、Q–Q、Cook 距离等诊断图，提供 VIF 与模型假设检查。 |
-| 主成分分析 | 中心化与标准化、特征值与解释方差、载荷矩阵、科研表格、碎石图、样本得分图及载荷图。 |
-| 科学可视化 | 三维散点、气泡、平行坐标、散点矩阵、分组箱线与类别频数图；独立图表背景和科研导出预设。 |
-| 项目与历史 | 本地保存项目、数据集、参数草稿、分析结果和图表；支持恢复参数、复制记录、重新分析和兼容记录对照。 |
-| 结果导出 | 统计表 CSV、科研表格 Word / LaTeX / HTML / PDF、可复现分析包、结果 JSON、二维图表 PNG/SVG/PDF、三维当前视角 PNG/PDF，以及 Python/R 分析脚本。 |
+| 数据管理 | CSV/TXT/XLSX/XLS、搜索与排序、字段检查、缺失处理、去重、质量规则、版本与清洗记录 |
+| 描述统计 | 均值、标准差、分位数等；直方图、箱线图、密度图、ECDF、正态 Q–Q 图 |
+| 相关分析 | Pearson、Spearman、Kendall；热图、散点矩阵、相关矩阵与变量对统计表 |
+| 假设检验 | 单样本、独立样本及配对 t 检验；Wilcoxon、Mann–Whitney U、卡方、ANOVA、Kruskal–Wallis |
+| 回归与 PCA | OLS 系数与置信区间、VIF、残差与影响点诊断；PCA 特征值、贡献率、得分与载荷 |
+| 科学可视化 | 二维与三维散点、气泡、平行坐标、散点矩阵、分组箱线和类别频数图；散点与记录联动 |
+| 导出与复现 | CSV/JSON、科研表格 Word/LaTeX/HTML/PDF、二维 PNG/SVG/PDF、三维当前视角 PNG/PDF、Python/R 脚本、分析包 |
 
-## 本地运行与数据保存
+## 本地保存与更新
 
-项目数据与统计计算保留在本机。安装包内置运行环境，无需另行安装 Python 或 Node.js，断网时也可导入数据、进行统计分析并导出图表。需要更新时，可在设置中检查版本并前往发行页下载。
+项目数据和统计计算保留在本机。更新检查需要访问 GitHub；断网时仍可继续本地分析。更新前关闭应用，安装到原目录，已有本地工作空间沿用。
 
-工作台支持 **中文 / English 即时切换**、深色与浅色主题、可调整宽度的分析面板、变量搜索和快捷导航。首页提供数据导入、常用统计任务、最近项目与继续分析入口；参数草稿与分析历史可在重新启动后恢复。
+安装包目前未进行数字签名；发布页提供 SHA256SUMS.txt，可用于校验下载完整性。安装说明和数据保存建议见 [使用指南](USER-GUIDE.md#更新与本地数据)。
 
-![StatM 浅色工作台](assets/home-light.png)
-
-*界面预览使用示例工作空间。*
-
-## 下载与安装
-
-1. 下载 [StatM 1.2.0 Windows x64 安装包](https://github.com/Lewis-18/StatM/releases/download/v1.2.0/StatM-Setup-1.2.0-x64.exe)。
-2. 运行安装程序并选择安装目录。
-3. 启动 StatM，创建项目后导入数据或打开内置示例。
-
-安装与更新前请关闭正在运行的应用。发布页提供 SHA-256 校验文件；当前安装包未进行数字签名，Windows 可能显示发布者提示。
-
-更多操作见 [使用指南](USER-GUIDE.md)，版本变化见 [更新记录](CHANGELOG.md)。
-
-## 反馈与建议
-
-欢迎通过 [Issues](https://github.com/Lewis-18/StatM/issues) 提交使用问题和功能建议。请提供版本、操作步骤与脱敏截图，以便定位问题。
-
-支持本项目可通过仓库 **Star** 关注后续发布。
+欢迎通过 [Issues](https://github.com/Lewis-18/StatM/issues) 提交问题或建议，附上版本、复现步骤和脱敏截图。如果 StatM 对你有帮助，欢迎为仓库点 Star。
 
 © 2026 Jackson Lewis. StatM.
+
