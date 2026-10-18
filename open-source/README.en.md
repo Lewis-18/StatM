@@ -41,7 +41,7 @@ result = descriptive.run(frame, AnalysisParams(columns=['value']))
 
 `descriptive` provides sample summaries and distribution data. `correlation` supports Pearson, Spearman and Kendall. `hypothesis` supports one-sample, Welch independent and paired t-tests, Wilcoxon, Mann–Whitney U, chi-square, ANOVA and Kruskal–Wallis. Results include tables, figure data, warnings and method notes. `clean` makes numerical outputs serializable.
 
-Missing rows are excluded for variables required by a calculation; correlation excludes missing values pairwise, so sample sizes can differ. Sample variance and standard deviation use ddof=1; kurtosis is excess kurtosis. P-values are not adjusted for multiple comparisons. Effect-size and confidence-interval definitions appear in result notes. Invalid statistical inputs raise a `fastapi.HTTPException` with `detail`; input functions raise `ValueError` or parser errors.
+Missing rows are excluded for variables required by a calculation; correlation excludes missing values pairwise, so sample sizes can differ. Sample variance and standard deviation use ddof=1; kurtosis is excess kurtosis. Correlation p values are unadjusted; post-hoc p values use the selected procedure's adjustment. Effect-size and confidence-interval definitions appear in result notes. Invalid statistical inputs raise a `fastapi.HTTPException` with `detail`; input functions raise `ValueError` or parser errors.
 
 `plugins.py` provides an interface and registry for independent scripts. `examples/analysis_example.py` demonstrates registration and use in your own program. Interpret assumptions, study design and results in context.
 

@@ -6,7 +6,7 @@ This guide covers StatM 1.3.0. [Download](https://github.com/Lewis-18/StatM/rele
 
 ## Contents
 
-[Install](#download-and-install) · [Language](#language-and-theme) · [Import](#import-data) · [Quality](#check-data-quality) · [Cleaning versions](#inspect-cleaning-records) · [Variables](#select-variables) · [Analysis](#run-an-analysis) · [History](#figures-and-history) · [Comparison](#compare-history-records) · [Linked records](#linked-scatter-records) · [Research tables](#export-research-tables) · [Figures](#export-pdf-figures) · [Reproduction](#export-and-rerun-an-analysis-bundle)
+[Install](#download-and-install) · [Language](#language-and-theme) · [Import](#import-data) · [Quality](#check-data-quality) · [Dictionaries](#variable-dictionaries) · [Joins](#join-datasets) · [Post-hoc and estimation](#post-hoc-comparisons-and-estimation-plots) · [Multi-panel figures](#multi-panel-figures) · [Cleaning versions](#inspect-cleaning-records) · [Variables](#select-variables) · [Analysis](#run-an-analysis) · [History](#figures-and-history) · [Comparison](#compare-history-records) · [Linked records](#linked-scatter-records) · [Research tables](#export-research-tables) · [Figures](#export-pdf-figures) · [Reproduction](#export-and-rerun-an-analysis-bundle)
 
 ## Download and install
 

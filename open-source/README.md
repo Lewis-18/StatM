@@ -41,7 +41,7 @@ result = descriptive.run(frame, AnalysisParams(columns=['value']))
 
 `descriptive` 计算样本均值、标准差、分位数等指标并生成分布图数据；`correlation` 支持 Pearson、Spearman、Kendall；`hypothesis` 支持单样本、Welch 独立样本和配对 t 检验、Wilcoxon、Mann–Whitney U、卡方、ANOVA 与 Kruskal–Wallis。结果包含表格、图表数据、警告与方法说明。`clean` 将数值结果转换为可序列化结构。
 
-默认删除本次计算所需变量中的缺失行；相关分析逐对删除，样本量可能不同。标准差与方差使用 ddof=1，峰度为超额峰度，p 值未经多重比较校正。效应量与置信区间的具体定义见结果中的 `notes`。输入无效时，统计函数抛出带 `detail` 的 `fastapi.HTTPException`，文件读取函数抛出 `ValueError` 或解析异常。
+默认删除本次计算所需变量中的缺失行；相关分析逐对删除，样本量可能不同。标准差与方差使用 ddof=1，峰度为超额峰度。相关分析的 p 值未经多重比较校正，事后比较按所选方法调整。效应量与置信区间的具体定义见结果中的 `notes`。输入无效时，统计函数抛出带 `detail` 的 `fastapi.HTTPException`，文件读取函数抛出 `ValueError` 或解析异常。
 
 `plugins.py` 提供独立脚本的计算接口与注册器，`examples/analysis_example.py` 演示注册和调用；该接口用于你自己的 Python 程序。统计假设、研究设计和结果解释仍需结合具体数据判断。
 

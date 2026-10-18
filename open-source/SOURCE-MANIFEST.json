@@ -2,7 +2,7 @@
   "version": "1.3.0",
   "files": {
     "LICENSE": "01f27fb162647f317b8631c7f1d6959504f17fd9497d204f39646212f537f537",
-    "README.md": "f064b308673ce4e3f18d0a810d837bff4185a22a179c272edea8a962bfa4dfc3",
+    "README.md": "ab6aa6acbe287d08edfb20b25b8f17b48c1b6dc1b5343cd86d7371a3f462cc62",
     "examples/analysis_example.py": "ae1a584f0328a4b0e97d38077d236feb4b19435fa6b24df6a79060268ab0e06d",
     "examples/chart.tsx": "4cf8690cdd74d3c6a34f827c745621d5380542f50ba66881bbe41ad3e49ab16e",
     "examples/variable-picker.tsx": "e989a36a61c6728d1cf11b61ca3221acc80e378a9927d7736e79d4d444f55637",
