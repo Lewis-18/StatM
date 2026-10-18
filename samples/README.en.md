@@ -26,3 +26,6 @@ Advertising is the ISL teaching dataset bundled with StatM. This directory provi
 
 Dataset version identifiers and run times in exports identify actual saved analyses. The public rerun result reports numerical checks; handle your own complete-data bundles according to their sharing scope.
 
+
+
+New [1.3.0 examples](../EXAMPLES.en.md) use 36 synthetic records: [Excel workbook](v1.3.0/methods-workbook.xlsx), [post-hoc tables](v1.3.0/posthoc.pdf), [estimation plot](v1.3.0/estimation.pdf), and [composition](v1.3.0/four-panel.pdf). These exported samples retain Chinese labels. Existing samples above were exported by 1.2.0.

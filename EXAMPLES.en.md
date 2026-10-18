@@ -4,9 +4,45 @@
 
 [Download](https://github.com/Lewis-18/StatM/releases/latest) · [User guide](USER-GUIDE.en.md) · [Overview](README.en.md) · [Sample files](samples/README.en.md)
 
-These workflows and screenshots use **StatM 1.2.0**. Advertising has 200 observations and Iris has 150; open either from the app homepage. The data-quality tutorial deliberately modifies a copy of Iris. Its issues are not claims about the original data.
+The new examples use the actual **StatM 1.3.0** program and independent synthetic teaching data. Existing Advertising and Iris workflows retain their original data definitions; interface captures have been refreshed to 1.3.0. Main examples use a light application theme and white chart backgrounds.
 
-*Interface screenshots show a local 1.2.0 documentation preview with English-label corrections. The current 1.2.0 installer may still display some Chinese labels. Main examples use the light app theme and white plot backgrounds.*
+## Worksheets, quality rules and dictionaries
+
+Download [methods-workbook.xlsx](samples/v1.3.0/methods-workbook.xlsx), create a project and upload it. The first sheet is empty; choose **Analysis**, preview the 36 synthetic records with text identifiers starting at 001, then import. Field x is the measurement and g contains groups A/B/C.
+
+![Preview the selected worksheet and preserve text identifiers](assets/v1.3.0/worksheet-selection-en.png)
+
+In Data → Variable dictionary, label x as Length with unit mm and save. Add a 0–25 range rule for x in Quality, save the rule set, then load it after returning to the page and run checks. Flags demonstrate the workflow and do not justify automatically removing observations.
+
+![Saved quality rules and check results](assets/v1.3.0/quality-rules-en.png)
+
+## Post-hoc comparisons and estimation plots
+
+1. In Analysis → Hypothesis tests, select one-way ANOVA, outcome x and grouping field g.
+2. Retain Tukey comparisons, set α=0.025 in advanced options and run.
+3. Inspect every pair, A − B mean differences, adjusted p values and 97.5% intervals; export research tables as Word or PDF.
+4. Inspect observations and mean-difference intervals in Figures. Welch ANOVA pairs with Games–Howell; Kruskal–Wallis pairs with Dunn–Holm.
+
+![Post-hoc research tables](assets/v1.3.0/posthoc-tables-en.png)
+
+![Observations and 97.5% mean-difference intervals](assets/v1.3.0/estimation-en.png)
+
+[Word table](samples/v1.3.0/posthoc.docx) · [Table PDF](samples/v1.3.0/posthoc.pdf) · [Estimation SVG](samples/v1.3.0/estimation.svg) · [Estimation PDF](samples/v1.3.0/estimation.pdf)
+
+Downloadable table/figure exports above retain the Chinese labels used in the original validation run; the interface screenshots use English. Synthetic data illustrate software behavior and support no substantive research conclusion. Intervals describe raw-unit mean differences, not Cohen's d; Dunn compares ranks.
+
+## Dataset joins and figure composition
+
+Import the Lookup sheet of [lookup-workbook.xlsx](samples/v1.3.0/lookup-workbook.xlsx) into the same project and join on id. Inspect matching, unmatched, null and duplicate keys and the predicted output size before saving.
+
+![Join diagnostics before saving](assets/v1.3.0/dataset-join-en.png)
+
+Run descriptive statistics for x. In Plot → Saved figures, select density, ECDF, box and histogram plots in order. Choose 2×2, generate the preview and export.
+
+![Four-panel editor and preview](assets/v1.3.0/figure-composer-en.png)
+
+[Composition SVG](samples/v1.3.0/four-panel.svg) · [300 DPI PNG](samples/v1.3.0/four-panel.png) · [Vector PDF](samples/v1.3.0/four-panel.pdf) · [Numerical reproduction check](samples/v1.3.0/reproduction-check.json)
+
 
 ## Data quality and cleaning versions
 
@@ -16,11 +52,11 @@ These workflows and screenshots use **StatM 1.2.0**. Advertising has 200 observa
 4. Export the report. In **Cleaning**, choose only sepal_length and use median imputation, saving an independent version.
 5. Expand dataset lineage to inspect the parent version, fill value and affected counts. Use **View this version** to return to the original dataset.
 
-![StatM 1.2.0 English data-quality checks and located records](assets/v1.2.0/data-quality-en.png)
+![StatM 1.3.0 English data-quality checks and located records](assets/v1.3.0/data-quality-en.png)
 
 *The teaching dataset has 151 rows. Original record 1 has an empty sepal_length, record 5 has species unknown, record 26 has petal_length 20, and original record 150 is appended. The report has one missing cell, two duplicate rows and one category violation. The bundled source copy already has one duplicate row; the tutorial appends one more. Consult the actual report for IQR counts; issue types may overlap.*
 
-![Independent cleaned dataset and its recorded parent](assets/v1.2.0/cleaning-lineage-en.png)
+![Independent cleaned dataset and its recorded parent](assets/v1.3.0/cleaning-lineage-en.png)
 
 Checks do not automatically remove or impute data. Interpret IQR flags in context. Returning to an earlier version does not delete its descendants.
 
@@ -33,7 +69,7 @@ Checks do not automatically remove or impute data. Interpret IQR flags in contex
 3. Open **Tables → Research tables**, choose decimal places, and inspect the lower-triangular correlation matrix and pairwise statistics.
 4. Export Word, LaTeX, HTML or PDF.
 
-![Advertising correlation research tables](assets/v1.2.0/correlation-tables-en.png)
+![Advertising correlation research tables](assets/v1.3.0/correlation-tables-en.png)
 
 [Sample Word](samples/advertising-correlation.docx) · [LaTeX](samples/advertising-correlation.tex) · [HTML](samples/advertising-correlation.html) · [PDF](samples/advertising-correlation.pdf)
 
@@ -54,7 +90,7 @@ Display precision does not alter raw results. Small p-values use thresholds rath
 3. Review estimates, confidence intervals, fit statistics and VIF. Open Charts to inspect residuals, normal Q–Q, Cook's distance and residual sequence.
 4. Choose a white background and a 90 / 180 mm preset, then export.
 
-![Four actual Advertising OLS diagnostic plots](assets/v1.2.0/regression-diagnostics-en.png)
+![Four actual Advertising OLS diagnostic plots](assets/v1.3.0/regression-diagnostics-en.png)
 
 Curvature and large residuals deserve further investigation; fit statistics alone do not establish that model assumptions hold. Cook's distance identifies observations to investigate rather than automatically delete.
 
@@ -64,11 +100,11 @@ Curvature and large residuals deserve further investigation; fit statistics alon
 
 Open Iris, choose a 3D scatter plot in **Plotting**, and select sepal_length, sepal_width and petal_length in that order for X, Y and Z. Group by species.
 
-![Current variable picker with search, multiple selection and axis order](assets/v1.2.0/variable-selection-en.png)
+![Current variable picker with search, multiple selection and axis order](assets/v1.3.0/variable-selection-en.png)
 
 Run the plot, rotate, zoom or enlarge it. The current 3D view supports PNG/PDF image exports; companion 2D projections support PNG/SVG/PDF.
 
-![Iris 3D plot with current PNG and PDF controls](assets/v1.2.0/exploration-3d-en.png)
+![Iris 3D plot with current PNG and PDF controls](assets/v1.3.0/exploration-3d-en.png)
 
 Use 2D projections alongside the 3D view when comparing small differences.
 
@@ -78,7 +114,7 @@ Use 2D projections alongside the 3D view when comparing small differences.
 2. Drag a rectangle using the selection tool, or select checkboxes in the record table.
 3. Inspect selected points and original record numbers. Show selected records only, or clear the selection.
 
-![Selected Iris points and their corresponding records](assets/v1.2.0/linked-scatter-en.png)
+![Selected Iris points and their corresponding records](assets/v1.3.0/linked-scatter-en.png)
 
 A plot displays at most 2,000 fixed-sample records. Rectangular selection applies only to displayed points. Missing-value exclusion and sampling can leave gaps in original row numbers. Selections can be restored but do not change the saved result or automatically analyze a subset. Rerun older plots when record-identity fields are missing.
 
@@ -86,7 +122,7 @@ A plot displays at most 2,000 fixed-sample records. Rectangular selection applie
 
 On the same Advertising dataset version, predict sales with TV/radio, then add newspaper in a second run. From History, add the two-predictor model first as the baseline and then the three-predictor model. Inspect parameters, coefficients and fit metrics, or export comparison CSV.
 
-![Parameters and statistics for two compatible OLS records](assets/v1.2.0/history-comparison-en.png)
+![Parameters and statistics for two compatible OLS records](assets/v1.3.0/history-comparison-en.png)
 
 [Download the actual comparison CSV](samples/advertising-comparison.csv)
 
@@ -113,4 +149,3 @@ Use SVG/PDF for vector 2D content and an image export for the current 3D view. C
 Report issues with the version, steps and anonymized screenshots through [Issues](https://github.com/Lewis-18/StatM/issues).
 
 © 2026 Jackson Lewis. StatM.
-

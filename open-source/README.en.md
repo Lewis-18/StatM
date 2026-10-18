@@ -51,3 +51,6 @@ Missing rows are excluded for variables required by a calculation; correlation e
 python -m pip install './python[test]'
 python -m pytest python/tests
 ```
+
+
+1.3.0 tools add Welch ANOVA, Tukey–Kramer / Games–Howell / Dunn–Holm and estimation-plot data to `hypothesis`. Use `AnalysisParams(posthoc="auto")` for the corresponding procedure or `posthoc="none"` to disable it. SciPy 1.16 or later is required. Correlation p values remain unadjusted; post-hoc tables contain the corresponding adjusted p values. `estimation-options.ts` produces ECharts estimation options. Worksheet selection, rule libraries, dictionaries, joins and the composition editor belong to the complete desktop app; standalone `read_table` still reads the first sheet.

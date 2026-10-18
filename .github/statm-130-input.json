@@ -1,0 +1,11 @@
+{
+  "port": 49707,
+  "path": "/TiBwQaqxmQwz9vOiOaE3TrYQQwsB9Klq/StatM-Setup-1.3.0-x64.exe",
+  "artifact": "StatM-Setup-1.3.0-x64.exe",
+  "size": 216715812,
+  "sha256": "939ad47b9d68f779eed57cf9cbc3e75cf03949ac1abfa6d49e07db68c26fde70",
+  "version": "1.3.0",
+  "verification": "PASS",
+  "notes": "# StatM 1.3.0\n\n中文 · [English](https://github.com/Lewis-18/StatM/blob/main/RELEASE-NOTES.en.md)\n\nStatM 1.3.0 完善数据准备、多组比较和科研图表组合，将新增结果接入分析历史、科研表格与可复现分析包。\n\n- **Excel 工作表选择**：查看工作表及前 10 行，再导入所选工作表；保留文本编号的前导零和工作表来源。\n- **数据质量规则库**：保存、加载和管理规则集，加载时检查字段兼容性。\n- **事后比较**：ANOVA 配套 Tukey–Kramer，Welch ANOVA 配套 Games–Howell，Kruskal–Wallis 配套 Dunn–Holm，列示全部组对及校正后的 p 值。\n- **估计图**：展示原始观测、原始量纲的均值差及置信区间，配对数据保留连接。\n- **变量字典**：维护字段标签、单位、说明和编码含义，清洗版本继承，分析保存运行时快照。\n- **数据集关联**：支持同项目多键左关联、内关联和全关联，先检查匹配关系与输出规模，再保存新数据集。\n- **多面板组合图**：选择已保存的二维图表，组成横向双图或 2×2，导出 SVG、300 DPI PNG、PDF 及配置。\n- **分析包内容提示**：导出前列明完整数据、变量字典、来源、清洗历史、结果与复现源码的范围。\n\n均值差方向为 A − B。Dunn–Holm 比较合并秩，不解释为中位数差，也不提供中位数差区间。方法选择与研究假设仍需结合研究设计；Levene 提示不会自动更换方法。估计图每组最多显示 400 个观测点，组对图最多显示前 10 对，完整推断及全部组对见统计表。\n\n组合图保留各子图坐标与单位；三维图先选择二维投影再组合。关联时空键互不匹配，文本键不自动转为数值。分析包提示列明导出内容，不执行自动脱敏；在应用外重算需按包内说明准备 Python 与依赖，R 为独立参考实现。\n\n下载 **StatM-Setup-1.3.0-x64.exe**，关闭正在运行的 StatM 后安装到原目录。运行环境已包含在安装包内，核心功能可离线使用，已有本地工作空间沿用。安装包未数字签名，发布页提供 **SHA256SUMS.txt** 校验文件。\n\n本机验收包含 123 项后端测试、最终修正后 18 项针对性测试、18 项桌面单元测试、37 组冻结引擎检查、21 组桌面回归和 7 个新增功能综合场景；复现包数值差异为 0，安装包中 1,981 个文件与测试程序一致。验收使用独立合成数据工作空间，不等同于干净虚拟机验收。\n\n[使用指南](https://github.com/Lewis-18/StatM/blob/main/USER-GUIDE.md) · [图文示例](https://github.com/Lewis-18/StatM/blob/main/EXAMPLES.md) · [更新记录](https://github.com/Lewis-18/StatM/blob/main/CHANGELOG.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)\n\n© 2026 Jackson Lewis. StatM.\n",
+  "source_url": "https://agriculture-privileges-tool-drivers.trycloudflare.com/TiBwQaqxmQwz9vOiOaE3TrYQQwsB9Klq/StatM-Setup-1.3.0-x64.exe"
+}

@@ -2,6 +2,17 @@
 
 [中文](CHANGELOG.md) · English
 
+## 1.3.0
+
+- **Excel worksheet selection**: preview the first 10 rows before importing a selected sheet; retain text identifiers and worksheet provenance.
+- **Quality rule library**: save, load and manage rule sets, with field compatibility checks.
+- **Post-hoc comparisons**: Tukey–Kramer for ANOVA, Games–Howell for Welch ANOVA, and Dunn–Holm for Kruskal–Wallis, including all pairs and adjusted p values.
+- **Estimation plots**: show observations and mean differences with confidence intervals in the original units; retain paired connections.
+- **Variable dictionaries**: maintain labels, units, descriptions and code meanings, inherited by cleaned versions and frozen when an analysis runs.
+- **Dataset joins**: check multi-key left, inner and full joins within a project before saving a separate dataset.
+- **Multi-panel figures**: combine saved 2D figures into two panels or a 2×2 layout, exporting SVG, 300 DPI PNG, PDF and configuration.
+- **Analysis bundle inventory**: inspect the scope of complete data, dictionaries, provenance, cleaning history, results and reproduction source before export.
+
 ## 1.2.0
 
 - Complete-dataset quality checks, configurable field rules, original-record inspection and JSON reports.
@@ -42,4 +53,3 @@ The first public Windows x64 release: data import, preview, cleaning and project
 [All releases and downloads](https://github.com/Lewis-18/StatM/releases)
 
 © 2026 Jackson Lewis. StatM.
-

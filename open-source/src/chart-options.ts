@@ -5,6 +5,7 @@ import type {ChartSpec} from './types';
 import {palettes,type PaletteName} from './chart-preferences';
 import {explorationOption,explorationInfo} from './exploration-options';
 import {bubbleOption,defaultBubbleView,type BubbleView} from './bubble-options';
+import {estimationOption} from './estimation-options';
 
 export type ChartTheme='light'|'dark';
 const font='Inter, Microsoft YaHei, Noto Sans SC, sans-serif';
@@ -16,6 +17,7 @@ export function numberLabel(value:number|string):string {
  return n.toLocaleString(undefined,{maximumFractionDigits:3});
 }
 export function chartInfo(spec:ChartSpec){
+ if(spec.kind==='estimation')return {title:spec.title.replace(' · Estimation',''),label:'估计图',caption:`原始观测与均值差区间 · ${Number(((spec.data.confidence||.95)*100).toFixed(8))}% CI · ${spec.data.shown}/${spec.data.n}`,tag:'ESTIMATION'};
  const exploration=explorationInfo(spec);if(exploration)return exploration;
  const raw=spec.title;
  if(raw.endsWith(' · ECDF'))return {title:raw.replace(' · ECDF',''),label:'经验分布函数',caption:`累计比例 · n=${spec.data.n?.toLocaleString()||'—'}${(spec.data.ecdf_total_steps||0)>500?' · 显示 500 个阶梯节点':''}`,tag:'EMPIRICAL CDF'};
@@ -37,6 +39,7 @@ export function chartInfo(spec:ChartSpec){
  return titles[raw]||{title:raw,label:spec.kind==='scatter'?'散点图':'频数图',caption:spec.kind==='scatter'?'每个点代表一个观测样本':'各类别的观测频数',tag:spec.kind==='scatter'?'SCATTER PLOT':'FREQUENCY'};
 }
 export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTheme,zoom=false,exporting=false,width=600,height=420,bubbleView:BubbleView=defaultBubbleView):EChartsOption {
+ if(spec.kind==='estimation')return estimationOption(spec,palette,theme,exporting,width);
  if(spec.kind==='bubble')return bubbleOption(spec,palette,theme,exporting,width,height,bubbleView);
  const exploration=explorationOption(spec,palette,theme,exporting,width);if(exploration)return exploration;
  const light=theme==='light';const color=palettes[palette][theme];

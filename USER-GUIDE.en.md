@@ -2,7 +2,7 @@
 
 [中文](USER-GUIDE.md) · English
 
-This guide covers StatM 1.2.0. [Download](https://github.com/Lewis-18/StatM/releases/latest) · [Worked examples](EXAMPLES.en.md) · [Overview](README.en.md)
+This guide covers StatM 1.3.0. [Download](https://github.com/Lewis-18/StatM/releases/latest) · [Worked examples](EXAMPLES.en.md) · [Overview](README.en.md)
 
 ## Contents
 
@@ -18,11 +18,11 @@ The installer includes the runtime; normal app use requires no separate Python o
 
 ## Language and theme
 
-In **Settings → Language**, choose Chinese or English. The preference is saved; switching does not change filenames, project names, variables, data or analysis parameters. The current 1.2.0 installer retains some Chinese quality-check labels and chart hints. The documentation screenshots use a local preview with those language-display corrections. The workbench also supports dark and light themes.
+In **Settings → Language**, choose Chinese or English. The preference is saved; switching does not change filenames, project names, variables, data or analysis parameters. The workbench also supports dark and light themes.
 
 ## Import data
 
-CSV, TXT, XLSX and XLS are supported. A desktop upload is limited to **200 MB**, **1 million rows** and **500 columns**. Excel imports the first worksheet. Uncompressed XLSX content is limited to 500 MB.
+CSV, TXT, XLSX and XLS are supported. A desktop upload is limited to **200 MB**, **1 million rows** and **500 columns**. For Excel, select a worksheet, preview its first 10 rows and confirm the import. Text identifiers retain their leading zeros; the source filename and worksheet are recorded. Uncompressed XLSX content is limited to 500 MB.
 
 The first TXT line must contain column names. Comma, tab, semicolon, pipe and whitespace delimiters are supported, with UTF-8 / GB18030 encodings. Check headers, delimiters and encoding if import fails.
 
@@ -34,7 +34,29 @@ Select a dataset in Data, open Quality and run the checks. The report summarizes
 
 Select an issue card to inspect original record numbers. Export the JSON report to retain rules, counts and location information. Counts cover the complete data; each issue type shows up to its first 100 records, paged in groups of 25. Original record numbers start at 1.
 
-Duplicates and outlier flags require research judgment; checks do not automatically delete or impute values. No reported issues does not establish that the data or study design is fully valid. Range and category rules do not count missing values as violations; add a required-value rule if needed. Rules are set for the current page session, while the report retains their definitions.
+Duplicates and outlier flags require research judgment; checks do not automatically delete or impute values. No reported issues does not establish that the data or study design is fully valid. Range and category rules do not count missing values as violations; add a required-value rule if needed. Save rules to the local workspace library, load compatible sets, save copies or delete sets. Loading checks field names and types; run the checks after loading.
+
+## Variable dictionaries
+
+In Data → Variable dictionary, select a field and enter its label, unit, description and JSON code meanings, then save. Export dictionaries separately when needed. Cleaned versions inherit them; analyses retain the dictionary snapshot from execution, so later edits do not change old reproduction information.
+
+## Join datasets
+
+Import both datasets into one project. In Data → Join datasets, choose the left/right tables, one or more corresponding keys, left / inner / full join and expected relationship. Check matching, unmatched, null and duplicate keys and the predicted row count before saving a separate dataset.
+
+The selected one-to-one, one-to-many, many-to-one or many-to-many relationship must fit the keys. Null keys do not match; text keys are not converted to numbers. Joins exceeding the row limit stop. Leading zeros already lost in a source cannot be recovered.
+
+## Post-hoc comparisons and estimation plots
+
+In Analysis → Hypothesis tests, select the outcome and grouping field. ANOVA uses Tukey–Kramer, Welch ANOVA uses Games–Howell, and Kruskal–Wallis uses tie-corrected Dunn–Holm; comparisons can also be disabled. Tables retain every pair and adjusted p value. Mean differences use A − B.
+
+One-sample, independent Welch and paired t tests, and ANOVA with mean comparisons, supply estimation plots. These show observations and mean-difference intervals in the original units. One-sample plots use μ − μ₀; paired observations retain connecting lines. Standardized effect sizes stay separate in tables. Dunn–Holm compares ranks and is not a median-difference procedure. Plots show at most 400 observations per group with seed 937 and the first 10 pairs; inference uses all valid observations.
+
+## Multi-panel figures
+
+In Plot → Saved figures, select the project and expand the composition editor. Choose 2 or 4 saved 2D figures in order, select a horizontal pair or 2×2 layout, set background and palette, then generate a preview. Reorder panels, save the configuration or export SVG / 300 DPI PNG / PDF and configuration JSON.
+
+Panels use a–d labels, a total width of 180 mm and a 90 mm scale per panel. Each retains its own axes and units. Use a 2D projection for a 3D chart. SVG and PDF retain vector content.
 
 ## Inspect cleaning records
 
@@ -126,10 +148,13 @@ Projects and core computations remain local. Offline core functionality stays av
 ## Common questions
 
 - **Startup is still in progress**: wait for the workbench before operating.
-- **Import failed**: check format, delimiters, encoding, headers, the first worksheet and size limits.
+- **Import failed**: check format, delimiters, encoding, headers, the selected worksheet and size limits.
 - **Update check failed**: retry with network access or visit the [release page](https://github.com/Lewis-18/StatM/releases/latest). Local analysis can continue.
 - **Results include warnings**: inspect missing-value handling, sample size, constant columns, collinearity and model assumptions.
 - **Need support**: provide the version, steps and anonymized screenshots through [Issues](https://github.com/Lewis-18/StatM/issues).
 
 © 2026 Jackson Lewis. StatM.
 
+
+
+Before confirming analysis-bundle export, inspect the inventory of complete data, unselected fields, variable dictionary, provenance, cleaning history, results, chart configuration and reproduction source. The inventory does not automatically de-identify data.

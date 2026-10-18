@@ -4,58 +4,62 @@
 
 [中文](README.md) · English
 
-**From data to evidence.**
+**From data to insight.**
 
-StatM is a Windows desktop application for statistical learning and research. Import and inspect data, run analyses, create research figures and tables, and retain reviewable analysis records in one local workspace.
+StatM is a Windows desktop application for statistics learning and research. Prepare data, run statistical analyses, produce scientific figures and tables, and retain reviewable analysis records in a local workspace.
 
-**Version: 1.2.0** · **Windows x64** · **Maintainer: Jackson Lewis**
+**Version: 1.3.0** · **Windows x64** · **Maintainer: Jackson Lewis**
 
-[Download](https://github.com/Lewis-18/StatM/releases/latest) · [User guide](USER-GUIDE.en.md) · [Worked examples](EXAMPLES.en.md) · [Release history](CHANGELOG.en.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
+[Download](https://github.com/Lewis-18/StatM/releases/latest) · [User guide](USER-GUIDE.en.md) · [Worked examples](EXAMPLES.en.md) · [Changelog](CHANGELOG.en.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
 
-![English analysis workspace with a light interface and white diagnostic plots](assets/v1.2.0/analysis-workspace-en.png)
+![StatM 1.3.0 light analysis workspace and regression diagnostics](assets/v1.3.0/analysis-workspace-en.png)
 
-*Screenshot: local 1.2.0 preview with language-display corrections. [Screenshot and installer details](EXAMPLES.en.md).*
+<details>
+<summary>View dark theme</summary>
 
-## From data to results
+![StatM 1.3.0 dark theme](assets/v1.3.0/home-dark-en.png)
 
-- **Prepare**: import CSV, TXT and Excel; inspect fields, missing values, duplicates and outliers. Cleaning creates an independent dataset version with operation records.
-- **Analyze**: descriptive statistics, correlation, hypothesis tests, OLS regression and PCA, with sample sizes, diagnostics, calculation notes and warnings.
-- **Present**: export 2D/3D figures and editable research tables in Word, LaTeX, HTML and PDF.
-- **Revisit and reproduce**: save parameters and history, compare compatible results, rerun on subsequent dataset versions, and export reproducible analysis bundles.
+</details>
 
-![PCA research tables exported from StatM 1.2.0 using Iris](assets/v1.2.0/pca-export-en.png)
+## New in 1.3.0
 
-*An actual PDF export of Iris PCA eigenvalues, variance explained and loadings. [Download the sample](samples/iris-pca-en.pdf) · [Follow the example](EXAMPLES.en.md#research-tables)*
+- **Excel worksheet selection**: preview the first 10 rows before importing a selected sheet; retain text identifiers and worksheet provenance.
+- **Quality rule library**: save, load and manage rule sets, with field compatibility checks.
+- **Post-hoc comparisons**: Tukey–Kramer for ANOVA, Games–Howell for Welch ANOVA, and Dunn–Holm for Kruskal–Wallis, including all pairs and adjusted p values.
+- **Estimation plots**: show observations and mean differences with confidence intervals in the original units; retain paired connections.
+- **Variable dictionaries**: maintain labels, units, descriptions and code meanings, inherited by cleaned versions and frozen when an analysis runs.
+- **Dataset joins**: check multi-key left, inner and full joins within a project before saving a separate dataset.
+- **Multi-panel figures**: combine saved 2D figures into two panels or a 2×2 layout, exporting SVG, 300 DPI PNG, PDF and configuration.
+- **Analysis bundle inventory**: inspect the scope of complete data, dictionaries, provenance, cleaning history, results and reproduction source before export.
 
-## Get started in three steps
+![StatM 1.3.0 observations and mean-difference estimation plot](assets/v1.3.0/estimation-en.png)
 
-1. Download the Windows x64 installer from the [latest release](https://github.com/Lewis-18/StatM/releases/latest), close any running copy, and install.
-2. Create a project and import data, or open a built-in Iris or Advertising example.
-3. Choose a method and variables, run the analysis, inspect the results, and export. See the [user guide](USER-GUIDE.en.md) for detailed instructions.
+*Synthetic teaching data illustrate mean differences and 97.5% confidence intervals; research tables retain the complete results. [Walkthrough](EXAMPLES.en.md#post-hoc-comparisons-and-estimation-plots) · [PDF sample](samples/v1.3.0/estimation.pdf)*
 
-The installer includes the runtime. Routine data management, statistical analyses and figure export work offline, with no separate Python or Node.js installation. **Running a bundle's reproduction script outside the app requires Python and the dependencies listed in the bundle.**
+## Get started
 
-Switch languages in **Settings → Language**. StatM remembers the preference. Dark/light themes and adjustable analysis panels are also available.
+1. Download the Windows x64 installer from the [latest release](https://github.com/Lewis-18/StatM/releases/latest), close StatM and install.
+2. Create a project and import data, or load a built-in example such as Iris or Advertising. Preview and select an Excel worksheet before import.
+3. Choose a method and variables, inspect sample sizes, assumptions and warnings, then export.
 
-## Analysis and visualization
+The runtime is included and core functions work offline, without a separate Python or Node.js installation. Running reproduction scripts outside the app requires Python and the dependencies listed in the bundle. Switch Chinese or English in Settings → Language; light/dark themes and resizable analysis panels are available.
 
-| Task | Tools |
+## Analyses and figures
+
+| Task | Capabilities |
 | --- | --- |
-| Data management | CSV/TXT/XLSX/XLS; searchable previews, field inspection, missing-value handling, duplicate removal, quality rules and dataset lineage |
-| Descriptive statistics | Summary measures, histograms, box plots, density curves, ECDF and normal Q–Q plots |
-| Correlation | Pearson, Spearman and Kendall; heatmaps, scatterplot matrices, research correlation matrices and pairwise statistics |
-| Hypothesis tests | One-sample, independent and paired t-tests; Wilcoxon, Mann–Whitney U, chi-square, ANOVA and Kruskal–Wallis |
-| Regression and PCA | OLS estimates, confidence intervals, VIF, residual and influence diagnostics; PCA eigenvalues, variance explained, scores and loadings |
-| Scientific visualization | 2D/3D scatter plots, bubbles, parallel coordinates, scatterplot matrices, grouped box plots and category counts; linked scatter records |
-| Export and reproduction | CSV/JSON; Word/LaTeX/HTML/PDF research tables; 2D PNG/SVG/PDF; current 3D view PNG/PDF; Python/R scripts and analysis bundles |
+| Data preparation | CSV/TXT/XLSX/XLS, worksheet selection, search/sort, cleaning versions, quality rules and libraries, variable dictionaries, multi-key joins |
+| Descriptive statistics | Means, standard deviations, quantiles; histograms, box plots, density curves, ECDF and normal Q–Q plots |
+| Correlation | Pearson, Spearman, Kendall; heatmaps, scatter matrices, coefficient matrices and pairwise tables |
+| Hypothesis tests | One-sample, independent Welch and paired t; Wilcoxon, Mann–Whitney U, chi-square, ANOVA, Welch ANOVA, Kruskal–Wallis; corresponding post-hoc comparisons and estimation plots |
+| Regression and PCA | OLS coefficients, confidence intervals, VIF, residual and influence diagnostics; PCA eigenvalues, explained variance, scores and loadings |
+| Scientific figures | 2D/3D scatter, bubble, parallel coordinates, scatter matrices, grouped box plots, category counts, linked records, two-panel and 2×2 compositions |
+| Export and reproduction | CSV/JSON, research tables as Word/LaTeX/HTML/PDF, 2D PNG/SVG/PDF, current-view 3D PNG/PDF, Python/R reference code, reproducible analysis bundles |
 
 ## Local storage and updates
 
-Project data and computations stay on your computer. Update checks access GitHub; offline analysis remains available. Close the app before updating, install to the same directory, and retain the existing local workspace.
+Project data and core computation stay on the local machine. Update checks access GitHub. Close the app before installing into the existing directory; local workspaces are retained. The installer is unsigned; SHA256SUMS.txt is supplied on the release page.
 
-The installer is currently unsigned. The release includes SHA256SUMS.txt for download-integrity checks. See [installation and data storage](USER-GUIDE.en.md#updates-and-local-data) for details.
-
-Please report issues with the version, reproduction steps and anonymized screenshots through [Issues](https://github.com/Lewis-18/StatM/issues). Star the repository to follow the project.
+This repository provides releases, documentation and [selected open components and statistical tools](open-source/README.en.md). The complete application is distributed through the Windows installer. Include the version, reproduction steps and de-identified screenshots when [reporting an issue](https://github.com/Lewis-18/StatM/issues).
 
 © 2026 Jackson Lewis. StatM.
-

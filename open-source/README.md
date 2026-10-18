@@ -51,3 +51,6 @@ result = descriptive.run(frame, AnalysisParams(columns=['value']))
 python -m pip install './python[test]'
 python -m pytest python/tests
 ```
+
+
+1.3.0 工具更新：`hypothesis` 新增 Welch ANOVA、Tukey–Kramer / Games–Howell / Dunn–Holm 及估计图数据；通过 `AnalysisParams(posthoc="auto")` 选择配套比较，`posthoc="none"` 关闭。需 SciPy 1.16 或更新版本。相关分析的 p 值仍未校正，事后比较表的 p 值为配套校正结果。`estimation-options.ts` 将估计图数据转为 ECharts 配置。Excel 选表、规则库、字典、关联与组合编辑器属于完整桌面应用；独立 `read_table` 仍读取首张工作表。

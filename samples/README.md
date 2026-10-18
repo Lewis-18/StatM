@@ -4,7 +4,9 @@
 
 [图文操作步骤](../EXAMPLES.md) · [应用首页](../README.md)
 
-表格和图表文件均由 StatM 1.2.0 实际导出。Word 为可编辑表格，LaTeX 文件使用 XeLaTeX 编译；PDF 可直接查看。英文 PCA 样例文件名带 -en。
+新增 [1.3.0 示例](../EXAMPLES.md) 使用 36 行合成数据，提供 [Excel 工作簿](v1.3.0/methods-workbook.xlsx)、[事后比较表格](v1.3.0/posthoc.pdf)、[估计图](v1.3.0/estimation.pdf) 和 [组合图](v1.3.0/four-panel.pdf)。
+
+以下既有表格和图表文件由 StatM 1.2.0 实际导出。Word 为可编辑表格，LaTeX 文件使用 XeLaTeX 编译；PDF 可直接查看。英文 PCA 样例文件名带 -en。
 
 | 示例 | 文件 |
 | --- | --- |
@@ -25,4 +27,3 @@ Iris 来源：Fisher, R. (1936), [UCI Machine Learning Repository](https://archi
 Advertising 使用 StatM 内置的 ISL 教学数据。仅提供应用计算的示例成果，数据可在应用首页加载。示例用于说明操作与诊断，不代表广告投入与销量的因果关系。
 
 导出文件中的数据版本标识和运行时间用于对应实际分析记录。公开重算结果只展示数值检查，个人分析包仍应按完整数据的共享范围保管。
-
