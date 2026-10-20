@@ -8,11 +8,11 @@
 
 StatM 是面向统计学习与科研的 Windows 桌面应用。在本地工作空间中整理数据、完成统计分析、制作科研图表与表格，并保存可复查的分析记录。
 
-**版本：1.3.0** · **Windows x64** · **维护者：Jackson Lewis**
+**版本：1.4.0** · **Windows x64** · **维护者：Jackson Lewis**
 
 [下载安装包](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [图文示例](EXAMPLES.md) · [更新记录](CHANGELOG.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
 
-![StatM 1.3.0 浅色分析工作台与白底回归诊断图](assets/v1.3.0/analysis-workspace.png)
+![StatM 1.4.0 EFA](assets/v1.4.0/efa.png)
 
 <details>
 <summary>查看深色主题</summary>
@@ -20,6 +20,19 @@ StatM 是面向统计学习与科研的 Windows 桌面应用。在本地工作�
 ![StatM 1.3.0 深色主题](assets/v1.3.0/home-dark.png)
 
 </details>
+
+## 1.4.0 新增功能
+
+- **问卷信度分析**：Cronbach’s α、Feldt 置信区间、校正题总相关与删题后的 α，显式设置反向题及计分范围。
+- **探索性因子分析 EFA**：最大似然公共因子模型、不旋转或 Varimax，报告 KMO、Bartlett、载荷、共同度、独特方差和平行分析。
+- **通用分面**：散点图和直方图按组分面，共用坐标范围与分箱，列示各组完整样本量及显示数量。
+- **批次分布对比**：逐项映射两批字段，核对单位和编码，比较样本量、缺失率、数值分布与类别占比。
+- **测量尺度与研究设计**：字典增加名义、有序、连续尺度；假设检验明确独立与配对设计。
+- **启动页修复**：中英文页脚读取应用实际版本，保留既有开场与等待动画。
+
+α 不证明单维性或效度，不自动删题。EFA 不计算多分相关或 CFA，因子数由用户设定，平行分析仅作辅助。批次对比为描述性结果，不计算独立样本检验 p 值，不跨量纲排名；缺失值处理和单位编码需结合研究口径判断。
+
+[新增功能图文示例](EXAMPLES.md) · [方法与验证](METHODS.md)
 
 ## 1.3.0 新增功能
 

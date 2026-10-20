@@ -2,6 +2,15 @@
 
 [中文](CHANGELOG.md) · English
 
+## 1.4.0
+
+- **Questionnaire reliability**: raw-score Cronbach alpha, Feldt intervals, corrected item-total correlations and alpha if an item is deleted, with explicit reverse scoring and score limits.
+- **Exploratory factor analysis**: maximum-likelihood common factors, no rotation or Varimax, KMO, Bartlett, loadings, communalities, uniquenesses and parallel analysis.
+- **General facets**: grouped scatterplots and histograms share axis ranges and bin edges, with full and displayed sample counts.
+- **Batch distributions**: map two datasets field by field, confirm units and codes, and compare valid counts, missingness, numeric distributions and categorical proportions.
+- **Scales and study design**: nominal, ordinal and continuous dictionary metadata, plus explicit independent or paired test designs.
+- **Startup fix**: both languages read the actual application version while retaining the existing opening and waiting animations.
+
 ## 1.3.0
 
 - **Excel worksheet selection**: preview the first 10 rows before importing a selected sheet; retain text identifiers and worksheet provenance.

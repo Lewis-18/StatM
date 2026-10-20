@@ -158,3 +158,17 @@ Projects and core computations remain local. Offline core functionality stays av
 
 
 Before confirming analysis-bundle export, inspect the inventory of complete data, unselected fields, variable dictionary, provenance, cleaning history, results, chart configuration and reproduction source. The inventory does not automatically de-identify data.
+
+
+## 1.4.0 Questionnaire research and batch comparisons
+
+- **Questionnaire reliability**: raw-score Cronbach alpha, Feldt intervals, corrected item-total correlations and alpha if an item is deleted, with explicit reverse scoring and score limits.
+- **Exploratory factor analysis**: maximum-likelihood common factors, no rotation or Varimax, KMO, Bartlett, loadings, communalities, uniquenesses and parallel analysis.
+- **General facets**: grouped scatterplots and histograms share axis ranges and bin edges, with full and displayed sample counts.
+- **Batch distributions**: map two datasets field by field, confirm units and codes, and compare valid counts, missingness, numeric distributions and categorical proportions.
+- **Scales and study design**: nominal, ordinal and continuous dictionary metadata, plus explicit independent or paired test designs.
+- **Startup fix**: both languages read the actual application version while retaining the existing opening and waiting animations.
+
+Alpha does not establish unidimensionality or validity and does not automatically remove items. EFA does not compute polychoric correlations or CFA; the factor count is user-specified and parallel analysis is an aid. Batch comparisons are descriptive, without independent-sample p-values or rankings across units. Review missingness, units and coding in the study context.
+
+[Walkthrough and synthetic examples](EXAMPLES.en.md)

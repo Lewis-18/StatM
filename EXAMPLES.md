@@ -6,6 +6,31 @@
 
 以下新增示例来自 **StatM 1.3.0** 的实际程序，使用独立合成教学数据；既有 Advertising 与 Iris 教程保留原数据口径，界面截图已更新至 1.3.0。主要截图使用浅色应用主题与白底图表。
 
+## 1.4.0 合成研究样例
+
+本组样例全部为固定种子合成数据，不包含用户研究数据。下载 [A 批数据](samples/v1.4.0/research-A.csv) 和 [B 批数据](samples/v1.4.0/research-B.csv)，导入同一项目。
+
+1. **信度**：选择 Q1–Q4，量表范围设为 1–5，明确将 Q4 设为反向题。查看 α、区间与题项诊断；不自动删题。
+2. **EFA**：选择连续字段 X1–X6，设 2 个因子并使用 Varimax，查看载荷和诊断。Q 字段是有序题项，不把本例当作多分相关分析。
+3. **分面**：绘图选择直方图或散点图，变量 X1（散点再选 X2），分组字段为 group，选择按组分面。
+4. **批次**：A 为当前数据、B 为对比数据，分别映射 X1 数值分布和 category 类别占比。核对口径后确认计算；B 包含人为平移与缺失，用于展示描述性差异。
+
+![reliability](assets/v1.4.0/reliability.png)
+
+[PDF](samples/v1.4.0/reliability.pdf) · [SVG](samples/v1.4.0/reliability.svg) · [Reproduction bundle](samples/v1.4.0/reliability.zip)
+
+![efa](assets/v1.4.0/efa.png)
+
+[PDF](samples/v1.4.0/efa.pdf) · [SVG](samples/v1.4.0/efa.svg) · [Reproduction bundle](samples/v1.4.0/efa.zip)
+
+![facets](assets/v1.4.0/facets.png)
+
+[PDF](samples/v1.4.0/facets.pdf) · [SVG](samples/v1.4.0/facets.svg) · [Reproduction bundle](samples/v1.4.0/facets.zip)
+
+![batch](assets/v1.4.0/batch.png)
+
+[PDF](samples/v1.4.0/batch.pdf) · [SVG](samples/v1.4.0/batch.svg) · [Reproduction bundle](samples/v1.4.0/batch.zip)
+
 ## Excel 选表、规则库与变量字典
 
 下载 [methods-workbook.xlsx](samples/v1.3.0/methods-workbook.xlsx)，创建项目并上传。首张工作表为空，选择 **Analysis** 预览 36 行合成数据，文本编号从 001 开始，再导入。字段 x 为测量值，g 为 A/B/C 三组。

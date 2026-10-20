@@ -8,11 +8,11 @@
 
 StatM is a Windows desktop application for statistics learning and research. Prepare data, run statistical analyses, produce scientific figures and tables, and retain reviewable analysis records in a local workspace.
 
-**Version: 1.3.0** · **Windows x64** · **Maintainer: Jackson Lewis**
+**Version: 1.4.0** · **Windows x64** · **Maintainer: Jackson Lewis**
 
 [Download](https://github.com/Lewis-18/StatM/releases/latest) · [User guide](USER-GUIDE.en.md) · [Worked examples](EXAMPLES.en.md) · [Changelog](CHANGELOG.en.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
 
-![StatM 1.3.0 light analysis workspace and regression diagnostics](assets/v1.3.0/analysis-workspace-en.png)
+![StatM 1.4.0 EFA](assets/v1.4.0/efa-en.png)
 
 <details>
 <summary>View dark theme</summary>
@@ -20,6 +20,19 @@ StatM is a Windows desktop application for statistics learning and research. Pre
 ![StatM 1.3.0 dark theme](assets/v1.3.0/home-dark-en.png)
 
 </details>
+
+## New in 1.4.0
+
+- **Questionnaire reliability**: raw-score Cronbach alpha, Feldt intervals, corrected item-total correlations and alpha if an item is deleted, with explicit reverse scoring and score limits.
+- **Exploratory factor analysis**: maximum-likelihood common factors, no rotation or Varimax, KMO, Bartlett, loadings, communalities, uniquenesses and parallel analysis.
+- **General facets**: grouped scatterplots and histograms share axis ranges and bin edges, with full and displayed sample counts.
+- **Batch distributions**: map two datasets field by field, confirm units and codes, and compare valid counts, missingness, numeric distributions and categorical proportions.
+- **Scales and study design**: nominal, ordinal and continuous dictionary metadata, plus explicit independent or paired test designs.
+- **Startup fix**: both languages read the actual application version while retaining the existing opening and waiting animations.
+
+Alpha does not establish unidimensionality or validity and does not automatically remove items. EFA does not compute polychoric correlations or CFA; the factor count is user-specified and parallel analysis is an aid. Batch comparisons are descriptive, without independent-sample p-values or rankings across units. Review missingness, units and coding in the study context.
+
+[New feature walkthroughs](EXAMPLES.en.md) · [Methods and validation](METHODS.en.md)
 
 ## New in 1.3.0
 

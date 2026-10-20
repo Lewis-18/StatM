@@ -6,6 +6,31 @@
 
 The new examples use the actual **StatM 1.3.0** program and independent synthetic teaching data. Existing Advertising and Iris workflows retain their original data definitions; interface captures have been refreshed to 1.3.0. Main examples use a light application theme and white chart backgrounds.
 
+## 1.4.0 Synthetic research examples
+
+All examples use fixed-seed synthetic data and contain no user research data. Import [batch A](samples/v1.4.0/research-A.csv) and [batch B](samples/v1.4.0/research-B.csv) into the same project.
+
+1. **Reliability**: select Q1–Q4, set score limits to 1–5 and explicitly reverse Q4. Inspect alpha, its interval and item diagnostics; no items are automatically removed.
+2. **EFA**: select continuous X1–X6, specify two factors and Varimax, and inspect loadings and diagnostics. The Q fields are ordinal; this example does not implement polychoric analysis.
+3. **Facets**: choose a histogram of X1 or a scatterplot of X1 and X2, group by group and select facets.
+4. **Batches**: use A as the current dataset and B as the reference; map X1 as numeric and category as categorical. Review definitions and confirm the comparison. B has an artificial shift and missing values to illustrate descriptive differences.
+
+![reliability](assets/v1.4.0/reliability-en.png)
+
+[PDF](samples/v1.4.0/reliability.pdf) · [SVG](samples/v1.4.0/reliability.svg) · [Reproduction bundle](samples/v1.4.0/reliability.zip)
+
+![efa](assets/v1.4.0/efa-en.png)
+
+[PDF](samples/v1.4.0/efa.pdf) · [SVG](samples/v1.4.0/efa.svg) · [Reproduction bundle](samples/v1.4.0/efa.zip)
+
+![facets](assets/v1.4.0/facets-en.png)
+
+[PDF](samples/v1.4.0/facets.pdf) · [SVG](samples/v1.4.0/facets.svg) · [Reproduction bundle](samples/v1.4.0/facets.zip)
+
+![batch](assets/v1.4.0/batch-en.png)
+
+[PDF](samples/v1.4.0/batch.pdf) · [SVG](samples/v1.4.0/batch.svg) · [Reproduction bundle](samples/v1.4.0/batch.zip)
+
 ## Worksheets, quality rules and dictionaries
 
 Download [methods-workbook.xlsx](samples/v1.3.0/methods-workbook.xlsx), create a project and upload it. The first sheet is empty; choose **Analysis**, preview the 36 synthetic records with text identifiers starting at 001, then import. Field x is the measurement and g contains groups A/B/C.
