@@ -1,23 +1,23 @@
 {
-  "tag_name": "v1.4.0",
-  "name": "StatM 1.4.0",
-  "html_url": "https://github.com/Lewis-18/StatM/releases/tag/v1.4.0",
-  "published_at": "2026-10-20T16:16:28Z",
+  "tag_name": "v1.4.5",
+  "name": "StatM 1.4.5",
+  "html_url": "https://github.com/Lewis-18/StatM/releases/tag/v1.4.5",
+  "published_at": "2026-10-23T14:41:20Z",
   "draft": false,
   "prerelease": false,
-  "body": "# StatM 1.4.0\n\n中文 · [English](https://github.com/Lewis-18/StatM/blob/main/RELEASE-NOTES.en.md)\n\n本版本补齐问卷研究与批次数据探索，将新增结果接入历史、科研表格和可复现分析包。\n\n- **问卷信度分析**：Cronbach’s α、Feldt 置信区间、校正题总相关与删题后的 α，显式设置反向题及计分范围。\n- **探索性因子分析 EFA**：最大似然公共因子模型、不旋转或 Varimax，报告 KMO、Bartlett、载荷、共同度、独特方差和平行分析。\n- **通用分面**：散点图和直方图按组分面，共用坐标范围与分箱，列示各组完整样本量及显示数量。\n- **批次分布对比**：逐项映射两批字段，核对单位和编码，比较样本量、缺失率、数值分布与类别占比。\n- **测量尺度与研究设计**：字典增加名义、有序、连续尺度；假设检验明确独立与配对设计。\n- **启动页修复**：中英文页脚读取应用实际版本，保留既有开场与等待动画。\n\nα 不证明单维性或效度，不自动删题。EFA 不计算多分相关或 CFA，因子数由用户设定，平行分析仅作辅助。批次对比为描述性结果，不计算独立样本检验 p 值，不跨量纲排名；缺失值处理和单位编码需结合研究口径判断。\n\n批次分析包包含两批完整数据及运行时元数据；导出前会列明范围。科研图表支持 SVG、300 DPI PNG 和 PDF。\n\n下载 **StatM-Setup-1.4.0-x64.exe**，关闭正在运行的 StatM 后安装到原目录。核心计算可离线使用，已有本地工作空间沿用。安装包未数字签名，提供 SHA256SUMS.txt 校验。\n\n[使用指南](https://github.com/Lewis-18/StatM/blob/main/USER-GUIDE.md) · [图文示例](https://github.com/Lewis-18/StatM/blob/main/EXAMPLES.md) · [方法与验证](https://github.com/Lewis-18/StatM/blob/main/METHODS.md) · [更新记录](https://github.com/Lewis-18/StatM/blob/main/CHANGELOG.md)\n\n验收：131 项后端回归、9 项补充统计/复现测试、19 项桌面单元测试及实际冻结引擎和桌面操作验收通过。合成样例的四类复现包独立重算无数值差异。安装包解包内容与受测程序逐文件一致；本机验收不等同于干净虚拟机安装验收。\n",
+  "body": "# StatM 1.4.5\n\n中文 · [English](https://github.com/Lewis-18/StatM/blob/main/RELEASE-NOTES.en.md)\n\n本版本改善数据工具的布局与操作反馈，统一科研图表导出配色，并补充长标签排版与视觉回归验证。\n\n- **页面留白与窄面板布局**：数据关联和变量字典使用一致的卡片、标签、表单间距；按容器实际宽度切换单栏。\n- **关联操作反馈**：说明禁用原因，显示检查与保存进度，核对匹配情况后突出保存入口。\n- **科研导出主题**：未单独选择图表背景时，导出统一白底；明确选择黑色后，背景、文字和坐标轴共同切换，适用于 SVG、PNG、PDF 和组合图。\n- **完整标签排版**：长变量名和分类标签换行、动态留白，保留原始数据、计数和坐标范围。\n- **变量选择体验**：38px 排序按钮、操作提示、Alt + ↑ / ↓ 排序及焦点和滚动位置保持。\n- **主题与界面验证**：统一语义色和按钮状态，增加实际桌面截图基准、像素比较与布局断言。\n\n保留 1.4.0 的信度分析、EFA、分面、批次对比和可复现分析包，以及既有开场与等待动画。统计计算方法沿用。\n\n下载 **StatM-Setup-1.4.5-x64.exe**，关闭 StatM 后安装到原目录。已有本地工作空间继续沿用。安装包未数字签名，附 SHA256SUMS.txt 校验。\n\n[使用指南](https://github.com/Lewis-18/StatM/blob/main/USER-GUIDE.md) · [图文示例](https://github.com/Lewis-18/StatM/blob/main/EXAMPLES.md) · [方法与验证](https://github.com/Lewis-18/StatM/blob/main/METHODS.md) · [更新记录](https://github.com/Lewis-18/StatM/blob/main/CHANGELOG.md)\n\n验收：132 项后端测试、27 项桌面单元测试、37 项冻结引擎检查、21 项桌面回归及 13 张视觉基准通过；四类合成样例分析包独立重算无数值差异。实际安装包解包内容与受测程序逐文件一致。本机验收不等同于干净虚拟机安装验收。\n",
   "assets": [
     {
       "name": "SHA256SUMS.txt",
-      "size": 92,
-      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.4.0/SHA256SUMS.txt",
-      "digest": "sha256:e0f20e0960d7ccc1439d99df011aca33dc42b8ea007d7e57b094c74cbdcb78c1"
+      "size": 93,
+      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.4.5/SHA256SUMS.txt",
+      "digest": "sha256:c0f2e22227c7cd9de84a3aec3e356465b9d2339af5c00a63e9e8db1719d173eb"
     },
     {
-      "name": "StatM-Setup-1.4.0-x64.exe",
-      "size": 216759170,
-      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.4.0/StatM-Setup-1.4.0-x64.exe",
-      "digest": "sha256:4a4e246d6b1d229a7b7771494bcf0d53855325ca034f58d4f5d6c7816e886f81"
+      "name": "StatM-Setup-1.4.5-x64.exe",
+      "size": 216762127,
+      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.4.5/StatM-Setup-1.4.5-x64.exe",
+      "digest": "sha256:829548525324a1ec641515c999d3b3c5bac3feaac9748d327d65d102c8d1353d"
     }
   ]
 }
