@@ -6,6 +6,16 @@
 
 The new examples use the actual **StatM 1.3.0** program and independent synthetic teaching data. Existing Advertising and Iris workflows retain their original data definitions; interface captures have been refreshed to 1.3.0. Main examples use a light application theme and white chart backgrounds.
 
+## 1.4.5 interface and exports
+
+Dataset joins use consistent spacing and alignment, adapting to the actual container width. Checking and saving report their current state.
+
+![Dataset join](assets/v1.4.5/join-en.jpg)
+
+Use the reorder buttons or Alt + ↑ / ↓ while retaining complete variable names. Scientific export defaults to white; an explicit black choice switches the complete theme. Long 90mm titles wrap using measured font widths.
+
+![Variable selection](assets/v1.4.5/variables-dark.jpg)
+
 ## 1.4.0 Synthetic research examples
 
 All examples use fixed-seed synthetic data and contain no user research data. Import [batch A](samples/v1.4.0/research-A.csv) and [batch B](samples/v1.4.0/research-B.csv) into the same project.

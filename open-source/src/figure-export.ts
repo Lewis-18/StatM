@@ -1,3 +1,5 @@
+const t=(value:string)=>value;
+import {wrapLabel} from './chart-layout';
 import {figurePresets,type FigurePresetName} from './chart-preferences';
 
 export function figureSize(name:FigurePresetName,canvasHeight:number,canvasWidth=1100){
@@ -18,9 +20,8 @@ export function sizeVectorFigure(svg:SVGSVGElement,name:FigurePresetName,canvasH
 // Both presets use the same physical font scale: 12 logical px is about 7.3 pt.
 export function figureCanvasWidth(name:FigurePresetName){return name==='column'?420:840}
 export function figureHeading(title:string,caption:string,width:number){
- 
- const wrap=(value:string,capacity:number)=>{const lines:string[]=[];let line='',used=0;const tokens=value.match(/[A-Za-z0-9]+(?:[.,][0-9]+)*|./gu)||[];for(const token of tokens){const size=[...token].reduce((sum,char)=>sum+(char.charCodeAt(0)>255?2:1),0);if(used&&used+size>capacity){lines.push(line.trimEnd());line='';used=0}if(size>capacity){for(const char of token){if(used>=capacity){lines.push(line);line='';used=0}line+=char;used++}}else if(line||token.trim()){line+=token;used+=size}}if(line)lines.push(line.trimEnd());return lines.join('\n')};
- const text=wrap(title,Math.floor((width-48)/9)),subtext=wrap(caption,Math.floor((width-48)/7));
+ title=t(title);caption=t(caption);
+ const text=wrapLabel(title,width-60,18,700),subtext=wrapLabel(caption,width-60,12);
  return {text,subtext,plotTop:24+text.split('\n').length*22+subtext.split('\n').length*17+24};
 }
 
@@ -55,3 +56,4 @@ export async function withPngResolution(blob:Blob,dpi:number):Promise<Blob>{
  if(!inserted)throw new Error('PNG 缺少图像头');
  return new Blob(parts.map(part=>new Uint8Array(part)),{type:'image/png'});
 }
+

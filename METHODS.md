@@ -1,4 +1,4 @@
-# StatM 1.4.0 方法与验证
+# StatM 1.4.5 方法与验证
 
 信度分析使用原始题分 Cronbach’s α、Feldt 区间、校正题总相关与删除题项后的 α。所有诊断使用同一批完整案例；反向题显式指定上下限，不自动反向或删题。数值与 [Pingouin 官方实现](https://pingouin-stats.org/generated/pingouin.cronbach_alpha.html) 对照，区间保留完整精度。
 
@@ -11,3 +11,8 @@ EFA 使用 [scikit-learn FactorAnalysis](https://scikit-learn.org/stable/modules
 自动化数值验证覆盖反向计分与缺失口径、Feldt 区间、两因子合成模型恢复、旋转前后公共协方差不变、奇异矩阵与欠识别拒绝、分箱计数及小组保留、距离与语义冲突、API 历史重跑和独立复现包重算。最终运行记录随本地交付包提供。
 
 统计工作流参考：Kassis, T., Agarwal, V., He, Y., Patel, D., & Brueckner, A. M. (2026). *Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents*. [arXiv:2609.00065](https://doi.org/10.48550/arXiv.2609.00065)。该参考用于工作流检查，不代替以上计算方法文档。
+
+
+## 1.4.5 界面与导出验证
+
+统计方法沿用 1.4.0。新增验证包括：默认白底导出不受应用主题影响、显式黑底的完整深色配色、90mm 长标题和 SVG 文字边界、300 DPI 元数据、PDF 物理宽度、关联页面最小留白及窄容器单栏、变量排序与取消确认，以及固定环境截图比较。所有示例使用独立合成数据；本机测试不等同于干净虚拟机安装验收。

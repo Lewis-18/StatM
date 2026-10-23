@@ -8,18 +8,27 @@
 
 StatM 是面向统计学习与科研的 Windows 桌面应用。在本地工作空间中整理数据、完成统计分析、制作科研图表与表格，并保存可复查的分析记录。
 
-**版本：1.4.0** · **Windows x64** · **维护者：Jackson Lewis**
+**版本：1.4.5** · **Windows x64** · **维护者：Jackson Lewis**
 
 [下载安装包](https://github.com/Lewis-18/StatM/releases/latest) · [使用指南](USER-GUIDE.md) · [图文示例](EXAMPLES.md) · [更新记录](CHANGELOG.md) · [问题反馈](https://github.com/Lewis-18/StatM/issues)
 
-![StatM 1.4.0 EFA](assets/v1.4.0/efa.png)
+![StatM 1.4.5](assets/v1.4.5/join-light.jpg)
 
 <details>
 <summary>查看深色主题</summary>
 
-![StatM 1.3.0 深色主题](assets/v1.3.0/home-dark.png)
+![StatM 1.4.5 深色主题](assets/v1.4.5/join-dark.jpg)
 
 </details>
+
+## 1.4.5 界面与科研绘图改进
+
+- **页面留白与窄面板布局**：数据关联和变量字典使用一致的卡片、标签、表单间距；按容器实际宽度切换单栏。
+- **关联操作反馈**：说明禁用原因，显示检查与保存进度，核对匹配情况后突出保存入口。
+- **科研导出主题**：未单独选择图表背景时，导出统一白底；明确选择黑色后，背景、文字和坐标轴共同切换，适用于 SVG、PNG、PDF 和组合图。
+- **完整标签排版**：长变量名和分类标签换行、动态留白，保留原始数据、计数和坐标范围。
+- **变量选择体验**：38px 排序按钮、操作提示、Alt + ↑ / ↓ 排序及焦点和滚动位置保持。
+- **主题与界面验证**：统一语义色和按钮状态，增加实际桌面截图基准、像素比较与布局断言。
 
 ## 1.4.0 新增功能
 

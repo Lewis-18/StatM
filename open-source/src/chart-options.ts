@@ -5,7 +5,10 @@ import type {ChartSpec} from './types';
 import {palettes,type PaletteName} from './chart-preferences';
 import {explorationOption,explorationInfo} from './exploration-options';
 import {bubbleOption,defaultBubbleView,type BubbleView} from './bubble-options';
+import {facetOption} from './facet-options';
 import {estimationOption} from './estimation-options';
+import {figureTheme,figureBackground} from './chart-theme';
+import {fitCartesianLabels,wrapLabel} from './chart-layout';
 
 export type ChartTheme='light'|'dark';
 const font='Inter, Microsoft YaHei, Noto Sans SC, sans-serif';
@@ -17,6 +20,9 @@ export function numberLabel(value:number|string):string {
  return n.toLocaleString(undefined,{maximumFractionDigits:3});
 }
 export function chartInfo(spec:ChartSpec){
+ if(spec.kind==='facet')return {title:spec.title,label:'分面图',caption:'统一坐标与分箱 · 各面板列示样本量',tag:'FACETS'};
+ if(spec.title.startsWith('EFA ·'))return {title:spec.title,label:'探索性因子分析',caption:'公共因子模型 · 载荷与平行分析',tag:'EFA'};
+ if(spec.title==='校正题总相关')return {title:spec.title,label:'信度分析',caption:'题项与其余题项总分的相关',tag:'RELIABILITY'};
  if(spec.kind==='estimation')return {title:spec.title.replace(' · Estimation',''),label:'估计图',caption:`原始观测与均值差区间 · ${Number(((spec.data.confidence||.95)*100).toFixed(8))}% CI · ${spec.data.shown}/${spec.data.n}`,tag:'ESTIMATION'};
  const exploration=explorationInfo(spec);if(exploration)return exploration;
  const raw=spec.title;
@@ -38,12 +44,14 @@ export function chartInfo(spec:ChartSpec){
  };
  return titles[raw]||{title:raw,label:spec.kind==='scatter'?'散点图':'频数图',caption:spec.kind==='scatter'?'每个点代表一个观测样本':'各类别的观测频数',tag:spec.kind==='scatter'?'SCATTER PLOT':'FREQUENCY'};
 }
-export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTheme,zoom=false,exporting=false,width=600,height=420,bubbleView:BubbleView=defaultBubbleView):EChartsOption {
- if(spec.kind==='estimation')return estimationOption(spec,palette,theme,exporting,width);
- if(spec.kind==='bubble')return bubbleOption(spec,palette,theme,exporting,width,height,bubbleView);
- const exploration=explorationOption(spec,palette,theme,exporting,width);if(exploration)return exploration;
+export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTheme,zoom=false,exporting=false,width=600,height=420,bubbleView:BubbleView=defaultBubbleView,exportTheme?:ChartTheme):EChartsOption {
+ theme=figureTheme(theme,exporting,exportTheme);
+ if(spec.kind==='facet')return facetOption(spec,palette,theme,exporting,width,height,theme);
+ if(spec.kind==='estimation')return estimationOption(spec,palette,theme,exporting,width,theme);
+ if(spec.kind==='bubble')return bubbleOption(spec,palette,theme,exporting,width,height,bubbleView,theme);
+ const exploration=explorationOption(spec,palette,theme,exporting,width,undefined,theme);if(exploration)return exploration;
  const light=theme==='light';const color=palettes[palette][theme];
- const text=light?'#263348':'#dbe4ef',muted=light?'#69788c':'#8d9caf',grid=light?'#e8edf3':'#263243',panel=light?'#ffffff':'#151f2d';
+ const text=light?'#263348':'#dbe4ef',muted=light?'#536379':'#8d9caf',grid=light?'#e8edf3':'#263243',panel=light?'#ffffff':'#151f2d';
  const neutral=light?'#f0f3f7':'#263448';const negative=palettes[palette].negative;
  const d=spec.data,info=chartInfo(spec);const small=width<480;
  const heading=figureHeading(info.title+' · '+info.label,info.caption,width);
@@ -55,7 +63,7 @@ export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTh
  const axisLine={show:false};const axisTick={show:false};const nameTextStyle={color:muted,fontSize:12,padding:[0,0,0,0]};
  const option:EChartsOption={
   animation:false,animationDuration:200,animationDurationUpdate:180,
-  backgroundColor:exporting?'#ffffff':'transparent',color:[color,palettes[palette].secondary],
+  backgroundColor:figureBackground(theme,exporting),color:[color,palettes[palette].secondary],
   textStyle:{color:text,fontFamily:font,fontSize:12},
   aria:{enabled:true,label:{description:spec.title}},
   title:exporting?{text:heading.text,subtext:heading.subtext,left:30,top:20,textStyle:{color:text,fontFamily:font,fontSize:18,lineHeight:22,fontWeight:600},subtextStyle:{color:muted,fontFamily:font,fontSize:12,lineHeight:17}}:undefined,
@@ -81,7 +89,7 @@ export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTh
   }
  }else if(spec.kind==='heatmap'){
   const labels=d.labels||[];const n=labels.length;const side=small?78:Math.min(145,Math.max(95,...labels.map(v=>v.length*5.5)));
-  const tick=(v:string)=>v.length>18?v.slice(0,16)+'…':v;
+  const tick=(v:string)=>wrapLabel(v,side-20,11);
   option.grid={left:side,right:24,top:exporting?heading.plotTop:26,bottom:n>5?132:106};
   option.xAxis={type:'category',data:labels,axisLine,axisTick,axisLabel:{color:muted,fontSize:12,rotate:n>4?30:0,margin:14,formatter:tick}};
   option.yAxis={type:'category',data:labels,inverse:true,axisLine,axisTick,axisLabel:{color:muted,fontSize:12,margin:12,formatter:tick}};
@@ -101,5 +109,5 @@ export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTh
   if(ecdf&&xy.length)xy.unshift([xy[0][0],0]);
   option.series=[{type:'line',name:info.title,data:density||ecdf?xy:d.y,smooth:false,step:ecdf?'end':undefined,symbol:cumulative?'circle':'none',symbolSize:7,lineStyle:{width:2.3,color},itemStyle:{color,borderColor:panel,borderWidth:2},areaStyle:density||cumulative?{color,opacity:light?.08:.1}:undefined,label:{show:cumulative&&(d.y?.length||0)<=8,position:'top',distance:10,fontSize:12,color:muted,formatter:p=>(Number(p.value)*100).toFixed(1)+'%'},markLine:residual?zeroLine:undefined}];
  }
- return option;
+ return fitCartesianLabels(option,width,height);
 }

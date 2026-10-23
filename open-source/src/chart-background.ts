@@ -17,3 +17,7 @@ export function chartSurface(background:ChartBackground,element:HTMLElement|null
  const color=background==='auto'?(element?getComputedStyle(element).getPropertyValue('--panel').trim():'')||(theme==='light'?'#ffffff':'#151f2d'):theme==='light'?'#ffffff':'#000000';
  return {theme,color} as const;
 }
+export function chartExportSurface(background:ChartBackground){
+ const theme=background==='dark'?'dark':'light';
+ return {theme,color:theme==='dark'?'#000000':'#ffffff'} as const;
+}

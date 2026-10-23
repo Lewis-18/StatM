@@ -8,18 +8,27 @@
 
 StatM is a Windows desktop application for statistics learning and research. Prepare data, run statistical analyses, produce scientific figures and tables, and retain reviewable analysis records in a local workspace.
 
-**Version: 1.4.0** · **Windows x64** · **Maintainer: Jackson Lewis**
+**Version: 1.4.5** · **Windows x64** · **Maintainer: Jackson Lewis**
 
 [Download](https://github.com/Lewis-18/StatM/releases/latest) · [User guide](USER-GUIDE.en.md) · [Worked examples](EXAMPLES.en.md) · [Changelog](CHANGELOG.en.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
 
-![StatM 1.4.0 EFA](assets/v1.4.0/efa-en.png)
+![StatM 1.4.5](assets/v1.4.5/join-en.jpg)
 
 <details>
 <summary>View dark theme</summary>
 
-![StatM 1.3.0 dark theme](assets/v1.3.0/home-dark-en.png)
+![StatM 1.4.5 dark theme](assets/v1.4.5/join-dark.jpg)
 
 </details>
+
+## 1.4.5 interface and scientific figure improvements
+
+- **Spacing and narrow panels**: consistent card, label and form spacing in dataset joins and the variable dictionary, with single-column layouts based on the container width.
+- **Join feedback**: explain unavailable actions, show checking and saving progress, and emphasize saving after reviewing the matches.
+- **Scientific export themes**: exports default to white when no chart background was explicitly selected. An explicit black choice switches the background, text and axes together for SVG, PNG, PDF and compositions.
+- **Complete labels**: wrap long variable and category names and reserve space without changing observations, counts or axis ranges.
+- **Variable selection**: 38px reorder buttons, tooltips, Alt + ↑ / ↓ ordering, and retained focus and scroll position.
+- **Themes and verification**: shared semantic colors and button states, packaged-app screenshot baselines, pixel comparisons and layout assertions.
 
 ## New in 1.4.0
 

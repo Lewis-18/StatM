@@ -54,3 +54,6 @@ python -m pytest python/tests
 
 
 1.3.0 tools add Welch ANOVA, Tukey–Kramer / Games–Howell / Dunn–Holm and estimation-plot data to `hypothesis`. Use `AnalysisParams(posthoc="auto")` for the corresponding procedure or `posthoc="none"` to disable it. SciPy 1.16 or later is required. Correlation p values remain unadjusted; post-hoc tables contain the corresponding adjusted p values. `estimation-options.ts` produces ECharts estimation options. Worksheet selection, rule libraries, dictionaries, joins and the composition editor belong to the complete desktop app; standalone `read_table` still reads the first sheet.
+
+
+1.4.5 figure tools: `chart-theme.ts` separates export and screen themes. Exports default to white; pass `"dark"` as the final `makeChartOption` argument for a black export. `chart-layout.ts` measures and wraps complete labels and reserves category-axis space. `facet-options.ts` supplies shared-scale facets. The variable picker has 38px reorder controls and Alt + ↑ / ↓ ordering.

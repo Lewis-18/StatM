@@ -2,7 +2,7 @@
 
 [中文](USER-GUIDE.md) · English
 
-This guide covers StatM 1.3.0. [Download](https://github.com/Lewis-18/StatM/releases/latest) · [Worked examples](EXAMPLES.en.md) · [Overview](README.en.md)
+This guide covers StatM 1.4.5. [Download](https://github.com/Lewis-18/StatM/releases/latest) · [Worked examples](EXAMPLES.en.md) · [Overview](README.en.md)
 
 ## Contents
 
@@ -172,3 +172,12 @@ Before confirming analysis-bundle export, inspect the inventory of complete data
 Alpha does not establish unidimensionality or validity and does not automatically remove items. EFA does not compute polychoric correlations or CFA; the factor count is user-specified and parallel analysis is an aid. Batch comparisons are descriptive, without independent-sample p-values or rankings across units. Review missingness, units and coding in the study context.
 
 [Walkthrough and synthetic examples](EXAMPLES.en.md)
+
+
+## 1.4.5 interaction details
+
+Dataset joins explain missing settings. Review matched and unmatched rows before saving. Parameters are locked while checking or saving; editing them clears the preceding preview. Narrow containers use a single column.
+
+In variable selection, Tab moves focus and Space toggles a field. Use the reorder buttons or Alt + ↑ / ↓; Esc cancels and Confirm applies the selection.
+
+With no explicit background selection, the preview follows the app and scientific exports default to white. The chart footer shows the export background. Select Black for a complete dark export theme. The 90mm / 180mm sizes and 300 DPI PNG are retained.

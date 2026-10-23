@@ -1,19 +1,24 @@
 import {format,type EChartsOption} from 'echarts';
 import {figureHeading} from './figure-export';
+import {figureTheme,figureBackground,type FigureTheme} from './chart-theme';
+import {fitCartesianLabels,axisName,wrapLabel} from './chart-layout';
 import type {ChartSpec} from './types';
 import {palettes,groupColor,groupSymbols,groupLineType,type PaletteName} from './chart-preferences';
 import {bubbleOption} from './bubble-options';
 
 const font='Inter, Microsoft YaHei, Noto Sans SC, sans-serif';
 export function explorationInfo(spec:ChartSpec){
+ if(spec.title==='EFA · 平行分析')return {title:spec.title,label:'探索性因子分析',caption:'观测特征值与置换分布的 95% 分位',tag:'EFA'};
+ if(spec.kind==='category_bar'&&spec.yLabel==='有效样本占比')return {title:spec.title,label:'类别占比',caption:'各批有效样本内的比例',tag:'PROPORTIONS'};
  const names:Record<string,[string,string]>={scatter3d:['三维散点','拖动旋转 · 滚轮缩放 · PNG / PDF 导出当前视角'],bubble:['气泡图',`面积 ∝ ${spec.zLabel} · 零面积记录隐藏`],parallel:['平行坐标','各轴使用原始单位 · 沿轴拖动筛选'],grouped_box:['箱线与观测点','Q1–Q3 · 1.5 IQR 须线 · 每组最多 160 个排序观测点'],violin:['小提琴组合','Gaussian KDE / Scott · 等最大宽度 · 箱线与真实观测点'],category_bar:['分类频数','完整记录计数 · 各组并列比较']};
  const isProjection=spec.title.endsWith(' · 二维投影');
  if(!names[spec.kind]&&!spec.data.groups)return null;
  const [label,caption]=names[spec.kind]||[spec.title==='PC1 × PC2 · Scores'?'PCA 得分':isProjection?'二维投影':'散点图','每个点代表同一条完整记录；分组以颜色与点形区分'];
  return {title:spec.title.replace(' · 二维投影',''),label,caption:`${caption} · n=${spec.data.n?.toLocaleString()||'—'}${spec.data.shown!==undefined&&spec.data.shown!==spec.data.n?' · 显示 '+spec.data.shown.toLocaleString():''}`,tag:'EXPLORATION'};
 }
-export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'light'|'dark',exporting=false,width=600,canvasBackground?:string):EChartsOption|null{
- if(spec.kind==='bubble')return bubbleOption(spec,palette,theme,exporting,width);
+export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'light'|'dark',exporting=false,width=600,canvasBackground?:string,exportTheme?:FigureTheme):EChartsOption|null{
+ theme=figureTheme(theme,exporting,exportTheme);
+ if(spec.kind==='bubble')return bubbleOption(spec,palette,theme,exporting,width,420,undefined,theme);
  if(!explorationInfo(spec))return null;
  const light=theme==='light',text=light?'#263348':'#dbe4ef',muted=light?'#57677b':'#a4b2c4',grid=light?'#e1e7ed':'#314057',background=light?'#ffffff':'#151f2d';
  const d=spec.data,info=explorationInfo(spec)!;
@@ -21,8 +26,8 @@ export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'ligh
  const exportTop=heading.plotTop+Math.ceil((d.categories||[]).join('').length*10/Math.max(200,width-120))*25;
  const groups=d.categories||['全部样本'];
  const colorAt=(i:number)=>groups.length===1?palettes[palette][theme]:groupColor(palette,theme,i);
- const axis=(name?:string)=>({type:'value' as const,name,nameLocation:'middle' as const,nameGap:width<480?34:45,nameTextStyle:{color:muted,fontSize:12},axisLabel:{color:muted,hideOverlap:true},axisLine:{show:false},axisTick:{show:false},splitLine:{lineStyle:{color:grid,type:'dashed' as const}},scale:true});
- const option:EChartsOption={animation:false,animationDuration:180,backgroundColor:exporting?'#ffffff':'transparent',textStyle:{fontFamily:font,color:text},color:groups.map((_,i)=>colorAt(i)),
+ const axis=(name?:string)=>({type:'value' as const,name:axisName(name,width-130),nameLocation:'middle' as const,nameGap:width<480?34:45,nameTextStyle:{color:muted,fontSize:12},axisLabel:{color:muted,hideOverlap:true},axisLine:{show:false},axisTick:{show:false},splitLine:{lineStyle:{color:grid,type:'dashed' as const}},scale:true});
+ const option:EChartsOption={animation:false,animationDuration:180,backgroundColor:figureBackground(theme,exporting),textStyle:{fontFamily:font,color:text},color:groups.map((_,i)=>colorAt(i)),
   title:exporting?{text:heading.text,subtext:heading.subtext,left:24,top:18,textStyle:{color:text,fontSize:18,lineHeight:22},subtextStyle:{color:muted,fontSize:12,lineHeight:17}}:undefined,
   tooltip:{trigger:'item',confine:true,backgroundColor:background,borderColor:grid,textStyle:{color:text}},
   aria:{enabled:true,label:{description:info.title+'；'+info.caption},decal:{show:palette==='grayscale'}},
@@ -45,7 +50,7 @@ export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'ligh
  }else if(spec.kind==='parallel'){
   option.xAxis=undefined;option.yAxis=undefined;option.grid=undefined;
   option.parallel={left:60,right:60,top:exporting?exportTop+12:80,bottom:55,parallelAxisDefault:{type:'value',nameLocation:'end',nameGap:24,nameTextStyle:{color:muted,fontSize:12},axisLabel:{color:muted,fontSize:12},axisLine:{lineStyle:{color:grid}},axisTick:{show:false}}};
-  option.parallelAxis=(d.dimensions||[]).map((name,dim)=>({dim,name,type:'value',min:'dataMin',max:'dataMax'}));
+  option.parallelAxis=(d.dimensions||[]).map((name,dim)=>({dim,name:wrapLabel(name,Math.max(60,(width-120)/Math.max(1,(d.dimensions?.length||1))),11),type:'value',min:'dataMin',max:'dataMax'}));
   option.series=groups.map((g,i)=>({type:'parallel',name:g,lineStyle:{color:colorAt(i),type:groupLineType(i),width:1.2,opacity:.35},inactiveOpacity:.03,activeOpacity:.8,data:(d.points||[]).filter((_,j)=>d.groups?.[j]===g||!d.groups)}));
  }else if(spec.kind==='grouped_box'||spec.kind==='violin'){
   option.legend={show:false};option.xAxis={...axis(spec.xLabel),type:'category',data:groups,axisLabel:{color:muted,interval:0,rotate:groups.length>5?25:0}};
@@ -61,5 +66,6 @@ export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'ligh
   option.legend={...option.legend as object,show:(d.series?.length||0)>1};
   option.series=(d.series||[]).map((s,i)=>({name:s.name,type:'bar',data:s.values,itemStyle:{color:d.series?.length===1?palettes[palette][theme]:groupColor(palette,theme,i)},barMaxWidth:35}));
  }
- return option;
+ return fitCartesianLabels(option,width);
 }
+

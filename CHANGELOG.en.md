@@ -2,6 +2,15 @@
 
 [中文](CHANGELOG.md) · English
 
+## 1.4.5
+
+- **Spacing and narrow panels**: consistent card, label and form spacing in dataset joins and the variable dictionary, with single-column layouts based on the container width.
+- **Join feedback**: explain unavailable actions, show checking and saving progress, and emphasize saving after reviewing the matches.
+- **Scientific export themes**: exports default to white when no chart background was explicitly selected. An explicit black choice switches the background, text and axes together for SVG, PNG, PDF and compositions.
+- **Complete labels**: wrap long variable and category names and reserve space without changing observations, counts or axis ranges.
+- **Variable selection**: 38px reorder buttons, tooltips, Alt + ↑ / ↓ ordering, and retained focus and scroll position.
+- **Themes and verification**: shared semantic colors and button states, packaged-app screenshot baselines, pixel comparisons and layout assertions.
+
 ## 1.4.0
 
 - **Questionnaire reliability**: raw-score Cronbach alpha, Feldt intervals, corrected item-total correlations and alpha if an item is deleted, with explicit reverse scoring and score limits.

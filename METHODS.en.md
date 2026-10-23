@@ -1,4 +1,4 @@
-# StatM 1.4.0 methods and validation
+# StatM 1.4.5 methods and validation
 
 Reliability uses raw-score Cronbach alpha, Feldt intervals, corrected item-total correlations and alpha after deleting each item. Every diagnostic uses the same complete-case sample. Reverse scoring requires explicit bounds and item selection. Numerical checks compare the results with [Pingouin](https://pingouin-stats.org/generated/pingouin.cronbach_alpha.html); interval values are retained at full precision.
 
@@ -11,3 +11,8 @@ Faceted scatterplots and histograms share axis ranges and bin edges. Scatterplot
 Automated checks cover reverse scoring, complete-case intervals, recovery of a synthetic two-factor structure, covariance invariance under orthogonal rotation, singular and underidentified models, shared histogram counts, small groups, category semantics, API history and independent reproduction. Synthetic data are used throughout. Tests on the current Windows host do not constitute a clean virtual-machine installation test.
 
 Workflow reference: Kassis, T., Agarwal, V., He, Y., Patel, D., & Brueckner, A. M. (2026). *Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents*. [arXiv:2609.00065](https://doi.org/10.48550/arXiv.2609.00065). The workflow reference does not replace the method documentation above.
+
+
+## 1.4.5 interface and export validation
+
+Statistical methods are unchanged from 1.4.0. Additional checks cover UI-independent white export, complete explicit black themes, measured 90mm titles and SVG text bounds, PNG DPI metadata and PDF physical widths, join spacing and container reflow, variable ordering and cancel/confirm behavior, and fixed-environment screenshot comparisons. Samples use isolated synthetic data. Local testing does not establish clean-VM installation acceptance.
