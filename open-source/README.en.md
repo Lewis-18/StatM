@@ -16,7 +16,7 @@ Copy `src/` and the examples you need. `examples/variable-picker.tsx` demonstrat
 
 Fields contain `name`, `type` and `missing`. `onChange` runs on confirmation; cancel or Esc preserves the old selection. `value` preserves order, `max` limits the count and `roles` labels axes. CSS theme variables include `--panel`, `--input`, `--text`, `--muted`, `--accent`, `--accent-ink`, `--border` and `--hover`.
 
-`makeChartOption` converts `ChartSpec` into histogram, box-plot, ECDF, Q–Q, heatmap and exploration configurations. `chart-preferences.ts` supplies palettes, point symbols and column-width presets. `figure-export.ts` handles physical dimensions, SVG sizing and PNG resolution. `chart-interaction.ts` preserves ordinary wheel scrolling. Translate chart titles before passing them to the tools.
+`makeChartOption` converts `ChartSpec` into histogram, box-plot, ECDF, Q–Q, heatmap and exploration configurations. `chart-preferences.ts` supplies palettes, point symbols and column-width presets. `figure-export.ts` handles physical dimensions, SVG sizing and PNG resolution. `chart-interaction.ts` preserves ordinary wheel scrolling. Use the translation adapter described below for authored chart labels.
 
 ## Python input and computation
 
@@ -56,4 +56,11 @@ python -m pytest python/tests
 1.3.0 tools add Welch ANOVA, Tukey–Kramer / Games–Howell / Dunn–Holm and estimation-plot data to `hypothesis`. Use `AnalysisParams(posthoc="auto")` for the corresponding procedure or `posthoc="none"` to disable it. SciPy 1.16 or later is required. Correlation p values remain unadjusted; post-hoc tables contain the corresponding adjusted p values. `estimation-options.ts` produces ECharts estimation options. Worksheet selection, rule libraries, dictionaries, joins and the composition editor belong to the complete desktop app; standalone `read_table` still reads the first sheet.
 
 
-1.4.5 figure tools: `chart-theme.ts` separates export and screen themes. Exports default to white; pass `"dark"` as the final `makeChartOption` argument for a black export. `chart-layout.ts` measures and wraps complete labels and reserves category-axis space. `facet-options.ts` supplies shared-scale facets. The variable picker has 38px reorder controls and Alt + ↑ / ↓ ordering.
+1.4.5 figure tools: `chart-theme.ts` separates export and screen themes. Exports default to white; pass `"dark"` as the `exportTheme` argument to `makeChartOption` for a black export. `chart-layout.ts` measures and wraps complete labels and reserves category-axis space. `facet-options.ts` supplies shared-scale facets. The variable picker has 38px reorder controls and Alt + ↑ / ↓ ordering.
+
+
+## 1.4.6
+
+The 1.4.6 components add `chart-readability.ts` for heatmap contrast and dense-scatter styling, content-based facet layout, and `figure-preferences.ts` for text size and language preferences. `makeChartOption` accepts a final `facetLayout` argument (`"full"` or `"compact"`).
+
+The standalone `i18n.ts` adapter defaults to identity translation. Call `setChartTranslator(yourTranslator)` from your host application when changing language; the return value is the previous translator. `chartText` protects original field and group names. Desktop translation dictionaries and its native bridge are not included. `figureCanvasWidth(preset, "readable")` provides the larger text setting while `figureSize` retains physical dimensions.

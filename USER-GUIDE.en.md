@@ -2,7 +2,7 @@
 
 [中文](USER-GUIDE.md) · English
 
-This guide covers StatM 1.4.5. [Download](https://github.com/Lewis-18/StatM/releases/latest) · [Worked examples](EXAMPLES.en.md) · [Overview](README.en.md)
+This guide covers StatM 1.4.6. [Download](https://github.com/Lewis-18/StatM/releases/latest) · [Worked examples](EXAMPLES.en.md) · [Overview](README.en.md)
 
 ## Contents
 
@@ -181,3 +181,10 @@ Dataset joins explain missing settings. Review matched and unmatched rows before
 In variable selection, Tab moves focus and Space toggles a field. Use the reorder buttons or Alt + ↑ / ↓; Esc cancels and Confirm applies the selection.
 
 With no explicit background selection, the preview follows the app and scientific exports default to white. The chart footer shows the export background. Select Black for a complete dark export theme. The 90mm / 180mm sizes and 300 DPI PNG are retained.
+
+
+## 1.4.6 layout and scientific export improvements
+
+Choose the figure language and text size in the chart export controls. Auto follows the interface; English translates system text while preserving original field and group names. Standard and larger text use the same physical column width and 300 DPI PNG. For facets, select full axes or compact shared axes; compact axes apply only when the variables and ranges can be shared.
+
+In data tables, select a density, resize a column with the keyboard, and use Home or double-click to reset its width. Bulk variable selection reports how many matching fields were added and skipped at the limit. Dataset joins retain the reviewed matches when only the output name changes.

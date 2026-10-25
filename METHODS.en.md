@@ -1,4 +1,4 @@
-# StatM 1.4.5 methods and validation
+# StatM 1.4.6 methods and validation
 
 Reliability uses raw-score Cronbach alpha, Feldt intervals, corrected item-total correlations and alpha after deleting each item. Every diagnostic uses the same complete-case sample. Reverse scoring requires explicit bounds and item selection. Numerical checks compare the results with [Pingouin](https://pingouin-stats.org/generated/pingouin.cronbach_alpha.html); interval values are retained at full precision.
 
@@ -16,3 +16,8 @@ Workflow reference: Kassis, T., Agarwal, V., He, Y., Patel, D., & Brueckner, A. 
 ## 1.4.5 interface and export validation
 
 Statistical methods are unchanged from 1.4.0. Additional checks cover UI-independent white export, complete explicit black themes, measured 90mm titles and SVG text bounds, PNG DPI metadata and PDF physical widths, join spacing and container reflow, variable ordering and cancel/confirm behavior, and fixed-environment screenshot comparisons. Samples use isolated synthetic data. Local testing does not establish clean-VM installation acceptance.
+
+
+## 1.4.6 layout and scientific export improvements
+
+Validation: 132 backend tests, 38 desktop and figure checks, 37 offline-engine checks and 21 desktop regression checks passed. Nineteen packaged-app screenshots matched their baselines. Four reproduction bundles reran with zero numerical differences; 1,986 installer files matched the tested application. SVG, PNG and six vector PDFs were checked, including 90/180mm widths. Testing used the current Windows computer and does not establish clean-VM installer acceptance. R reference code was not independently executed.

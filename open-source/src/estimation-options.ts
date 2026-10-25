@@ -3,13 +3,13 @@ import {figureTheme,figureBackground,type FigureTheme} from './chart-theme';
 import {axisName,wrapLabel} from './chart-layout';
 import type {ChartSpec} from './types';
 import {palettes,type PaletteName} from './chart-preferences';
-const t=(value:string)=>value;
+import {t,chartText} from './i18n';
 import {figureHeading} from './figure-export';
 
 export function estimationOption(spec:ChartSpec,palette:PaletteName,theme:'light'|'dark',exporting:boolean,width:number,exportTheme?:FigureTheme):EChartsOption{
  theme=figureTheme(theme,exporting,exportTheme);
  const light=theme==='light',text=light?'#263348':'#dbe4ef',muted=light?'#536379':'#a7b5c7',grid=light?'#e1e7ef':'#354052';
- const color=palettes[palette][theme],heading=figureHeading(spec.title,`${t('原始观测与均值差区间')} · ${Number(((spec.data.confidence||.95)*100).toFixed(8))}% CI · n=${spec.data.n}`,width);
+ const color=palettes[palette][theme],heading=figureHeading(chartText(spec,spec.title),`${t('原始观测与均值差区间')} · ${Number(((spec.data.confidence||.95)*100).toFixed(8))}% CI · n=${spec.data.n}`,width,false);
  const categories=spec.data.categories||[],estimates=spec.data.estimates||[];
  const points=(spec.data.points||[]).map(([group,value],i)=>[group+(((i*137)%97)/97-.5)*.24,value]);
  const render:CustomSeriesRenderItem=(params,api)=>{const center=api.coord([Number(api.value(0)),Number(api.value(1))]),low=api.coord([Number(api.value(2)),Number(api.value(1))]),high=api.coord([Number(api.value(3)),Number(api.value(1))]);return {type:'group',children:[{type:'line',shape:{x1:low[0],y1:low[1],x2:high[0],y2:high[1]},style:{stroke:color,lineWidth:2}},{type:'line',shape:{x1:low[0],y1:low[1]-4,x2:low[0],y2:low[1]+4},style:{stroke:color,lineWidth:2}},{type:'line',shape:{x1:high[0],y1:high[1]-4,x2:high[0],y2:high[1]+4},style:{stroke:color,lineWidth:2}},{type:'circle',shape:{cx:center[0],cy:center[1],r:4},style:{fill:color,stroke:light?'#fff':'#111827',lineWidth:1}}]}};
@@ -21,6 +21,6 @@ export function estimationOption(spec:ChartSpec,palette:PaletteName,theme:'light
  grid:[{left:68,right:30,top:exporting?heading.plotTop:24,height:'40%'},{left:Math.min(width*.4,240),right:38,top:'69%',bottom:44}],
  xAxis:[{type:'value',min:-1,max:Math.max(1,categories.length),interval:1,axisLabel:{color:muted,formatter:(v:number)=>categories[v]||'',hideOverlap:true},splitLine:{show:false},axisTick:{show:false},axisLine:{show:false}},
  {type:'value',gridIndex:1,min:value=>Math.min(value.min,0),max:value=>Math.max(value.max,0),name:t('均值差 A − B'),nameLocation:'middle',nameGap:28,nameTextStyle:{color:muted},axisLabel:{color:muted},splitLine:{lineStyle:{color:grid,type:'dashed'}}}],
- yAxis:[{type:'value',name:axisName(spec.yLabel,250),nameLocation:'middle',nameGap:44,nameTextStyle:{color:muted},axisLine:{show:false},axisTick:{show:false},axisLabel:{color:muted},splitLine:{lineStyle:{color:grid,type:'dashed'}}},
+ yAxis:[{type:'value',name:axisName(chartText(spec,spec.yLabel||''),250),nameLocation:'middle',nameGap:44,nameTextStyle:{color:muted},axisLine:{show:false},axisTick:{show:false},axisLabel:{color:muted},splitLine:{lineStyle:{color:grid,type:'dashed'}}},
  {type:'category',gridIndex:1,data:estimates.map(e=>e.label),inverse:true,axisLabel:{color:muted,fontSize:11,lineHeight:14,formatter:(v:string)=>wrapLabel(v,Math.min(width*.32,205),11)},axisTick:{show:false},axisLine:{show:false}}],series};
 }

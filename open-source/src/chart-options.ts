@@ -1,11 +1,13 @@
 import type {EChartsOption,SeriesOption} from 'echarts';
 import {format} from 'echarts';
+import {t,chartText} from './i18n';
+import {heatmapTextColor,scatterAppearance} from './chart-readability';
 import {figureHeading} from './figure-export';
 import type {ChartSpec} from './types';
 import {palettes,type PaletteName} from './chart-preferences';
 import {explorationOption,explorationInfo} from './exploration-options';
 import {bubbleOption,defaultBubbleView,type BubbleView} from './bubble-options';
-import {facetOption} from './facet-options';
+import {facetOption,type FacetLayout} from './facet-options';
 import {estimationOption} from './estimation-options';
 import {figureTheme,figureBackground} from './chart-theme';
 import {fitCartesianLabels,wrapLabel} from './chart-layout';
@@ -13,6 +15,7 @@ import {fitCartesianLabels,wrapLabel} from './chart-layout';
 export type ChartTheme='light'|'dark';
 const font='Inter, Microsoft YaHei, Noto Sans SC, sans-serif';
 export function numberLabel(value:number|string):string {
+ if(typeof value==='string')return value;
  const n=Number(value);if(!Number.isFinite(n))return String(value);
  if(n===0)return '0';if(Math.abs(n)>=1e6)return (n/1e6).toLocaleString(undefined,{maximumFractionDigits:1})+'M';
  if(Math.abs(n)>=1e4)return (n/1000).toLocaleString(undefined,{maximumFractionDigits:1})+'k';
@@ -44,20 +47,20 @@ export function chartInfo(spec:ChartSpec){
  };
  return titles[raw]||{title:raw,label:spec.kind==='scatter'?'散点图':'频数图',caption:spec.kind==='scatter'?'每个点代表一个观测样本':'各类别的观测频数',tag:spec.kind==='scatter'?'SCATTER PLOT':'FREQUENCY'};
 }
-export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTheme,zoom=false,exporting=false,width=600,height=420,bubbleView:BubbleView=defaultBubbleView,exportTheme?:ChartTheme):EChartsOption {
+export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTheme,zoom=false,exporting=false,width=600,height=420,bubbleView:BubbleView=defaultBubbleView,exportTheme?:ChartTheme,facetLayout:FacetLayout='full'):EChartsOption {
  theme=figureTheme(theme,exporting,exportTheme);
- if(spec.kind==='facet')return facetOption(spec,palette,theme,exporting,width,height,theme);
+ if(spec.kind==='facet')return facetOption(spec,palette,theme,exporting,width,height,theme,facetLayout);
  if(spec.kind==='estimation')return estimationOption(spec,palette,theme,exporting,width,theme);
  if(spec.kind==='bubble')return bubbleOption(spec,palette,theme,exporting,width,height,bubbleView,theme);
- const exploration=explorationOption(spec,palette,theme,exporting,width,undefined,theme);if(exploration)return exploration;
+ const exploration=explorationOption(spec,palette,theme,exporting,width,undefined,theme,height);if(exploration)return exploration;
  const light=theme==='light';const color=palettes[palette][theme];
  const text=light?'#263348':'#dbe4ef',muted=light?'#536379':'#8d9caf',grid=light?'#e8edf3':'#263243',panel=light?'#ffffff':'#151f2d';
  const neutral=light?'#f0f3f7':'#263448';const negative=palettes[palette].negative;
  const d=spec.data,info=chartInfo(spec);const small=width<480;
- const heading=figureHeading(info.title+' · '+info.label,info.caption,width);
+ const heading=figureHeading(chartText(spec,info.title)+' · '+t(info.label),info.caption,width,false);
  const density=spec.title.endsWith(' · Density'),ecdf=spec.title.endsWith(' · ECDF'),histogram=spec.title.endsWith(' · Histogram'),cumulative=spec.title==='Cumulative variance',loadings=spec.title==='PC1 × PC2 · Loadings';
- const xTitle=spec.xLabel||(histogram||density||ecdf?info.title:undefined);
- const yTitle=spec.yLabel||(histogram?'频数':density?'密度':ecdf?'累计比例':spec.kind==='boxplot'?info.title:undefined);
+ const xTitle=chartText(spec,spec.xLabel||(histogram||density||ecdf?info.title:''))||undefined;
+ const yTitle=(histogram?t('频数'):density?t('密度'):ecdf?t('累计比例'):chartText(spec,spec.yLabel||(spec.kind==='boxplot'?info.title:'')))||undefined;
  const residual=spec.title==='Residuals'||spec.title==='Residual vs Fitted';
  const split={show:true,lineStyle:{color:grid,type:'dashed' as const,width:1}};
  const axisLine={show:false};const axisTick={show:false};const nameTextStyle={color:muted,fontSize:12,padding:[0,0,0,0]};
@@ -69,16 +72,16 @@ export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTh
   title:exporting?{text:heading.text,subtext:heading.subtext,left:30,top:20,textStyle:{color:text,fontFamily:font,fontSize:18,lineHeight:22,fontWeight:600},subtextStyle:{color:muted,fontFamily:font,fontSize:12,lineHeight:17}}:undefined,
   tooltip:{trigger:'item',confine:true,backgroundColor:panel,borderColor:grid,borderWidth:1,padding:[12,16],textStyle:{color:text,fontSize:12,fontFamily:font},extraCssText:'border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.14);line-height:1.8;',axisPointer:{type:'line',lineStyle:{color:muted,type:'dashed'}}},
   grid:{left:small?56:76,right:small?26:34,top:exporting?heading.plotTop:34,bottom:zoom&&!exporting?116:76},
-  xAxis:{type:'category',data:d.x,axisLine,axisTick,axisLabel:{color:muted,fontSize:12,margin:14,hideOverlap:true,formatter:(v:string)=>numberLabel(v)},name:xTitle,nameLocation:'middle',nameGap:42,nameTextStyle,splitLine:{show:false}},
+  xAxis:{type:'category',data:d.x,axisLine,axisTick,axisLabel:{color:muted,fontSize:12,margin:14,hideOverlap:true,formatter:(v:string)=>String(v)},name:xTitle,nameLocation:'middle',nameGap:42,nameTextStyle,splitLine:{show:false}},
   yAxis:{type:'value',name:yTitle,nameLocation:'middle',nameGap:small?38:52,nameTextStyle,axisLine,axisTick,axisLabel:{color:muted,fontSize:12,margin:12,formatter:(v:number)=>numberLabel(v)},splitLine:split,splitNumber:4},
   dataZoom:exporting?[]:[{type:'inside',zoomOnMouseWheel:'ctrl',moveOnMouseMove:false,filterMode:'none'},...(zoom?[{type:'slider' as const,height:17,bottom:18,borderColor:'transparent',backgroundColor:neutral,fillerColor:color+'25',handleSize:'95%',handleStyle:{color,borderColor:panel},dataBackground:{lineStyle:{color:muted,opacity:.2},areaStyle:{opacity:0}},selectedDataBackground:{lineStyle:{color,opacity:.3},areaStyle:{opacity:.1}},textStyle:{color:muted,fontSize:10},brushSelect:false,showDetail:false}]:[])],
  };
  const zeroLine={silent:true,symbol:'none',label:{show:false},lineStyle:{color:muted,width:1,type:'dashed' as const},data:[{yAxis:0}]};
  if(spec.kind==='scatter'){
-  option.xAxis={type:'value',name:spec.xLabel,nameLocation:'middle',nameGap:42,nameTextStyle,scale:!loadings,axisLine,axisTick,axisLabel:{color:muted,fontSize:12,margin:14,formatter:(v:number)=>numberLabel(v)},splitLine:{show:loadings,...(loadings?split:{})},splitNumber:4};
-  const points=d.points||[];
-  const scatter:SeriesOption={type:'scatter',name:info.title,symbolSize:points.length>500?5.5:loadings?8:7.5,
-   itemStyle:{color,opacity:loadings?1:.76,borderColor:panel,borderWidth:1},emphasis:{scale:1.5,itemStyle:{opacity:1,borderColor:light?'#263348':'#ffffff',borderWidth:1.5}},
+  option.xAxis={type:'value',name:chartText(spec,spec.xLabel||''),nameLocation:'middle',nameGap:42,nameTextStyle,scale:!loadings,axisLine,axisTick,axisLabel:{color:muted,fontSize:12,margin:14,formatter:(v:number)=>numberLabel(v)},splitLine:{show:loadings,...(loadings?split:{})},splitNumber:4};
+  const points=d.points||[],appearance=scatterAppearance(points,Math.max(100,width-110),Math.max(100,height-160));
+  const scatter:SeriesOption={type:'scatter',name:info.title,symbolSize:loadings?8:appearance.symbolSize,
+   itemStyle:{color,opacity:loadings?1:appearance.opacity,borderColor:panel,borderWidth:loadings?1:appearance.borderWidth},emphasis:{scale:1.5,itemStyle:{opacity:1,borderColor:light?'#263348':'#ffffff',borderWidth:1.5}},
    data:points.map((v,i)=>({value:v,name:d.labels?.[i]})),
    label:{show:loadings,position:'top',distance:9,color:text,fontSize:12,formatter:p=>p.name.length>24?p.name.slice(0,22)+'…':p.name},labelLayout:{hideOverlap:true},
    markLine:residual?zeroLine:undefined};
@@ -96,7 +99,7 @@ export function makeChartOption(spec:ChartSpec,palette:PaletteName,theme:ChartTh
   option.visualMap={dimension:2,min:-1,max:1,orient:'horizontal',left:'center',bottom:18,itemWidth:10,itemHeight:Math.min(200,width-150),calculable:false,precision:1,text:['+1','−1'],textGap:9,inRange:{color:[negative,neutral,color]},textStyle:{color:muted,fontSize:12}};
   option.dataZoom=[];
   option.tooltip={...option.tooltip,formatter:(params:unknown)=>{const p=params as {data:{value:number[]}};const v=p.data.value;return `<strong>${format.encodeHTML(labels[v[1]]||'')} × ${format.encodeHTML(labels[v[0]]||'')}</strong><br/>r <b>${v[2].toFixed(4)}</b><br/>p ${v[3].toPrecision(4)}<br/>n ${v[4].toLocaleString()}`}};
-  option.series=[{type:'heatmap',data:(d.values||[]).map(v=>({value:v,label:{color:light&&Math.abs(v[2])>.65?'#fff':text}})),itemStyle:{borderColor:panel,borderWidth:n>10?2:4,borderRadius:4},label:{show:n<=12,fontSize:n<=5?16:12,fontWeight:500,formatter:p=>Number((p.data as {value:number[]}).value[2]).toFixed(2)},emphasis:{itemStyle:{borderColor:text,borderWidth:2}}}];
+  option.series=[{type:'heatmap',data:(d.values||[]).map(v=>({value:v,label:{color:heatmapTextColor(v[2],[negative,neutral,color])}})),itemStyle:{borderColor:panel,borderWidth:n>10?2:4,borderRadius:4},label:{show:n<=12,fontSize:n<=5?16:12,fontWeight:500,formatter:p=>Number((p.data as {value:number[]}).value[2]).toFixed(2)},emphasis:{itemStyle:{borderColor:text,borderWidth:2}}}];
  }else if(spec.kind==='boxplot'){
   option.xAxis={type:'category',data:d.labels,axisLine,axisTick,axisLabel:{color:muted,fontSize:12,margin:16}};
   option.series=[{type:'boxplot',name:info.title,data:d.values,boxWidth:[36,90],itemStyle:{color:color+'24',borderColor:color,borderWidth:2},emphasis:{itemStyle:{borderWidth:3}}},{type:'custom',name:'观测点样本',silent:true,z:2,data:(d.samples||[]).map((v,i)=>[i,v]),renderItem:(_params,api)=>{const [x,y]=api.coord([0,Number(api.value(1))]);let hash=Math.imul(Number(api.value(0))+1,0x9e3779b1);hash^=hash>>>16;hash=Math.imul(hash,0x85ebca6b);hash^=hash>>>13;return {type:'circle',shape:{cx:x+((hash>>>0)%71)-35,cy:y,r:2.5},style:{fill:palettes[palette].secondary,opacity:.65}}}},{type:'scatter',name:'离群点',data:(d.outliers||[]).map(v=>[0,v]),symbolSize:6,itemStyle:{color:negative,opacity:.8}}];

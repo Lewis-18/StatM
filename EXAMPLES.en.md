@@ -6,6 +6,20 @@
 
 The new examples use the actual **StatM 1.3.0** program and independent synthetic teaching data. Existing Advertising and Iris workflows retain their original data definitions; interface captures have been refreshed to 1.3.0. Main examples use a light application theme and white chart backgrounds.
 
+## 1.4.6 layout and scientific export improvements
+
+Review the join settings and matched rows before saving.
+
+![Dataset join](assets/v1.4.6/join-en.jpg)
+
+Long facet titles reserve their actual space and keep plot areas aligned.
+
+![Facet titles](assets/v1.4.6/facets-long-titles.jpg)
+
+Bulk selection shows the applied limit and how many matches remain unselected. The following packaged-app examples use synthetic data and the Chinese interface.
+
+![Bulk selection feedback](assets/v1.4.6/bulk-selection.jpg)
+
 ## 1.4.5 interface and exports
 
 Dataset joins use consistent spacing and alignment, adapting to the actual container width. Checking and saving report their current state.

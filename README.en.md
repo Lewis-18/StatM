@@ -8,18 +8,29 @@
 
 StatM is a Windows desktop application for statistics learning and research. Prepare data, run statistical analyses, produce scientific figures and tables, and retain reviewable analysis records in a local workspace.
 
-**Version: 1.4.5** · **Windows x64** · **Maintainer: Jackson Lewis**
+**Version: 1.4.6** · **Windows x64** · **Maintainer: Jackson Lewis**
 
 [Download](https://github.com/Lewis-18/StatM/releases/latest) · [User guide](USER-GUIDE.en.md) · [Worked examples](EXAMPLES.en.md) · [Changelog](CHANGELOG.en.md) · [Report an issue](https://github.com/Lewis-18/StatM/issues)
 
-![StatM 1.4.5](assets/v1.4.5/join-en.jpg)
+![StatM 1.4.6](assets/v1.4.6/join-en.jpg)
 
 <details>
 <summary>View dark theme</summary>
 
-![StatM 1.4.5 dark theme](assets/v1.4.5/join-dark.jpg)
+![StatM 1.4.6 dark theme](assets/v1.4.6/join-dark.jpg)
 
 </details>
+
+## 1.4.6 layout and scientific export improvements
+
+- **Facet layout**: reserve space for complete titles and sample counts, keep plot areas equal within each row, offer full or compact axes, and wrap English titles at word boundaries.
+- **Bilingual scientific export**: choose the figure language independently of the interface and select standard or larger text. Preserve user field and group names, with 90/180mm output, 300 DPI PNG, SVG and PDF.
+- **Dataset joins**: follow selection, configuration, review and save steps. Renaming an output retains a valid match preview.
+- **Data tables**: three density settings, keyboard column resizing, and double-click or Home reset, with wide-table pinned columns and horizontal scrolling verified.
+- **Bulk variable selection**: report remaining capacity, fields added and fields skipped at the selection limit.
+- **Labels and heatmaps**: preserve text identifiers such as 001, 1e6 and 1000000; choose black or white heatmap labels from the actual cell color.
+- **Dense scatterplots**: adapt symbol size and opacity to observation count, concentration and plot area, retaining observations, coordinates and record identities.
+- **Reproduction settings**: save export language, text size and facet view in analysis bundles. Existing statistical methods and opening and waiting animations are retained.
 
 ## 1.4.5 interface and scientific figure improvements
 

@@ -1,3 +1,5 @@
+import {t,chartText} from './i18n';
+import {scatterAppearance} from './chart-readability';
 import {format,type EChartsOption} from 'echarts';
 import {figureHeading} from './figure-export';
 import {figureTheme,figureBackground,type FigureTheme} from './chart-theme';
@@ -16,17 +18,17 @@ export function explorationInfo(spec:ChartSpec){
  const [label,caption]=names[spec.kind]||[spec.title==='PC1 × PC2 · Scores'?'PCA 得分':isProjection?'二维投影':'散点图','每个点代表同一条完整记录；分组以颜色与点形区分'];
  return {title:spec.title.replace(' · 二维投影',''),label,caption:`${caption} · n=${spec.data.n?.toLocaleString()||'—'}${spec.data.shown!==undefined&&spec.data.shown!==spec.data.n?' · 显示 '+spec.data.shown.toLocaleString():''}`,tag:'EXPLORATION'};
 }
-export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'light'|'dark',exporting=false,width=600,canvasBackground?:string,exportTheme?:FigureTheme):EChartsOption|null{
+export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'light'|'dark',exporting=false,width=600,canvasBackground?:string,exportTheme?:FigureTheme,height=420):EChartsOption|null{
  theme=figureTheme(theme,exporting,exportTheme);
  if(spec.kind==='bubble')return bubbleOption(spec,palette,theme,exporting,width,420,undefined,theme);
  if(!explorationInfo(spec))return null;
  const light=theme==='light',text=light?'#263348':'#dbe4ef',muted=light?'#57677b':'#a4b2c4',grid=light?'#e1e7ed':'#314057',background=light?'#ffffff':'#151f2d';
  const d=spec.data,info=explorationInfo(spec)!;
- const heading=figureHeading(info.title,info.caption,width);
+ const heading=figureHeading(chartText(spec,info.title),info.caption,width,false);
  const exportTop=heading.plotTop+Math.ceil((d.categories||[]).join('').length*10/Math.max(200,width-120))*25;
- const groups=d.categories||['全部样本'];
+ const groups=d.categories||[t('全部样本')];
  const colorAt=(i:number)=>groups.length===1?palettes[palette][theme]:groupColor(palette,theme,i);
- const axis=(name?:string)=>({type:'value' as const,name:axisName(name,width-130),nameLocation:'middle' as const,nameGap:width<480?34:45,nameTextStyle:{color:muted,fontSize:12},axisLabel:{color:muted,hideOverlap:true},axisLine:{show:false},axisTick:{show:false},splitLine:{lineStyle:{color:grid,type:'dashed' as const}},scale:true});
+ const axis=(name?:string,authored=false)=>({type:'value' as const,name:axisName(authored?t(name||''):chartText(spec,name||''),width-130),nameLocation:'middle' as const,nameGap:width<480?34:45,nameTextStyle:{color:muted,fontSize:12},axisLabel:{color:muted,hideOverlap:true},axisLine:{show:false},axisTick:{show:false},splitLine:{lineStyle:{color:grid,type:'dashed' as const}},scale:true});
  const option:EChartsOption={animation:false,animationDuration:180,backgroundColor:figureBackground(theme,exporting),textStyle:{fontFamily:font,color:text},color:groups.map((_,i)=>colorAt(i)),
   title:exporting?{text:heading.text,subtext:heading.subtext,left:24,top:18,textStyle:{color:text,fontSize:18,lineHeight:22},subtextStyle:{color:muted,fontSize:12,lineHeight:17}}:undefined,
   tooltip:{trigger:'item',confine:true,backgroundColor:background,borderColor:grid,textStyle:{color:text}},
@@ -34,12 +36,12 @@ export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'ligh
   legend:{show:groups.length>1,type:exporting?'plain':'scroll',top:exporting?heading.plotTop-5:4,left:'center',textStyle:{color:muted},pageTextStyle:{color:muted}},
   grid:{left:width<480?55:76,right:30,top:exporting?exportTop:52,bottom:70},xAxis:axis(spec.xLabel),yAxis:axis(spec.yLabel)};
  if(spec.kind==='scatter3d'||spec.kind==='scatter'){
-  const points=d.points||[];
+  const points=d.points||[],appearance=scatterAppearance(points,Math.max(100,width-110),Math.max(100,height-exportTop-70));
   const series=groups.map((g,i)=>({type:spec.kind==='scatter3d'?'scatter3D':'scatter',name:g,
    data:points.flatMap((v,j)=>d.groups?.[j]===g||!d.groups?[{value:v,name:d.labels?.[j]||String(j+1),rowId:d.row_ids?.[j]}]:[]),
    symbol:spec.kind==='scatter3d'?'circle':groupSymbols[i%groupSymbols.length],
-   symbolSize:spec.kind==='scatter3d'?6:8,
-   itemStyle:{color:colorAt(i),opacity:.85,borderColor:background,borderWidth:spec.kind==='scatter3d'?0:1},emphasis:{itemStyle:{opacity:1}},
+   symbolSize:spec.kind==='scatter3d'?6:appearance.symbolSize,
+   itemStyle:{color:colorAt(i),opacity:spec.kind==='scatter3d'?.85:appearance.opacity,borderColor:background,borderWidth:spec.kind==='scatter3d'?0:appearance.borderWidth},emphasis:{itemStyle:{opacity:1}},
    tooltip:{formatter:(p:unknown)=>{const v=p as {value:number[];name:string};return [format.encodeHTML(v.name),format.encodeHTML(g),...[spec.xLabel,spec.yLabel,spec.zLabel].slice(0,spec.kind==='scatter'?2:3).map((label,k)=>`${format.encodeHTML(label||'')}: ${Number(v.value[k]).toLocaleString(undefined,{maximumSignificantDigits:6})}`)].join('<br/>')}}}));
   if(spec.kind==='scatter3d'){
    const axis3d=(name?:string)=>({...axis(name),nameLocation:undefined,nameGap:20,axisLine:{show:true,lineStyle:{color:muted}},axisLabel:{color:muted,fontSize:12},splitLine:{show:true,lineStyle:{color:grid}}});
@@ -61,7 +63,7 @@ export function explorationOption(spec:ChartSpec,palette:PaletteName,theme:'ligh
   const violins:EChartsOption['series']=spec.kind==='violin'?[{type:'custom',name:'核密度形状',silent:true,z:0,data:(d.densities||[]).map(v=>[v.group]),renderItem:(params,api)=>{const density=d.densities?.[params.dataIndex];if(!density?.points.length)return;const category=Number(api.value(0)),half=Math.min(60,Math.abs((api.size!([1,0]) as number[])[0])*.37);const side=(sign:number)=>density.points.map(([value,size])=>{const [x,y]=api.coord([category,value]);return [x+sign*half*size,y]});return {type:'polygon',shape:{points:[...side(1),...side(-1).reverse()]},style:{fill:colorAt(category)+'32',stroke:colorAt(category),lineWidth:1}}}}]:[];
   option.series=[...violins,...boxes];
  }else if(spec.kind==='category_bar'){
-  option.yAxis={...axis(spec.yLabel),min:0,scale:false,minInterval:1};
+  option.yAxis={...axis(spec.yLabel,true),min:0,scale:false,minInterval:1};
   option.xAxis={...axis(spec.xLabel),type:'category',data:d.categories,axisLabel:{color:muted,interval:0,rotate:(d.categories?.length||0)>6?35:0}};
   option.legend={...option.legend as object,show:(d.series?.length||0)>1};
   option.series=(d.series||[]).map((s,i)=>({name:s.name,type:'bar',data:s.values,itemStyle:{color:d.series?.length===1?palettes[palette][theme]:groupColor(palette,theme,i)},barMaxWidth:35}));

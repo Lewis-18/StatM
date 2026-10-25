@@ -25,7 +25,16 @@ export default function VariablePicker({fields,value,onChange,title='选择变�
  const selected=value.filter(name=>available.has(name));
  const filtered=fields.filter(f=>f.name.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase()));
  function changeOpen(next:boolean){if(next){setDraft([...new Set(selected)]);setSearch('');setAnnouncement('')}setOpen(next)}
- function toggle(name:string){setDraft(old=>old.includes(name)?old.filter(v=>v!==name):old.length<max?[...old,name]:old)}
+ function toggle(name:string){
+  const removing=draft.includes(name);if(!removing&&draft.length>=max){setAnnouncement(tr('已达到选择上限，可取消勾选或调整顺序。'));return}
+  const next=removing?draft.filter(v=>v!==name):[...draft,name];setDraft(next);
+  setAnnouncement(tr(removing?'已移除 {0}；当前共 {1} 个。':'已选择 {0}；当前共 {1} 个。').replace('{0}',name).replace('{1}',String(next.length)));
+ }
+ function selectFiltered(){
+  const candidates=filtered.map(f=>f.name).filter(name=>!draft.includes(name)),added=candidates.slice(0,Math.max(0,max-draft.length)),skipped=candidates.length-added.length;
+  setDraft([...draft,...added]);
+  setAnnouncement(tr(skipped?'已新增 {0} 个变量，另外 {1} 个因数量限制未选中。':'已新增 {0} 个变量，当前共选择 {1} 个。').replace('{0}',String(added.length)).replace('{1}',String(skipped||draft.length+added.length)));
+ }
  function move(index:number,offset:number,action=offset<0?'up':'down'){
   const name=draft[index];if(!name||index+offset<0||index+offset>=draft.length)return;
   setDraft(old=>{const next=[...old];[next[index],next[index+offset]]=[next[index+offset],next[index]];return next});
@@ -48,7 +57,7 @@ export default function VariablePicker({fields,value,onChange,title='选择变�
      <div className="vp-body">
       <section className="vp-fields" aria-label={tr('可选变量')}>
        <label className="vp-search"><Search size={17} aria-hidden="true"/><input autoComplete="off" aria-label={tr('搜索变量')} placeholder={tr('搜索变量…')} value={search} onChange={e=>setSearch(e.target.value)}/></label>
-       <div className="vp-tools"><span>{filtered.length} {tr('个可选变量')}</span><button type="button" disabled={!filtered.some(f=>!draft.includes(f.name))||draft.length>=max} onClick={()=>setDraft(old=>[...new Set([...old,...filtered.map(f=>f.name)])].slice(0,max))}>{tr('选择搜索结果')}</button></div>
+       <div className="vp-tools"><span>{filtered.length} {tr('个可选变量')}<small className="vp-capacity">{tr('当前可再选择 {0} 个变量。').replace('{0}',String(Math.max(0,max-draft.length)))}</small></span><button type="button" disabled={!filtered.some(f=>!draft.includes(f.name))||draft.length>=max} onClick={selectFiltered}>{tr('选择搜索结果')}</button></div>
        <div className="vp-list">{filtered.map((f,index)=>{const checked=draft.includes(f.name);return <label className="vp-field" key={f.name} htmlFor={`${id}-${index}`} data-selected={checked}>
         <input id={`${id}-${index}`} type="checkbox" checked={checked} disabled={!checked&&draft.length>=max} onChange={()=>toggle(f.name)}/>
         <span className="vp-field-info"><span>{f.name}</span><small>{tr(['continuous','discrete'].includes(f.type)?'数值变量':'分类 / 文本变量')} · {tr('缺失')} {f.missing.toLocaleString()}</small></span>
@@ -56,7 +65,7 @@ export default function VariablePicker({fields,value,onChange,title='选择变�
        </label>})}{!filtered.length&&<p className="vp-empty">{tr('没有匹配的变量')}</p>}</div>
       </section>
       <section className="vp-selected" aria-label={tr('已选变量')}>
-       <div className="vp-tools"><strong>{tr('已选变量')} {draft.length} / {max}</strong><button type="button" disabled={!draft.length} onClick={()=>setDraft([])}>{tr('清空')}</button></div>
+       <div className="vp-tools"><strong>{tr('已选变量')} {draft.length} / {max}</strong><button type="button" disabled={!draft.length} onClick={()=>{setDraft([]);setAnnouncement(tr('已清空选择。'))}}>{tr('清空')}</button></div>
        <ol ref={selectedList} className="vp-selected-list">{draft.map((name,index)=><li key={name} data-variable={name} tabIndex={-1} onKeyDown={e=>{if(e.altKey&&['ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();move(index,e.key==='ArrowUp'?-1:1)}}}>
         <div className="vp-selected-name"><b className="vp-role">{role(index)}</b><span title={name}>{name}</span></div>
         <div className="vp-order"><button type="button" data-action="up" disabled={index===0} onClick={()=>move(index,-1)} title={`${tr('上移')} · Alt + ↑`} aria-keyshortcuts="Alt+ArrowUp" aria-label={`${tr('上移')} ${name}`}><ArrowUp size={16}/></button><button type="button" data-action="down" disabled={index===draft.length-1} onClick={()=>move(index,1)} title={`${tr('下移')} · Alt + ↓`} aria-keyshortcuts="Alt+ArrowDown" aria-label={`${tr('下移')} ${name}`}><ArrowDown size={16}/></button><button type="button" onClick={()=>toggle(name)} title={tr('移除')} aria-label={`${tr('移除')} ${name}`}><X size={16}/></button></div>
@@ -64,7 +73,7 @@ export default function VariablePicker({fields,value,onChange,title='选择变�
        {!draft.length&&<p className="vp-empty">{tr('从左侧选择变量，完整名称和缺失情况会在列表中显示。')}</p>}
       </section>
      </div>
-     <div className="vp-footer"><p role="status">{announcement||tr(draft.length>=max?'已达到选择上限，可取消勾选或调整顺序。':'取消或按 Esc 保留原来的选择。Alt + ↑ / ↓ 调整顺序。')}</p><div><Dialog.Close className="vp-button">{tr('取消')}</Dialog.Close><button type="button" className="vp-button vp-confirm" disabled={draft.length>max} onClick={()=>{onChange(draft.filter(name=>available.has(name)));setOpen(false)}}>{tr('确认选择')}</button></div></div>
+     <div className="vp-footer"><p role="status" aria-live="polite" aria-atomic="true">{announcement||tr(draft.length>=max?'已达到选择上限，可取消勾选或调整顺序。':'取消或按 Esc 保留原来的选择。Alt + ↑ / ↓ 调整顺序。')}</p><div><Dialog.Close className="vp-button">{tr('取消')}</Dialog.Close><button type="button" className="vp-button vp-confirm" disabled={draft.length>max} onClick={()=>{onChange(draft.filter(name=>available.has(name)));setOpen(false)}}>{tr('确认选择')}</button></div></div>
     </Dialog.Content>
    </Dialog.Portal>
   </Dialog.Root>

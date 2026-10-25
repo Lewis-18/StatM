@@ -1,6 +1,7 @@
-const t=(value:string)=>value;
+import {t} from './i18n';
 import {wrapLabel} from './chart-layout';
 import {figurePresets,type FigurePresetName} from './chart-preferences';
+import type {FigureTypography} from './figure-preferences';
 
 export function figureSize(name:FigurePresetName,canvasHeight:number,canvasWidth=1100){
  const {widthMm,dpi}=figurePresets[name];
@@ -18,9 +19,9 @@ export function sizeVectorFigure(svg:SVGSVGElement,name:FigurePresetName,canvasH
 }
 
 // Both presets use the same physical font scale: 12 logical px is about 7.3 pt.
-export function figureCanvasWidth(name:FigurePresetName){return name==='column'?420:840}
-export function figureHeading(title:string,caption:string,width:number){
- title=t(title);caption=t(caption);
+export function figureCanvasWidth(name:FigurePresetName,typography:FigureTypography='standard'){return (name==='column'?1:2)*(typography==='readable'?340:420)}
+export function figureHeading(title:string,caption:string,width:number,translateTitle=true){
+ title=translateTitle?t(title):title;caption=t(caption);
  const text=wrapLabel(title,width-60,18,700),subtext=wrapLabel(caption,width-60,12);
  return {text,subtext,plotTop:24+text.split('\n').length*22+subtext.split('\n').length*17+24};
 }

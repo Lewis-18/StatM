@@ -12,10 +12,14 @@ export function wrapLabel(value:string,width:number,size=12,weight=400){
  const lines:string[]=[];let line='';
  for(const char of String(value)){
   if(char==='\n'){lines.push(line);line='';continue}
-  if(line&&labelWidth(line+char,size,weight)>Math.max(size*2,width)){lines.push(line.trimEnd());line=''}
-  if(line||char.trim())line+=char;
+  if(line&&labelWidth(line+char,size,weight)>Math.max(size*2,width)){
+   const boundary=Math.max(line.lastIndexOf(' '),line.lastIndexOf('\t'));
+   if(boundary>0&&boundary<line.length-1){lines.push(line.slice(0,boundary+1));line=line.slice(boundary+1)}
+   else{lines.push(line);line=''}
+  }
+  line+=char;
  }
- if(line)lines.push(line.trimEnd());
+ if(line)lines.push(line);
  return lines.join('\n');
 }
 export function categoryLayout(labels:string[],width:number,size=12){
