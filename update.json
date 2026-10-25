@@ -1,23 +1,23 @@
 {
-  "tag_name": "v1.4.5",
-  "name": "StatM 1.4.5",
-  "html_url": "https://github.com/Lewis-18/StatM/releases/tag/v1.4.5",
-  "published_at": "2026-10-23T14:41:20Z",
+  "tag_name": "v1.4.6",
+  "name": "StatM 1.4.6",
+  "html_url": "https://github.com/Lewis-18/StatM/releases/tag/v1.4.6",
+  "published_at": "2026-10-25T12:06:17Z",
   "draft": false,
   "prerelease": false,
-  "body": "# StatM 1.4.5\n\n中文 · [English](https://github.com/Lewis-18/StatM/blob/main/RELEASE-NOTES.en.md)\n\n本版本改善数据工具的布局与操作反馈，统一科研图表导出配色，并补充长标签排版与视觉回归验证。\n\n- **页面留白与窄面板布局**：数据关联和变量字典使用一致的卡片、标签、表单间距；按容器实际宽度切换单栏。\n- **关联操作反馈**：说明禁用原因，显示检查与保存进度，核对匹配情况后突出保存入口。\n- **科研导出主题**：未单独选择图表背景时，导出统一白底；明确选择黑色后，背景、文字和坐标轴共同切换，适用于 SVG、PNG、PDF 和组合图。\n- **完整标签排版**：长变量名和分类标签换行、动态留白，保留原始数据、计数和坐标范围。\n- **变量选择体验**：38px 排序按钮、操作提示、Alt + ↑ / ↓ 排序及焦点和滚动位置保持。\n- **主题与界面验证**：统一语义色和按钮状态，增加实际桌面截图基准、像素比较与布局断言。\n\n保留 1.4.0 的信度分析、EFA、分面、批次对比和可复现分析包，以及既有开场与等待动画。统计计算方法沿用。\n\n下载 **StatM-Setup-1.4.5-x64.exe**，关闭 StatM 后安装到原目录。已有本地工作空间继续沿用。安装包未数字签名，附 SHA256SUMS.txt 校验。\n\n[使用指南](https://github.com/Lewis-18/StatM/blob/main/USER-GUIDE.md) · [图文示例](https://github.com/Lewis-18/StatM/blob/main/EXAMPLES.md) · [方法与验证](https://github.com/Lewis-18/StatM/blob/main/METHODS.md) · [更新记录](https://github.com/Lewis-18/StatM/blob/main/CHANGELOG.md)\n\n验收：132 项后端测试、27 项桌面单元测试、37 项冻结引擎检查、21 项桌面回归及 13 张视觉基准通过；四类合成样例分析包独立重算无数值差异。实际安装包解包内容与受测程序逐文件一致。本机验收不等同于干净虚拟机安装验收。\n",
+  "body": "# StatM 1.4.6\n\n中文 · [English](https://github.com/Lewis-18/StatM/blob/v1.4.6/RELEASE-NOTES.en.md)\n\n本版本改善分面排版、图表导出设置与日常数据操作。\n\n- **分面排版**：按完整标题和样本量动态留白，同行绘图区等大；增加完整与紧凑坐标布局，英文标题优先按单词换行。\n- **双语科研导出**：图表语言可独立于界面设置，提供标准与大字两档；保留用户字段名和分组原文，继续支持 90/180mm、300 DPI PNG、SVG 和 PDF。\n- **关联流程**：按选择数据、配置关联、检查与保存排列；修改结果名称后保留有效的匹配检查。\n- **表格操作**：补充三档密度、键盘调整列宽、双击或 Home 复位，并验收宽表的固定列和横向滚动。\n- **批量变量选择**：明确显示剩余容量、实际新增项数和因上限未选的数量。\n- **标签与热图**：文本编号 001、1e6、1000000 保持原样；热图按实际单元格底色选择黑白文字。\n- **密集散点**：按点数、集中程度和绘图区面积调整大小与透明度，保留原始观测、坐标与记录身份。\n- **复现设置**：分析包保存导出语言、字号与分面视图；既有统计方法、开场和等待动画沿用。\n\n下载 **StatM-Setup-1.4.6-x64.exe**，关闭 StatM 后安装到原目录，已有本地工作空间沿用。安装包未数字签名，可使用 SHA256SUMS.txt 校验。\n\n验证：132 项后端测试、38 项桌面与图表专项检查、37 项离线引擎检查、21 项桌面回归通过；19 张实际桌面截图基准比较通过。四类复现包独立重跑数值差异为 0，安装包 1986 个文件与受测程序一致。已检查 SVG、PNG 和六份矢量 PDF，包括 90/180mm 物理宽度。验证基于当前 Windows 电脑，未运行全新虚拟机安装验收；R 参考代码未独立执行。\n\n[使用指南](https://github.com/Lewis-18/StatM/blob/v1.4.6/USER-GUIDE.md) · [图文示例](https://github.com/Lewis-18/StatM/blob/v1.4.6/EXAMPLES.md) · [方法与验证](https://github.com/Lewis-18/StatM/blob/v1.4.6/METHODS.md) · [更新记录](https://github.com/Lewis-18/StatM/blob/v1.4.6/CHANGELOG.md)\n\n<details>\n<summary>English release notes</summary>\n\n# StatM 1.4.6\n\n[中文](https://github.com/Lewis-18/StatM/blob/v1.4.6/RELEASE-NOTES.md) · English\n\nThis release improves figure layout, export controls and everyday data work.\n\n- **Facet layout**: reserve space for complete titles and sample counts, keep plot areas equal within each row, offer full or compact axes, and wrap English titles at word boundaries.\n- **Bilingual scientific export**: choose the figure language independently of the interface and select standard or larger text. Preserve user field and group names, with 90/180mm output, 300 DPI PNG, SVG and PDF.\n- **Dataset joins**: follow selection, configuration, review and save steps. Renaming an output retains a valid match preview.\n- **Data tables**: three density settings, keyboard column resizing, and double-click or Home reset, with wide-table pinned columns and horizontal scrolling verified.\n- **Bulk variable selection**: report remaining capacity, fields added and fields skipped at the selection limit.\n- **Labels and heatmaps**: preserve text identifiers such as 001, 1e6 and 1000000; choose black or white heatmap labels from the actual cell color.\n- **Dense scatterplots**: adapt symbol size and opacity to observation count, concentration and plot area, retaining observations, coordinates and record identities.\n- **Reproduction settings**: save export language, text size and facet view in analysis bundles. Existing statistical methods and opening and waiting animations are retained.\n\nDownload **StatM-Setup-1.4.6-x64.exe**, close StatM, and install to the existing location. Local workspaces are retained. The installer is unsigned; verify it using SHA256SUMS.txt.\n\nValidation: 132 backend tests, 38 desktop and figure checks, 37 offline-engine checks and 21 desktop regression checks passed. Nineteen packaged-app screenshots matched their baselines. Four reproduction bundles reran with zero numerical differences; 1,986 installer files matched the tested application. SVG, PNG and six vector PDFs were checked, including 90/180mm widths. Testing used the current Windows computer and does not establish clean-VM installer acceptance. R reference code was not independently executed.\n\n[User guide](https://github.com/Lewis-18/StatM/blob/v1.4.6/USER-GUIDE.en.md) · [Examples](https://github.com/Lewis-18/StatM/blob/v1.4.6/EXAMPLES.en.md) · [Methods and validation](https://github.com/Lewis-18/StatM/blob/v1.4.6/METHODS.en.md) · [Changelog](https://github.com/Lewis-18/StatM/blob/v1.4.6/CHANGELOG.en.md)\n\n</details>\n\nSHA-256 (`StatM-Setup-1.4.6-x64.exe`): `86e3f5e5ce624aae6e7bafe80b4ea5114a16923dbb2bebbe7d21f9bb54e8a0b0`\n",
   "assets": [
     {
       "name": "SHA256SUMS.txt",
-      "size": 93,
-      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.4.5/SHA256SUMS.txt",
-      "digest": "sha256:c0f2e22227c7cd9de84a3aec3e356465b9d2339af5c00a63e9e8db1719d173eb"
+      "size": 92,
+      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.4.6/SHA256SUMS.txt",
+      "digest": "sha256:27f94bdcc96e352fa325a47ffff4649bd13d27e8c955afc896f14348ed40bbf0"
     },
     {
-      "name": "StatM-Setup-1.4.5-x64.exe",
-      "size": 216762127,
-      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.4.5/StatM-Setup-1.4.5-x64.exe",
-      "digest": "sha256:829548525324a1ec641515c999d3b3c5bac3feaac9748d327d65d102c8d1353d"
+      "name": "StatM-Setup-1.4.6-x64.exe",
+      "size": 216765787,
+      "browser_download_url": "https://github.com/Lewis-18/StatM/releases/download/v1.4.6/StatM-Setup-1.4.6-x64.exe",
+      "digest": "sha256:86e3f5e5ce624aae6e7bafe80b4ea5114a16923dbb2bebbe7d21f9bb54e8a0b0"
     }
   ]
 }
